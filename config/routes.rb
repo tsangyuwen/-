@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   root "products#index"
 
-  #namespace :ajion2596dhi do
-  #  root "products#index"
-  #end
+  namespace :ajion2596dhi do
+    root "products#index"
+  end
 end
