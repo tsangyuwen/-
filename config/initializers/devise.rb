@@ -6,7 +6,7 @@ Devise.setup do |config|
   fb_config = Rails.application.config_for(:facebook)
 
   config.omniauth :facebook, fb_config["app_id"], fb_config["secret"], scope: "public_profile,email", 
-  info_fields: "email,name", callback_url: "http://localhost:3000/users/auth/facebook/callback"
+  info_fields: "email,name", callback_url: "https://eggplant-sale.herokuapp.com/users/auth/facebook/callback"
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
