@@ -6,4 +6,4 @@ development:
 production:
   app_id: 2148513215160228
   secret: 4aa1022deb6123eea889f7cb68ecb75d 
-  call_back: http://eggplant-sale.herokuapp.com/users/auth/facebook/callback
+  call_back: https://eggplant-sale.herokuapp.com/users/auth/facebook/callback
