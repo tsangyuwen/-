@@ -29,6 +29,7 @@ gem 'ffaker'
 gem 'omniauth-facebook'
 #google authentication
 gem 'omniauth-google-oauth2'
+gem 'figaro'
 gem 'jquery-rails'
 
 # Use CoffeeScript for .coffee assets and views
