@@ -1,0 +1,9 @@
+development:
+  app_id: 719405132382-450kaj3h9kjpju2aeottrpg5rstlm5l2.apps.googleusercontent.com
+  secret: mhLPJTaYQNCCZ7oy3Ko85ZyH
+  call_back: http://localhost:3000/users/auth/facebook/callback
+
+production:
+  app_id: 719405132382-450kaj3h9kjpju2aeottrpg5rstlm5l2.apps.googleusercontent.com
+  secret: mhLPJTaYQNCCZ7oy3Ko85ZyH
+  call_back: https://eggplant-sale.herokuapp.com/users/auth/facebook/callback
