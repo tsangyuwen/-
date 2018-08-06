@@ -25,6 +25,7 @@ gem 'devise'
 gem 'carrierwave'
 #fake data
 gem 'ffaker'
+gem 'omniauth'
 #facebook authentication
 gem 'omniauth-facebook'
 #google authentication
