@@ -10,8 +10,7 @@ Devise.setup do |config|
 
   google_config = Rails.application.config_for(:google)
 
-  config.omniauth :google_oauth2, google_config["app_id"], google_config["secret"], scope: "public_profile,email", 
-  info_fields: "email,name", callback_url: google_config["call_back"]
+  config.omniauth :google_oauth2, google_config["app_id"], google_config["secret"], callback_url: google_config["call_back"]
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
