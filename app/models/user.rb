@@ -14,6 +14,7 @@ class User < ApplicationRecord
     user = User.find_by_fb_uid( auth.uid )
     if user
       user.fb_token = auth.credentials.token
+      user.password = Devise.friendly_token[0,20]
       user.save!
       return user
     end
