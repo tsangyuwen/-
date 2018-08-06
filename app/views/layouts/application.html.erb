@@ -20,7 +20,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to "restaurant forum", root_path, class: "navbar-brand" %>
+          <%= link_to "eggplant", root_path, class: "navbar-brand" %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -31,8 +31,7 @@
                 <li><%= link_to 'Admin back', ajion2596dhi_root_path %></li>
               <% end %>
               
-              <li><p class="navbar-text">Hi,<%= current_user.email %></p></li>
-              <li><%= link_to('Profile', root_path) %></li>
+              <li><p class="navbar-text">Hi,<%= current_user.name %></p></li>
               <li><%= link_to('log out', destroy_user_session_path, method: :delete) %></li>
               <li><%= link_to('edit password', edit_user_registration_path) %></li>
             <% else %>
