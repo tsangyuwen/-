@@ -29,6 +29,7 @@ class User < ApplicationRecord
 
     # Case 3: Create new password
     user = User.new
+    user.name = auth.info.name
     user.fb_uid = auth.uid
     user.fb_token = auth.credentials.token
     user.email = auth.info.email
