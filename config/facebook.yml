@@ -1,3 +1,7 @@
-development,production:
+development:
+  app_id: 2148513215160228
+  secret: 4aa1022deb6123eea889f7cb68ecb75d 
+
+production:
   app_id: 2148513215160228
   secret: 4aa1022deb6123eea889f7cb68ecb75d 
