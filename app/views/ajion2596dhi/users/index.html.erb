@@ -10,6 +10,7 @@
           <th>#</th>
           <th>name</th>
           <th>email</th>
+          <th>role</th>
           <th>#</th>
         </tr>
       </thead>
@@ -20,6 +21,7 @@
           <th scope="row"><%= user.id %></th>
           <td><%= user.name %></td>
           <td><%= user.email %></td>
+          <td><%= user.role %></td>
           <td>
             <%= link_to "show", ajion2596dhi_user_path(user) %>
             <%= link_to "edit", edit_ajion2596dhi_user_path(user) %>

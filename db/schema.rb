@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180805132341) do
+ActiveRecord::Schema.define(version: 20180819141457) do
 
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
@@ -33,13 +33,13 @@ ActiveRecord::Schema.define(version: 20180805132341) do
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
     t.string "name", default: "", null: false
-    t.string "role", default: "normal"
     t.string "fb_uid"
     t.string "fb_token"
     t.string "google_uid"
     t.string "google_token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "role", default: "normal"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
