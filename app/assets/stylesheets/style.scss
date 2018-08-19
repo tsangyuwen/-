@@ -1,5 +1,14 @@
 body {
-
+  background-image: image-url("background.png");
+  background-size: cover;
+  background-position: left, top;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-size: 14px;
+  line-height: 1.42857143;
+  color: #333;
+  background-color: rgba(155, 58, 246 ,0.3);
+  margin-left: 20px;
+  margin-right: 20px;
 }
 .fixed {
     position: fixed;
@@ -17,4 +26,22 @@ body {
 }
 .center {
    text-align:center;
+}
+
+.navbar {
+  position: relative;
+  min-height: 50px;
+  margin-bottom: 5px;
+  margin-top: 0px;
+  margin-left: -21px;
+  margin-right: -21px;
+  text-align: center;
+}
+
+.navbar-brand{
+  padding: 0px 15px;
+}
+
+#search-icon {
+  display: inline-block;
 }

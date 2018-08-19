@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable, :confirmable,
          :omniauthable, omniauth_providers: [:facebook, :google_oauth2]
 
+  validates_presence_of :name, :minimum => 2
+
   def admin?
     self.role == "admin"
   end

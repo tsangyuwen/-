@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Eggplant</title>
+    <title>茄子切貨網</title>
     <%= csrf_meta_tags %>
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
@@ -10,17 +10,15 @@
 
   <body>
     <!-- banner -->
-    <nav class="navbar navbar-default">
-      <div class="container-fluid">
+    <nav class="navbar navbar-default navbar-expand-lg" style="background:#fff;">
+
+    <div class="container-fluid">
+      
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="naber-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <%= link_to "eggplant", root_path, class: "navbar-brand" %>
+          <%= link_to root_path, class: 'navbar-brand' do %>
+            <%= image_tag "logo.png", size: "150x50" %>
+          <% end %>
         </div>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -30,10 +28,23 @@
               <% if current_user.admin? %>
                 <li><%= link_to 'Admin back', ajion2596dhi_root_path %></li>
               <% end %>
-              
-              <li><p class="navbar-text">Hi,<%= current_user.name %></p></li>
+
               <li><%= link_to('log out', destroy_user_session_path, method: :delete) %></li>
-              <li><%= link_to('edit password', edit_user_registration_path) %></li>
+
+              <li><span id="search-icon" class="glyphicon glyphicon-search"></span></li>
+              
+              <li>
+                <%= link_to root_path do %>
+                  <%= image_tag "cart.png", size: "15x15"%>
+                <% end %>
+              </li>
+
+              <li>
+                <%= link_to root_path do %>
+                  <%= image_tag "member.png", size: "15x15"%>
+                <% end %>
+              </li>
+
             <% else %>
               <li><%= link_to('registrate', new_user_registration_path)%></li>
               <li><%= link_to('log in', new_user_session_path) %></li>
