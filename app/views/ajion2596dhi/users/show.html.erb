@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    <%= link_to "Back", ajion2596dhi_users_path %>
+    <br>
+    
     <table class="table table-striped table-bordered">
       <thead>
         <tr>
@@ -17,6 +20,26 @@
         <tr>
           <th>role</th>
           <th><%= @user.role %></th>
+        </tr>
+
+        <tr>
+          <th>created at</th>
+          <th><%= @user.created_at %></th>
+        </tr>
+
+        <tr>
+          <th>confirmed at</th>
+          <th><%= @user.confirmed_at %></th>
+        </tr>
+
+        <tr>
+          <th>facebook</th>
+          <th><%= @user.fb_uid %></th>
+        </tr>
+
+        <tr>
+          <th>google</th>
+          <th><%= @user.google_uid %></th>
         </tr>
 
       </tbody>

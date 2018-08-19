@@ -32,6 +32,8 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 gem 'figaro'
 gem 'jquery-rails'
+#show email direct
+gem 'letter_opener_web'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

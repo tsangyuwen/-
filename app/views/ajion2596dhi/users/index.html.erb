@@ -11,6 +11,7 @@
           <th>name</th>
           <th>email</th>
           <th>role</th>
+          <th>confirmed</th>
           <th>#</th>
         </tr>
       </thead>
@@ -22,6 +23,13 @@
           <td><%= user.name %></td>
           <td><%= user.email %></td>
           <td><%= user.role %></td>
+          <td>
+            <% if user.confirmed_at %>
+              OK
+            <% else %>
+              none
+            <% end %>
+          </td>
           <td>
             <%= link_to "show", ajion2596dhi_user_path(user) %>
             <%= link_to "edit", edit_ajion2596dhi_user_path(user) %>
