@@ -15,46 +15,46 @@
     <div class="container-fluid">
       
         <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="naber-header">
-          <%= link_to root_path, class: 'navbar-brand' do %>
-            <%= image_tag "google.png", size: "150x50" %>
-          <% end %>
-        </div>
+        <%= link_to root_path, class: "navbar-brand" do %>
+          <div class="clearfix inline-block">
+            <%= image_tag "logo.jpg", size: "150x50" %>
+          </div>
+        <% end %>
+
+        
 
         <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="pull-right text-right nav navbar-nav">
-            <% if current_user %>
-              <% if current_user.admin? %>
-                <li><%= link_to 'Admin back', ajion2596dhi_root_path %></li>
-              <% end %>
-
-              <li><%= link_to('log out', destroy_user_session_path, method: :delete) %></li>
-
-              <li>
-                <%= link_to root_path do %>
-                  <span id="search-icon" class="glyphicon glyphicon-search"></span>
-                <% end %>
-              </li>
-              
-              <li>
-                <%= link_to root_path do %>
-                  <%= image_tag "cart.png", size: "15x15"%>
-                <% end %>
-              </li>
-
-              <li>
-                <%= link_to root_path do %>
-                  <%= image_tag "member.png", size: "15x15"%>
-                <% end %>
-              </li>
-
-            <% else %>
-              <li><%= link_to('registrate', new_user_registration_path)%></li>
-              <li><%= link_to('log in', new_user_session_path) %></li>
+        <ul class="pull-right text-right nav navbar-nav">
+          <% if current_user %>
+            <% if current_user.admin? %>
+              <li><%= link_to 'Admin back', ajion2596dhi_root_path %></li>
             <% end %>
-          </ul>
-        </div>
+
+            <li><%= link_to('log out', destroy_user_session_path, method: :delete) %></li>
+
+            <li>
+              <%= link_to root_path do %>
+                <span id="search-icon" class="glyphicon glyphicon-search"></span>
+              <% end %>
+            </li>
+            
+            <li>
+              <%= link_to root_path do %>
+                <%= image_tag "cart.png", size: "15x15"%>
+              <% end %>
+            </li>
+
+            <li>
+              <%= link_to root_path do %>
+                <%= image_tag "member.png", size: "15x15"%>
+              <% end %>
+            </li>
+
+          <% else %>
+            <li><%= link_to('registrate', new_user_registration_path)%></li>
+            <li><%= link_to('log in', new_user_session_path) %></li>
+          <% end %>
+        </ul>
       </div>
     </nav>
 
