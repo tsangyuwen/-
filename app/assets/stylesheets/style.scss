@@ -39,9 +39,20 @@ body {
 }
 
 .navbar-brand{
-  padding: 0px 15px;
+  padding: 6px 15px;
 }
 
 #search-icon {
   margin-top: 3px;
+}
+
+@media screen and (min-width: 768px){
+
+}
+
+//small
+@media screen and (max-width: 767px){
+  nav {
+    display: none;
+  }
 }
