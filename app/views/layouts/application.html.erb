@@ -127,10 +127,10 @@
 
       <div class="container-fluid">
         <div class="row">
-          <div class="col-md-6">
             <div id="custom-search-input">
+              <br>
 
-              <div class="input-group col-md-12">
+              <div class="input-group">
                 <input type="text" class="form-control input-lg" placeholder="Search" />
                 <span class="input-group-btn">
                   <button class="btn btn-info btn-lg" type="button">
@@ -140,7 +140,6 @@
               </div>
 
             </div>
-          </div>
         </div>
 
         <br>
@@ -159,7 +158,7 @@
 
           </div>
         </div>
-        
+          
       </div>
 
       <%= yield %>
@@ -183,55 +182,55 @@
         </section>
       </div>
     </footer>
-
-    <div class="phone-fix">
+  
+    <div class="phone-fix fixed">
       <div class="container-fluid">
         <div class="row">
-          <div class="fixed">
-            <ul class="nav nav-justified" role="tablist">
 
-              <li role="presentation">
-                <%= link_to root_path do %>
-                  <% if @page_tab == "index" %>
-                    <%= image_tag "index-click.png", width: "90px" %>
-                  <% else %>
-                    <%= image_tag "index.png", width: "50px" %>
-                  <% end %>
+          <ul class="nav nav-justified" role="tablist">
+
+            <li role="presentation">
+              <%= link_to root_path do %>
+                <% if @page_tab == "index" %>
+                  <%= image_tag "index-click.png", width: "90px" %>
+                <% else %>
+                  <%= image_tag "index.png", width: "50px" %>
                 <% end %>
-              </li>
+              <% end %>
+            </li>
 
-              <li role="presentation">
-                <%= link_to root_path do %>
-                  <% if @page_tab == "category" %>
-                    <%= image_tag "category-click.png", width: "90px" %>
-                  <% else %>
-                    <%= image_tag "category.png", width: "50px" %>
-                  <% end %>
+            <li role="presentation">
+              <%= link_to root_path do %>
+                <% if @page_tab == "category" %>
+                  <%= image_tag "category-click.png", width: "90px" %>
+                <% else %>
+                  <%= image_tag "category.png", width: "50px" %>
                 <% end %>
-              </li>
+              <% end %>
+            </li>
 
-              <li role="presentation">
-                <%= link_to root_path do %>
-                  <% if @page_tab == "cart" %>
-                    <%= image_tag "cart-click.png", width: "90px" %>
-                  <% else %>
-                    <%= image_tag "cart.png", width: "50px" %>
-                  <% end %>
+            <li role="presentation">
+              <%= link_to root_path do %>
+                <% if @page_tab == "cart" %>
+                  <%= image_tag "cart-click.png", width: "90px" %>
+                <% else %>
+                  <%= image_tag "cart.png", width: "50px" %>
                 <% end %>
-              </li>
+              <% end %>
+            </li>
 
-              <li role="presentation">
-                <%= link_to root_path do %>
-                  <% if @page_tab == "member" %>
-                    <%= image_tag "member-click.png", width: "90px" %>
-                  <% else %>
-                    <%= image_tag "member.png", width: "50px" %>
-                  <% end %>
+            <li role="presentation">
+              <%= link_to root_path do %>
+                <% if @page_tab == "member" %>
+                  <%= image_tag "member-click.png", width: "90px" %>
+                <% else %>
+                  <%= image_tag "member.png", width: "50px" %>
                 <% end %>
-              </li>
+              <% end %>
+            </li>
 
-            </ul>
-          </div>
+          </ul>
+
         </div>
       </div>
     </div>
