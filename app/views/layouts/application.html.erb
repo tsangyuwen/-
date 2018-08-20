@@ -128,7 +128,7 @@
     <% end %>
     
     <% if current_user %>
-      <div class="container-fluid">
+      <div class="phone-head container-fluid clearfix">
         <div class="row">
           <div id="custom-search-input">
             <br>
@@ -148,7 +148,7 @@
         <br>
 
       <!--Nav-->
-        <div class="phone-nav">
+        <div class="phone-nav clearfix">
           <div class="row">
 
           <ul class="nav nav-justified" role="tablist">
@@ -193,9 +193,9 @@
               <li role="presentation">
                 <%= link_to root_path do %>
                   <% if @page_tab == "index" %>
-                    <%= image_tag "index-click.png", width: "75px" %>
+                    <%= image_tag "index-click.png", width: "50px" %>
                   <% else %>
-                    <%= image_tag "index.png", width: "40px" %>
+                    <%= image_tag "index.png", width: "30px" %>
                   <% end %>
                 <% end %>
               </li>
@@ -203,9 +203,9 @@
               <li role="presentation">
                 <%= link_to root_path do %>
                   <% if @page_tab == "category" %>
-                    <%= image_tag "category-click.png", width: "75px" %>
+                    <%= image_tag "category-click.png", width: "50px" %>
                   <% else %>
-                    <%= image_tag "category.png", width: "40px" %>
+                    <%= image_tag "category.png", width: "30px" %>
                   <% end %>
                 <% end %>
               </li>
@@ -213,9 +213,9 @@
               <li role="presentation">
                 <%= link_to root_path do %>
                   <% if @page_tab == "cart" %>
-                    <%= image_tag "cart-click.png", width: "75px" %>
+                    <%= image_tag "cart-click.png", width: "50px" %>
                   <% else %>
-                    <%= image_tag "cart.png", width: "40px" %>
+                    <%= image_tag "cart.png", width: "30px" %>
                   <% end %>
                 <% end %>
               </li>
@@ -223,9 +223,9 @@
               <li role="presentation">
                 <%= link_to root_path do %>
                   <% if @page_tab == "member" %>
-                    <%= image_tag "member-click.png", width: "75px" %>
+                    <%= image_tag "member-click.png", width: "50px" %>
                   <% else %>
-                    <%= image_tag "member.png", width: "40px" %>
+                    <%= image_tag "member.png", width: "30px" %>
                   <% end %>
                 <% end %>
               </li>
