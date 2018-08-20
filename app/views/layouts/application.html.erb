@@ -6,9 +6,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   </head>
 
   <body>
+
     <!-- banner -->
     <nav class="navbar navbar-default navbar-expand-lg" style="background:#fff;">
 
@@ -21,44 +24,48 @@
           </div>
         <% end %>
 
-        <ul class="nav navbar-nav navbar-left">
+        <% if current_user %>
 
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MAN</a>
-              <ul class="dropdown-menu">
-                  <li><a href="#">123</a></li>
-                  <li><a href="#">123</a></li>
-                  <li><a href="#">123</a></li>
-              </ul>
-          </li>
+          <ul class="nav navbar-nav navbar-left">
 
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">WOMAN</a>
-              <ul class="dropdown-menu">
-                  <li><a href="#">123</a></li>
-                  <li><a href="#">123</a></li>
-                  <li><a href="#">123</a></li>
-              </ul>
-          </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MAN</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">123</a></li>
+                    <li><a href="#">123</a></li>
+                    <li><a href="#">123</a></li>
+                </ul>
+            </li>
 
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">KIDS</a>
-              <ul class="dropdown-menu">
-                  <li><a href="#">123</a></li>
-                  <li><a href="#">123</a></li>
-                  <li><a href="#">123</a></li>
-              </ul>
-          </li>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">WOMAN</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">123</a></li>
+                    <li><a href="#">123</a></li>
+                    <li><a href="#">123</a></li>
+                </ul>
+            </li>
 
-          <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BABY</a>
-              <ul class="dropdown-menu">
-                  <li><a href="#">123</a></li>
-                  <li><a href="#">123</a></li>
-                  <li><a href="#">123</a></li>
-              </ul>
-          </li>
-      </ul>
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">KIDS</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">123</a></li>
+                    <li><a href="#">123</a></li>
+                    <li><a href="#">123</a></li>
+                </ul>
+            </li>
+
+            <li class="dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BABY</a>
+                <ul class="dropdown-menu">
+                    <li><a href="#">123</a></li>
+                    <li><a href="#">123</a></li>
+                    <li><a href="#">123</a></li>
+                </ul>
+            </li>
+
+          </ul>
+        <% end %>
 
         <!-- Collect the nav links, forms, and other content for toggling -->
         <ul class="pull-right text-right nav navbar-nav">
@@ -95,27 +102,100 @@
       </div>
     </nav>
 
-    <% if flash[:notice] %>
-    <div class="container">
+    <div class="overlay">
+
+      <% if flash[:notice] %>
+      <div class="container">
+        <div class="row">
+          <div class="alert alert-success alert-dismissible" role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= notice %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+      <% if flash[:alert] %>
+      <div class="container">
+        <div class="row">
+          <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <%= alert %>
+          </div>
+        </div>
+      </div>
+      <% end %>
+
+      <%= yield %>
+
+      <br>
+
+    </div>
+
+    <footer class="page-footer font-small">
       <div class="row">
-        <div class="alert alert-success alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <%= notice %>
+        <!-- Contact -->
+        <section>
+          <p style="text-align:center">
+              <a href="#"><span class="footer">關於品牌</span></a>
+              <a href="#"><span class="footer">聯絡我們</span></a>
+              <a href="#"><span class="footer">購物須知</span></a>
+
+              <br><br>
+              <span class="copyright">2018 &copy; EGGPLANT ALL RIGHTS RESERVED</span>
+          </p>
+        </section>
+      </div>
+    </footer>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="fixed">
+          <ul class="nav nav-justified" role="tablist">
+
+            <li role="presentation">
+              <%= link_to root_path do %>
+                <% if @page_tab == "index" %>
+                  <%= image_tag "index-click.png", width: "90px" %>
+                <% else %>
+                  <%= image_tag "index.png", width: "50px" %>
+                <% end %>
+              <% end %>
+            </li>
+
+            <li role="presentation">
+              <%= link_to root_path do %>
+                <% if @page_tab == "category" %>
+                  <%= image_tag "category-click.png", width: "90px" %>
+                <% else %>
+                  <%= image_tag "category.png", width: "50px" %>
+                <% end %>
+              <% end %>
+            </li>
+
+            <li role="presentation">
+              <%= link_to root_path do %>
+                <% if @page_tab == "cart" %>
+                  <%= image_tag "cart-click.png", width: "90px" %>
+                <% else %>
+                  <%= image_tag "cart.png", width: "50px" %>
+                <% end %>
+              <% end %>
+            </li>
+
+            <li role="presentation">
+              <%= link_to root_path do %>
+                <% if @page_tab == "member" %>
+                  <%= image_tag "member-click.png", width: "90px" %>
+                <% else %>
+                  <%= image_tag "member.png", width: "50px" %>
+                <% end %>
+              <% end %>
+            </li>
+
+          </ul>
         </div>
       </div>
     </div>
-    <% end %>
 
-    <% if flash[:alert] %>
-    <div class="container">
-      <div class="row">
-        <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <%= alert %>
-        </div>
-      </div>
-    </div>
-    <% end %>
-
-    <%= yield %>
   </body>
 </html>

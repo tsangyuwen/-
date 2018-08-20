@@ -10,6 +10,22 @@ body {
   margin-left: 20px;
   margin-right: 20px;
 }
+
+p {
+  margin: 0px;
+}
+
+.overlay {
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255, 255, 255, 0.3);
+  padding: 15px;
+  padding-bottom: 120px;
+  margin-top: -15px;
+  margin-bottom: -94px;
+}
+
 .fixed {
     position: fixed;
     bottom: 0;
@@ -22,10 +38,10 @@ body {
     line-height:30px;
 }
 .fixedsize {
-    font-size: 14pt;
+  font-size: 14pt;
 }
 .center {
-   text-align:center;
+  text-align:center;
 }
 
 .navbar {
@@ -38,6 +54,11 @@ body {
   text-align: center;
 }
 
+ul.nav.navbar-nav.navbar-left {
+  margin-left: 20px;
+  font-size: 14px;
+}
+
 .navbar-brand{
   padding: 6px 15px;
 }
@@ -46,11 +67,47 @@ body {
   margin-top: 3px;
 }
 
-@media screen and (min-width: 768px){
-
+footer {
+  background: rgba(255, 255, 255, 0.6);
+  padding: 15px;
+  margin-right: -20px;
+  margin-left: -20px;
 }
 
-//small
+.footer {
+  color: #110b0a;
+  font-size: 13pt;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.copyright {
+  color: #59544f;
+  font-size: 11pt;
+}
+
+.fixed {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  background-color: #fff;
+  text-align: center;
+  line-height: 30px;
+}
+
+@media screen and (min-width: 768px){
+  #custom-search-input{
+    display: none;
+  }
+
+  ul.nav.nav-justified {
+    display: none;
+  }
+}
+
+/*smaill*/
+
 @media screen and (max-width: 767px){
   nav {
     display: none;
