@@ -104,6 +104,10 @@ footer {
   margin-top: -5px;
 }
 
+.item > img {
+  width: 100%;
+}
+
 @media screen and (min-width: 790px){
   #custom-search-input{
     display: none;
