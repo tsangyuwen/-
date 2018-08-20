@@ -83,7 +83,7 @@ footer {
     display: none;
   }
 
-  ul.nav.nav-justified {
+  .phone-nav {
     display: none;
   }
 
@@ -95,7 +95,7 @@ footer {
 /*smaill*/
 
 @media screen and (max-width: 767px){
-  nav {
+  nav.navbar.navbar-default.navbar-expand-lg {
     display: none;
   }
 }
