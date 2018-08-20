@@ -12,6 +12,8 @@
 
   <body>
 
+    <div class="overlay"></div>
+
     <!-- banner -->
     <nav class="navbar navbar-default navbar-expand-lg" style="background:#fff;">
 
@@ -102,88 +104,84 @@
       </div>
     </nav>
 
-    <div class="overlay">
+    
 
-      <% if flash[:notice] %>
-      <div class="container">
-        <div class="row">
-          <div class="alert alert-success alert-dismissible" role="alert">
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <%= notice %>
-          </div>
+    <% if flash[:notice] %>
+    <div class="container">
+      <div class="row">
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= notice %>
         </div>
       </div>
-      <% end %>
-
-      <% if flash[:alert] %>
-      <div class="container">
-        <div class="row">
-          <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <%= alert %>
-          </div>
-        </div>
-      </div>
-      <% end %>
-      
-      <% if current_user %>
-        <div class="container-fluid">
-          <div class="row">
-            <div id="custom-search-input">
-              <br>
-
-              <div class="input-group">
-                <input type="text" class="form-control input-lg" placeholder="Search" />
-                <span class="input-group-btn">
-                  <button class="btn btn-info btn-lg" type="button">
-                    <i class="glyphicon glyphicon-search"></i>
-                  </button>
-                </span>
-              </div>
-
-            </div>
-          </div>
-
-          <br>
-
-        <!--Nav-->
-          <div class="phone-nav">
-            <div class="row">
-
-            <ul class="nav nav-justified" role="tablist">
-              <li role="presentation"><a href="#">HOME</a></li>
-              <li role="presentation"><a href="#">MEN</a></li>
-              <li role="presentation"><a href="#">WOMEN</a></li>
-              <li role="presentation"><a href="#">KIDS</a></li>
-              <li role="presentation"><a href="#">BABY</a></li>
-            </ul>
-
-            </div>
-          </div>
-          
-        </div>
-      <% end %>
-
-      <%= yield %>
-
-      <br>
-
     </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+    <div class="container">
+      <div class="row">
+        <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= alert %>
+        </div>
+      </div>
+    </div>
+    <% end %>
+    
+    <% if current_user %>
+      <div class="container-fluid">
+        <div class="row">
+          <div id="custom-search-input">
+            <br>
+
+            <div class="input-group">
+              <input type="text" class="form-control input-lg" placeholder="Search" />
+              <span class="input-group-btn">
+                <button class="btn btn-info btn-lg" type="button">
+                  <i class="glyphicon glyphicon-search"></i>
+                </button>
+              </span>
+            </div>
+
+          </div>
+        </div>
+
+        <br>
+
+      <!--Nav-->
+        <div class="phone-nav">
+          <div class="row">
+
+          <ul class="nav nav-justified" role="tablist">
+            <li role="presentation"><a href="#">HOME</a></li>
+            <li role="presentation"><a href="#">MEN</a></li>
+            <li role="presentation"><a href="#">WOMEN</a></li>
+            <li role="presentation"><a href="#">KIDS</a></li>
+            <li role="presentation"><a href="#">BABY</a></li>
+          </ul>
+
+          </div>
+        </div>
+        
+      </div>
+    <% end %>
+
+    <%= yield %>
+
+    <br>
     
     <% if current_user %>
       <footer class="page-footer font-small">
-        <div class="row">
-          <!-- Contact -->
-          <section>
-            <p style="text-align:center">
-                <a href="#"><span class="footer">關於品牌</span></a>
-                <a href="#"><span class="footer">聯絡我們</span></a>
-                <a href="#"><span class="footer">購物須知</span></a>
+        <!-- Contact -->
+        <section>
+          <p style="text-align:center">
+              <a href="#"><span class="footer">關於品牌</span></a>
+              <a href="#"><span class="footer">聯絡我們</span></a>
+              <a href="#"><span class="footer">購物須知</span></a>
 
-                <br><br>
-                <span class="copyright">2018 &copy; EGGPLANT ALL RIGHTS RESERVED</span>
-            </p>
-          </section>
-        </div>
+              <br><br>
+              <span class="copyright">2018 &copy; EGGPLANT ALL RIGHTS RESERVED</span>
+          </p>
+        </section>
       </footer>
     
       <div class="phone-fix fixed">

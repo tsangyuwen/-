@@ -16,17 +16,12 @@ p {
 }
 
 .overlay {
-  position: absolute;
+  position: fixed;
   width: 95%;
   height: 100%;
-  z-index: 10;
-  margin-left: auto;
-  margin-right: auto;
+  bottom: 0;
+  top: 0;
   background: rgba(255, 255, 255, 0.3);
-  padding: 15px;
-  padding-bottom: 120px;
-  margin-top: -15px;
-  margin-bottom: -94px;
 }
 
 .navbar {
@@ -53,10 +48,9 @@ ul.nav.navbar-nav.navbar-left {
 }
 
 footer {
+  padding: 10px 10px;
   background: rgba(255, 255, 255, 0.6);
-  padding: 15px;
-  margin-right: -20px;
-  margin-left: -20px;
+  clear: both;
 }
 
 .footer {
@@ -64,8 +58,6 @@ footer {
   font-size: 13pt;
   margin-left: 10px;
   margin-right: 10px;
-  box-sizing: border-box;
-  position: absolute;
 }
 
 .copyright {
