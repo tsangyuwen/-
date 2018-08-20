@@ -124,9 +124,10 @@
         </div>
       </div>
       <% end %>
-
-      <div class="container-fluid">
-        <div class="row">
+      
+      <% if current_user %>
+        <div class="container-fluid">
+          <div class="row">
             <div id="custom-search-input">
               <br>
 
@@ -140,100 +141,103 @@
               </div>
 
             </div>
-        </div>
+          </div>
 
-        <br>
+          <br>
 
         <!--Nav-->
-        <div class="phone-nav">
-          <div class="row">
+          <div class="phone-nav">
+            <div class="row">
 
-          <ul class="nav nav-justified" role="tablist">
-            <li role="presentation"><a href="#">HOME</a></li>
-            <li role="presentation"><a href="#">MEN</a></li>
-            <li role="presentation"><a href="#">WOMEN</a></li>
-            <li role="presentation"><a href="#">KIDS</a></li>
-            <li role="presentation"><a href="#">BABY</a></li>
-          </ul>
+            <ul class="nav nav-justified" role="tablist">
+              <li role="presentation"><a href="#">HOME</a></li>
+              <li role="presentation"><a href="#">MEN</a></li>
+              <li role="presentation"><a href="#">WOMEN</a></li>
+              <li role="presentation"><a href="#">KIDS</a></li>
+              <li role="presentation"><a href="#">BABY</a></li>
+            </ul>
 
+            </div>
           </div>
-        </div>
           
-      </div>
+        </div>
+      <% end %>
 
       <%= yield %>
 
       <br>
 
     </div>
-
-    <footer class="page-footer font-small">
-      <div class="row">
-        <!-- Contact -->
-        <section>
-          <p style="text-align:center">
-              <a href="#"><span class="footer">關於品牌</span></a>
-              <a href="#"><span class="footer">聯絡我們</span></a>
-              <a href="#"><span class="footer">購物須知</span></a>
-
-              <br><br>
-              <span class="copyright">2018 &copy; EGGPLANT ALL RIGHTS RESERVED</span>
-          </p>
-        </section>
-      </div>
-    </footer>
-  
-    <div class="phone-fix fixed">
-      <div class="container-fluid">
+    
+    <% if current_user %>
+      <footer class="page-footer font-small">
         <div class="row">
+          <!-- Contact -->
+          <section>
+            <p style="text-align:center">
+                <a href="#"><span class="footer">關於品牌</span></a>
+                <a href="#"><span class="footer">聯絡我們</span></a>
+                <a href="#"><span class="footer">購物須知</span></a>
 
-          <ul class="nav nav-justified" role="tablist">
+                <br><br>
+                <span class="copyright">2018 &copy; EGGPLANT ALL RIGHTS RESERVED</span>
+            </p>
+          </section>
+        </div>
+      </footer>
+    
+      <div class="phone-fix fixed">
+        <div class="container-fluid">
+          <div class="row">
 
-            <li role="presentation">
-              <%= link_to root_path do %>
-                <% if @page_tab == "index" %>
-                  <%= image_tag "index-click.png", width: "90px" %>
-                <% else %>
-                  <%= image_tag "index.png", width: "50px" %>
+            <ul class="nav nav-justified" role="tablist">
+
+              <li role="presentation">
+                <%= link_to root_path do %>
+                  <% if @page_tab == "index" %>
+                    <%= image_tag "index-click.png", width: "75px" %>
+                  <% else %>
+                    <%= image_tag "index.png", width: "40px" %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </li>
+              </li>
 
-            <li role="presentation">
-              <%= link_to root_path do %>
-                <% if @page_tab == "category" %>
-                  <%= image_tag "category-click.png", width: "90px" %>
-                <% else %>
-                  <%= image_tag "category.png", width: "50px" %>
+              <li role="presentation">
+                <%= link_to root_path do %>
+                  <% if @page_tab == "category" %>
+                    <%= image_tag "category-click.png", width: "75px" %>
+                  <% else %>
+                    <%= image_tag "category.png", width: "40px" %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </li>
+              </li>
 
-            <li role="presentation">
-              <%= link_to root_path do %>
-                <% if @page_tab == "cart" %>
-                  <%= image_tag "cart-click.png", width: "90px" %>
-                <% else %>
-                  <%= image_tag "cart.png", width: "50px" %>
+              <li role="presentation">
+                <%= link_to root_path do %>
+                  <% if @page_tab == "cart" %>
+                    <%= image_tag "cart-click.png", width: "75px" %>
+                  <% else %>
+                    <%= image_tag "cart.png", width: "40px" %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </li>
+              </li>
 
-            <li role="presentation">
-              <%= link_to root_path do %>
-                <% if @page_tab == "member" %>
-                  <%= image_tag "member-click.png", width: "90px" %>
-                <% else %>
-                  <%= image_tag "member.png", width: "50px" %>
+              <li role="presentation">
+                <%= link_to root_path do %>
+                  <% if @page_tab == "member" %>
+                    <%= image_tag "member-click.png", width: "75px" %>
+                  <% else %>
+                    <%= image_tag "member.png", width: "40px" %>
+                  <% end %>
                 <% end %>
-              <% end %>
-            </li>
+              </li>
 
-          </ul>
+            </ul>
 
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
 
   </body>
 </html>
