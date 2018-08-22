@@ -4,6 +4,11 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     current_cart.add_cart_item(@product)
 
-    redirect_to root_path
+    redirect_back(fallback_location: root_path)
   end
+
+  def index
+    @products = Product.all
+  end
+
 end

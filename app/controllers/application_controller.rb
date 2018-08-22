@@ -1,6 +1,5 @@
 class ApplicationController < ActionController::Base
   #cart
-  session[:cart_id] = @cart.id
   helper_method :current_cart
   
   before_action :authenticate_user!
@@ -30,5 +29,5 @@ class ApplicationController < ActionController::Base
     session[:cart_id] = @cart.id
     @cart
   end
-  
+
 end
