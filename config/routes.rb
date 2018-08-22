@@ -3,7 +3,12 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   root "products#index"
-  resources :products
+  resources :products, only: [:index, :show] do
+    post :add_to_cart, on: :member
+  end
+  
+  resource :cart
+
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

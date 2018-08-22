@@ -10,11 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180819150108) do
+ActiveRecord::Schema.define(version: 20180822153101) do
+
+  create_table "cart_items", force: :cascade do |t|
+    t.integer "cart_id", null: false
+    t.integer "product_id", null: false
+    t.integer "quantity", default: 1
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "categories", force: :cascade do |t|
+    t.string "who"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "order_items", force: :cascade do |t|
+    t.integer "price"
+    t.integer "quantity"
+    t.integer "order_id"
+    t.integer "product_id"
+    t.integer "size"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.string "shippint_status", default: "not_shipped"
+    t.integer "amount"
+    t.integer "sn"
+    t.string "phone"
+    t.string "name"
+    t.string "payment_status", default: "not_paid"
+    t.string "address"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "payments", force: :cascade do |t|
+    t.integer "sn", null: false
+    t.integer "amount"
+    t.string "payment_method"
+    t.datetime "paid_at"
+    t.text "params"
+    t.integer "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "products", force: :cascade do |t|
     t.string "name", null: false
-    t.string "intro"
+    t.text "intro"
     t.string "main_image"
     t.integer "price", null: false
     t.datetime "created_at", null: false
