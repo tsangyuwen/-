@@ -19,3 +19,4 @@ test:
 
 production:
   <<: *default
+  notify_url: https://eggplant-sale.herokuapp.com/
