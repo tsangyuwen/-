@@ -10,6 +10,13 @@ Rails.application.routes.draw do
 
   resource :cart
 
+  post 'spgateway/return'
+  post 'spgateway/notify'
+
+  resources :orders do 
+    post :checkout_spgateway, on: :member
+  end
+
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"

@@ -7,6 +7,8 @@ class User < ApplicationRecord
 
   validates_presence_of :name, :minimum => 2
 
+  has_many :orders
+
   def admin?
     self.role == "admin"
   end

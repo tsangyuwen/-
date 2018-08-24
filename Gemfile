@@ -34,6 +34,8 @@ gem 'figaro'
 gem 'jquery-rails'
 #show email direct
 gem 'letter_opener_web'
+#manager key
+gem 'figaro'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

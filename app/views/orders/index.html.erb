@@ -1,0 +1,10 @@
+<% @orders.each do |order| %>
+
+  <% if order.payment_status == "not_paid" %>
+    <% Payment::PAYMENT_METHODS.each do |method| %>
+
+      <%= link_to method, checkout_spgateway_order_path(order, payment_method: method),target: :_blank, method: :post, class: "btn" %>
+    <% end %>
+
+  <% end %>
+<% end %>
