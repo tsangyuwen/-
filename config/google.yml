@@ -1,9 +1,0 @@
-development:
-  app_id: ENV["google_app_id"]
-  secret: ENV["google_secret"]
-  call_back: http://localhost:3000/users/auth/facebook/callback
-
-production:
-  app_id: ENV["google_app_id"]
-  secret: ENV["google_secret"]
-  call_back: https://eggplant-sale.herokuapp.com/users/auth/facebook/callback
