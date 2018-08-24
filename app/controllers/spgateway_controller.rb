@@ -17,9 +17,9 @@ class SpgatewayController < ActionController::Base
     payment = Payment.find_and_process(spgateway_params)
 
     if payment&.save
-      render text: "1|OK"
+      render json: "1|OK"
     else
-      render text: "0|ErrorMessage"
+      render json: "0|ErrorMessage"
     end
   end
 
