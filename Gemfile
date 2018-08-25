@@ -30,10 +30,10 @@ gem 'omniauth'
 gem 'omniauth-facebook'
 #google authentication
 gem 'omniauth-google-oauth2'
+#captcha
+gem 'humanizer', '~> 2.6', '>= 2.6.4'
 gem 'figaro'
 gem 'jquery-rails'
-#show email direct
-gem 'letter_opener_web'
 #manager key
 gem 'figaro'
 
@@ -59,6 +59,8 @@ group :development, :test do
   gem 'selenium-webdriver'
   # Use sqlite3 as the database for Active Record
   gem 'sqlite3'
+  #show email direct
+gem 'letter_opener_web'
 end
 
 group :production do 

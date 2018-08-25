@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180825084050) do
+ActiveRecord::Schema.define(version: 20180826002011) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
@@ -75,6 +75,14 @@ ActiveRecord::Schema.define(version: 20180825084050) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "category_id"
+  end
+
+  create_table "simple_captcha_data", force: :cascade do |t|
+    t.string "key", limit: 40
+    t.string "value", limit: 6
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["key"], name: "idx_key"
   end
 
   create_table "users", force: :cascade do |t|
