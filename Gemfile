@@ -31,7 +31,7 @@ gem 'omniauth-facebook'
 #google authentication
 gem 'omniauth-google-oauth2'
 #captcha
-gem 'humanizer', '~> 2.6', '>= 2.6.4'
+gem 'recaptcha', require: "recaptcha/rails"
 gem 'figaro'
 gem 'jquery-rails'
 #manager key
