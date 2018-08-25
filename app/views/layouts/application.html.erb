@@ -29,41 +29,21 @@
         <% if current_user %>
 
           <ul class="nav navbar-nav navbar-left">
-
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">MAN</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">123</a></li>
-                    <li><a href="#">123</a></li>
-                    <li><a href="#">123</a></li>
-                </ul>
+            
+            <li>
+              <%= link_to "MAN", man_categories_path %>
             </li>
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">WOMAN</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">123</a></li>
-                    <li><a href="#">123</a></li>
-                    <li><a href="#">123</a></li>
-                </ul>
+            <li>
+              <%= link_to "WOMAN", woman_categories_path %>
             </li>
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">KIDS</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">123</a></li>
-                    <li><a href="#">123</a></li>
-                    <li><a href="#">123</a></li>
-                </ul>
+            <li>
+              <%= link_to "KIDS", kid_categories_path %>
             </li>
 
-            <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">BABY</a>
-                <ul class="dropdown-menu">
-                    <li><a href="#">123</a></li>
-                    <li><a href="#">123</a></li>
-                    <li><a href="#">123</a></li>
-                </ul>
+            <li>
+              <%= link_to "BABY", baby_categories_path %>
             </li>
 
           </ul>

@@ -14,10 +14,15 @@ namespace :dev do
   task fake_product: :environment do
     Product.destroy_all
 
-    20.times do |i|
-      Product.create!(name: FFaker::Name.first_name,
-        price: FFaker::AddressNL.building_number
-        )
+    Category.all.each do |c|
+
+      5.times do |i|
+        Product.create!(name: FFaker::Name.first_name,
+          price: FFaker::AddressNL.building_number,
+          category_id: c.id
+          )
+      end
+      
     end
 
     puts "have created fake product"

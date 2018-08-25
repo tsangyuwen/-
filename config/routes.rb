@@ -17,6 +17,13 @@ Rails.application.routes.draw do
     post :checkout_spgateway, on: :member
   end
 
+  resources :categories, only: :show do
+    get :man, on: :collection
+    get :woman, on: :collection
+    get :kid, on: :collection
+    get :baby, on: :collection
+  end
+
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
