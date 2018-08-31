@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   root "products#landing"
   resources :products, only: [:index, :show] do
     post :add_to_cart, on: :member
+    post :remove_from_cart, on: :member
+    post :adjust_item, on: :member
     get :landing, on: :member
   end
 

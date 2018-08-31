@@ -1,31 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-sm-3">
-      <% @where.each do |where| %>
-        <%= where %><br>
-        <% @categories.where(where: where).each do |c| %>
-          &nbsp;&nbsp;
-          <%= link_to c.name, category_path(c) %>
-          <br>
-        <% end %>
-        <br><br>
-      <% end %>
 
+    <div class="col-sm-3">
+      <%= render partial: "shared/category" %>
     </div>
 
     <div class="col-sm-9">
       <br>
-      
-      <% @products.each do |product| %>
-        <div class="col-sm-4">
-          <%= image_tag product.main_image, width: "150px" %><br>
-          <%= product.name %><br>
-          $<%= product.price %><br>
-          <%= link_to "Add to Cart", add_to_cart_product_path(product), method: :post, class: "btn btn-info" %>
-          <br><br>
-        </div>
-      <% end %>
-
+      <%= render partial: "shared/product" %>
     </div>
 
   </div>

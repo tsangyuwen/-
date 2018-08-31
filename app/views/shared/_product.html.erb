@@ -1,0 +1,9 @@
+<% @products.each do |product| %>
+  <div class="col-sm-4">
+    <%= image_tag product.main_image, width: "150px" %><br>
+    <%= product.name %><br>
+    $<%= product.price %><br>
+    <%= link_to "Add to Cart", add_to_cart_product_path(product), method: :post, class: "btn btn-info", :remote => true %>
+    <br><br>
+  </div>
+<% end %>

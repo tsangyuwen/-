@@ -1,0 +1,9 @@
+<% @where.each do |where| %>
+  <%= where %><br>
+  <% @categories.where(where: where).each do |c| %>
+    &nbsp;&nbsp;
+    <%= link_to c.name, category_path(c) %>
+    <br>
+  <% end %>
+  <br><br>
+<% end %>
