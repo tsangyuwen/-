@@ -1,5 +1,10 @@
-<p>Welcome <%= @email %>!</p>
+<p>親愛的<%= @name %>您好：</p>
+<p>歡迎您加入茄子切貨網的會員，以下為您註冊的帳號：<br>
+<%= @email %>!</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>請點選以下連結確認您的帳戶：</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to '確認帳號', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p>如您有任何問題，歡迎您聯繫茄子切貨網<br>
+也祝福您使用愉快，謝謝！</p>
+<p style="text-align:right">茄子切貨網 敬上</p>
