@@ -19,6 +19,32 @@ p {
   margin: 0px;
 }
 
+/*web search */
+#search {
+  border: 0px;
+  border-bottom: 1px black solid;
+  width: 50px;
+  margin-top: 5px; 
+}
+
+#search-icon {
+  margin-top: 10px;
+  background: transparent;
+}
+
+/*phone nav override*/
+.nav > li > a:hover, .nav > li > a.focus{
+  background-color: white;
+}
+
+.link {
+  color: #59544f;
+}
+
+.link:hover {
+  color: #5f0ac7;
+}
+
 .overlay {
   position: fixed;
   height: 100%;
@@ -50,10 +76,6 @@ ul.nav.navbar-nav.navbar-left {
   padding: 6px 15px;
 }
 
-#search-icon {
-  margin-top: 3px;
-}
-
 footer {
   clear: both;
   padding: 10px 10px;
@@ -75,6 +97,7 @@ footer {
   font-size: 9pt;
 }
 
+/*phone footer select*/
 .fixed {
   position: fixed;
   bottom: 0;
@@ -82,7 +105,7 @@ footer {
   width: 100%;
   background-color: #fff;
   text-align: center;
-  line-height: 30px;
+  line-height: 25px;
 }
 
 .nav-justified > li {
@@ -162,12 +185,13 @@ footer {
     display: none;
   }
 
-  .carousel {
-    margin-top: 107px;
-  }
-
   footer {
     margin-bottom: 55px;
+  }
+
+  #phone-head{
+    padding-top: 107px;
+    width: 100%;
   }
 
 }

@@ -29,7 +29,7 @@
 
       <div class="container-fluid">
         
-        <!-- Brand and toggle get grouped for better mobile display -->
+        <!-- computer nav-->
         <%= link_to root_path, class: "navbar-brand" do %>
           <div class="clearfix inline-block">
             <%= image_tag "logo", size: "120x37" %>
@@ -37,41 +37,58 @@
         <% end %>
 
         <% if current_user %>
-
           <ul class="nav navbar-nav navbar-left">
             
             <li>
-              <%= link_to "MAN", man_categories_path %>
+              <% if @page_tab == 'man' %>
+                <%= link_to "MAN", man_categories_path, style: 'color:#5f0ac7' %>
+              <% else %>
+                <%= link_to "MAN", man_categories_path %>
+              <% end %>
             </li>
 
             <li>
-              <%= link_to "WOMAN", woman_categories_path %>
+              <% if @page_tab == 'woman' %>
+                <%= link_to "WOMAN", woman_categories_path, style: 'color:#5f0ac7' %>
+              <% else %>
+                <%= link_to "WOMAN", woman_categories_path %>
+              <% end %>
             </li>
 
             <li>
-              <%= link_to "KIDS", kid_categories_path %>
+              <% if @page_tab == 'kids' %>
+                <%= link_to "KIDS", kid_categories_path, style: 'color:#5f0ac7' %>
+              <% else %>
+                <%= link_to "KIDS", kid_categories_path %>
+              <% end %>
             </li>
 
             <li>
-              <%= link_to "BABY", baby_categories_path %>
+              <% if @page_tab == 'baby' %>
+                <%= link_to "BABY", baby_categories_path, style: 'color:#5f0ac7' %>
+              <% else %>
+                <%= link_to "BABY", baby_categories_path %>
+              <% end %>
             </li>
 
           </ul>
         <% end %>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- computer nav right -->
         <ul class="pull-right text-right nav navbar-nav">
           <% if current_user %>
+
             <% if current_user.admin? %>
-              <li><%= link_to 'Admin back', ajion2596dhi_root_path %></li>
+              <li><%= link_to 'back', ajion2596dhi_root_path %></li>
             <% end %>
 
             <li><%= link_to('log out', destroy_user_session_path, method: :delete) %></li>
 
             <li>
-              <%= link_to root_path do %>
-                <span id="search-icon" class="glyphicon glyphicon-search"></span>
-              <% end %>
+              <input id="search" type="text" name="search" maxlength="50" size="13" value>
+              <button id="search-icon" class="btn" style="background:#fff; color:#59544f;" type="button">
+                  <i class="glyphicon glyphicon-search"></i>
+              </button>
             </li>
             
             <li>
@@ -87,71 +104,98 @@
             </li>
 
           <% else %>
+
             <li><%= link_to('registrate', new_user_registration_path)%></li>
             <li><%= link_to('log in', new_user_session_path) %></li>
+
           <% end %>
         </ul>
       </div>
     </nav>
 
     <div id="web-head" class="clearfix"></div>
-
-    <% if flash[:notice] %>
-    <div class="container">
-      <div class="row">
-        <div class="alert alert-success alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <%= notice %>
-        </div>
-      </div>
-    </div>
-    <% end %>
-
-    <% if flash[:alert] %>
-    <div class="container">
-      <div class="row">
-        <div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <%= alert %>
-        </div>
-      </div>
-    </div>
-    <% end %>
     
     <% if current_user %>
-      <div class="phone-head container-fluid clearfix">
-        <div class="row">
-          <div id="custom-search-input">
-            <br>
 
-            <div class="input-group">
-              <input type="text" class="form-control input-lg" placeholder="Search" />
-              <span class="input-group-btn">
-                <button class="btn btn-info btn-lg" type="button">
-                  <i class="glyphicon glyphicon-search"></i>
-                </button>
-              </span>
+      <% unless @page_tab == 'cart' || @page_tab == 'member' %>
+
+
+        <div id="phone-head" class="clearfix"></div>
+
+        <div class="phone-head container-fluid clearfix">
+          <div class="row">
+            <!-- search bar -->
+            <div id="custom-search-input">
+              <br>
+
+              <div class="input-group">
+                <input type="text" style="border-right:none; border-color:#ddd;" class="form-control input-lg" placeholder="Search" />
+                <span class="input-group-btn">
+                  <button class="btn btn-info btn-lg" style="background:#fff; color:#59544f; border-left:none; border-color:#ddd;" type="button">
+                      <i class="glyphicon glyphicon-search"></i>
+                  </button>
+                </span>
+              </div>
+
             </div>
-
           </div>
-        </div>
 
       <!--Nav-->
-        <div class="phone-nav clearfix">
-          <div class="row">
+          <% unless @page_tab == 'category'  %>
 
-          <ul class="nav nav-justified" role="tablist">
-            <li role="presentation"><a href="#">HOME</a></li>
-            <li role="presentation"><a href="#">MEN</a></li>
-            <li role="presentation"><a href="#">WOMEN</a></li>
-            <li role="presentation"><a href="#">KIDS</a></li>
-            <li role="presentation"><a href="#">BABY</a></li>
-          </ul>
+            <div class="phone-nav clearfix">
+              <div class="row">
 
+                <ul class="nav nav-justified">
+                  <li role="presentation">
+                    <% if @page_tab == 'index' %>
+                      <%= link_to 'HOME', root_path, style: 'color:#5f0ac7' %>
+                    <% else %>
+                      <%= link_to "HOME", root_path, class: 'link' %>
+                    <% end %>
+                  </li>
+
+                  <li role="presentation">
+                    <% if @page_tab == 'man' %>
+                      <%= link_to "MAN", man_categories_path, style: 'color:#5f0ac7' %>
+                    <% else %>
+                      <%= link_to "MAN", man_categories_path, :class => 'link' %>
+                    <% end %>
+                  </li>
+
+                  <li role="presentation">
+                    <% if @page_tab == 'woman' %>
+                      <%= link_to "WOMAN", woman_categories_path, style: 'color:#5f0ac7' %>
+                    <% else %>
+                      <%= link_to "WOMAN", woman_categories_path, :class => 'link' %>
+                    <% end %>
+                  </li>
+
+                  <li role="presentation">
+                    <% if @page_tab == 'kids' %>
+                      <%= link_to "KIDS", kid_categories_path, style: 'color:#5f0ac7' %>
+                    <% else %>
+                      <%= link_to "KIDS", kid_categories_path, :class => 'link' %>
+                    <% end %>
+                  </li>
+
+                  <li role="presentation">
+                    <% if @page_tab == 'baby' %>
+                      <%= link_to "BABY", baby_categories_path, style: 'color:#5f0ac7' %>
+                    <% else %>
+                      <%= link_to "BABY", baby_categories_path, :class => 'link' %>
+                    <% end %>
+                  </li>
+
+                </ul>
+              <% end %>
+
+              </div>
+            </div>
+            
           </div>
-        </div>
-        
-      </div>
-    <% end %>
+        <% end %>
+      <% end %>
 
     <%= yield %>
 
@@ -181,9 +225,9 @@
               <li role="presentation">
                 <%= link_to root_path do %>
                   <% if @page_tab == "index" %>
-                    <%= image_tag "index-click.png", width: "50px" %>
+                    <%= image_tag "index-click.png", width: "40px" %>
                   <% else %>
-                    <%= image_tag "index.png", width: "30px" %>
+                    <%= image_tag "index.png", width: "18px" %>
                   <% end %>
                 <% end %>
               </li>
@@ -191,19 +235,19 @@
               <li role="presentation">
                 <%= link_to root_path do %>
                   <% if @page_tab == "category" %>
-                    <%= image_tag "category-click.png", width: "50px" %>
+                    <%= image_tag "category-click.png", width: "40px" %>
                   <% else %>
-                    <%= image_tag "category.png", width: "30px" %>
+                    <%= image_tag "category.png", width: "18px" %>
                   <% end %>
                 <% end %>
               </li>
 
               <li role="presentation">
-                <%= link_to root_path do %>
+                <%= link_to cart_path do %>
                   <% if @page_tab == "cart" %>
-                    <%= image_tag "cart-click.png", width: "50px" %>
+                    <%= image_tag "cart-click.png", width: "40px" %>
                   <% else %>
-                    <%= image_tag "cart.png", width: "30px" %>
+                    <%= image_tag "cart.png", width: "20px" %>
                   <% end %>
                 <% end %>
               </li>
@@ -211,9 +255,9 @@
               <li role="presentation">
                 <%= link_to root_path do %>
                   <% if @page_tab == "member" %>
-                    <%= image_tag "member-click.png", width: "50px" %>
+                    <%= image_tag "member-click.png", width: "40px" %>
                   <% else %>
-                    <%= image_tag "member.png", width: "30px" %>
+                    <%= image_tag "member.png", width: "17px" %>
                   <% end %>
                 <% end %>
               </li>
