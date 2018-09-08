@@ -17,4 +17,6 @@ module Eggplant
   end
 end
 
+CONFIG = Rails.application.secrets
+
 

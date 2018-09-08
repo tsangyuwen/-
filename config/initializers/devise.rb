@@ -4,10 +4,10 @@
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
 
-  config.omniauth :facebook, ENV["fb_app_id"], ENV["fb_secret"], scope: "public_profile,email", 
-  info_fields: "email,name", callback_url: ENV["fb_call_back"]
+  config.omniauth :facebook, CONFIG.FB_APP_ID, CONFIG.FB_SECRET, scope: "public_profile,email", 
+  info_fields: "email,name", callback_url: CONFIG.FB_CALL_BACK
 
-  config.omniauth :google_oauth2, ENV["google_app_id"], ENV["google_secret"], callback_url: ENV["google_call_back"]
+  config.omniauth :google_oauth2, CONFIG.GOOGLE_API_ID, CONFIG.GOOGLE_SECRET, callback_url: CONFIG.GOOGLE_CALL_BACK
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.

@@ -24,5 +24,5 @@
 #/config/facebook.yml
 #/db/seeds.rb
 
-# Ignore application configuration
-/config/application.yml
+config/secrets.yml
+config/database.yml

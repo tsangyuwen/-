@@ -1,6 +1,6 @@
 require 'spgateway'
-Spgateway.merchant_id = ENV["merchant_id"]
-Spgateway.hash_key = ENV["hash_key"]
-Spgateway.hash_iv = ENV["hash_iv"]
-Spgateway.url = ENV["url"]
-Spgateway.notify_url = ENV["notify_url"]
+Spgateway.merchant_id = CONFIG.MERCHANT_ID
+Spgateway.hash_key = CONFIG.HASH_KEY
+Spgateway.hash_iv = CONFIG.HASH_IV
+Spgateway.url = CONFIG.URL
+Spgateway.notify_url = CONFIG.NOTIFY_URL
