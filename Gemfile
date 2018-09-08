@@ -64,7 +64,7 @@ gem 'letter_opener_web'
 end
 
 group :production do 
-  gem 'pg'
+  gem 'mysql2', '< 0.5'
 end
 
 group :development do
