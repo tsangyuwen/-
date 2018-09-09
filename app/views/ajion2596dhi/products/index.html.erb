@@ -1,1 +1,5 @@
 <%= render partial: "ajion2596dhi/shared/head" %>
+<% @text.each do |data| %>
+  <%= data.inner_text %><br>
+<% end %>
+global rank <%= @text[1].inner_text %>

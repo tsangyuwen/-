@@ -36,6 +36,8 @@ gem 'figaro'
 gem 'jquery-rails'
 #manager key
 gem 'figaro'
+#web scraping
+gem 'mechanize'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

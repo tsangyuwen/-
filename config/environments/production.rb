@@ -68,14 +68,14 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
 
-  config.action_mailer.default_url_options = {host: "https://eggplant-sale.herokuapp.com"}
+  config.action_mailer.default_url_options = {host: "https://www.eggplant-sale.online"}
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-    address: 'smtp.mailgun.org',
+    address: 'smtp.gmail.com',
     port: 587,
-    domain: 'sandbox8186ebf4cffd4011baf74a28d9eee273.mailgun.org',
-    user_name: CONFIG.MAILGUN,
-    password: CONFIG.MAILCUN_PASSWORD,
+    domain: CONFIG.DOMAIN,
+    user_name: CONFIG.USERNAME,
+    password: CONFIG.PASSWORD,
     authentication: 'plain',
     enable_starttls_auto: true
   }
