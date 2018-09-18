@@ -25,7 +25,7 @@ Devise.setup do |config|
   # with default "from" parameter.
   config.mailer = 'Devise::Mailer'
   config.reconfirmable = true
-  config.mailer_sender = 'eggplant eggplant@eggplant-sale.online'
+  config.mailer_sender = 'eggplant@eggplant-sale.online'
 
   # Configure the class responsible to send e-mails.
 

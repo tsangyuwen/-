@@ -137,15 +137,18 @@ footer {
 .bg-box {
   position: relative;
   margin: 10px auto;
+  margin-top: 80px;
   width: 650px;
-  height: 500px;
+  height: 480px;
   background-color: #fff;
   padding-left: 50px;
   padding-right: 50px;
   padding-top: 30px;
   padding-bottom: 30px;
   color: #59544f;
-  border-radius: 3px;
+  -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+  -moz-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
+  box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.33);
 }
 
 /* login */
@@ -156,6 +159,50 @@ footer {
   height: auto;
   margin-top: 20px;
   text-align: center;
+}
+
+.forget {
+  width: 50%;
+  text-align: left;
+  text-decoration: underline;
+  color: #59544f;
+  font-size: 14px;
+  margin-left: 40px;
+}
+
+.form-style {
+  width: 400px;
+  height: 30px;
+  outline: none;
+  padding: 0 10px;
+  color: #59544f;
+  font-size: 13px;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+}
+
+.form-style input:focus {
+  border-color: #358efb;
+}
+
+.form-style > .login-submit {
+  width: 150px;
+  height: 40px;
+  background-color: #5f0ac7;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+}
+
+.form-style > .forget {
+  color: #5f0ac7;
+  text-decoration: none;
 }
 
 @media screen and (min-width: 790px){
