@@ -164,10 +164,14 @@ footer {
 .forget {
   width: 50%;
   text-align: left;
-  text-decoration: underline;
   color: #59544f;
   font-size: 14px;
   margin-left: 40px;
+}
+
+.forget:hover {
+  color: #5f0ac7;
+  text-decoration: none;
 }
 
 .form-style {
@@ -185,11 +189,11 @@ footer {
   border-top: none;
 }
 
-.form-style input:focus {
+.form-style:focus {
   border-color: #358efb;
 }
 
-.form-style > .login-submit {
+.login-submit {
   width: 150px;
   height: 40px;
   background-color: #5f0ac7;
@@ -200,9 +204,8 @@ footer {
   font-weight: normal;
 }
 
-.form-style > .forget {
-  color: #5f0ac7;
-  text-decoration: none;
+hr {
+  margin-top: 30px;
 }
 
 @media screen and (min-width: 790px){
