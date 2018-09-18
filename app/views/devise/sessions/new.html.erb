@@ -1,47 +1,47 @@
 <div class="bg-box">
 
-    <div style="margin-bottom:30px;"><h4>會員登入</h4></div>
+  <div class="login-phone" style="margin-bottom:30px;"><h4>會員登入</h4></div>
 
-    <div class="login">
-      <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+  <div class="login">
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
+    <div class="field" style="margin-bottom:40px;">
+      信箱
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "margin-left:40px",  class: "form-style box" %>
+    </div>
+
+    <div class="field" style="margin-bottom:40px">
+      密碼
+      <%= f.password_field :password, autocomplete: "off", :class => "form-style", style: "margin-left:40px", class: "form-style" %>
+    </div>
+
+    <% if devise_mapping.rememberable? -%>
       <div class="field" style="margin-bottom:40px;">
-        信箱
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", style: "margin-left:40px",  class: "form-style box" %>
+        <%= f.check_box :remember_me %>
+        記住帳號
+        <%= link_to "忘記密碼?", new_password_path(resource_name), class: "forget" %>
       </div>
+    <% end -%>
 
-      <div class="field" style="margin-bottom:40px">
-        密碼
-        <%= f.password_field :password, autocomplete: "off", :class => "form-style", style: "margin-left:40px", class: "form-style" %>
-      </div>
+    <div class="actions submit-button" style="margin-bottom: 10px; text-align: center;">
+      <%= f.submit "登入", class: "login-submit" %>
+      <%= link_to new_user_registration_path do %>
+        <button class='login-submit' style= "background-color:#c1c0bc; margin-left:40px; color:#59544f;">註冊</button>
+      <% end %>
+    </div>
+  <% end %>
 
-      <% if devise_mapping.rememberable? -%>
-        <div class="field" style="margin-bottom:40px;">
-          <%= f.check_box :remember_me, style: "margin-left:11px" %>
-          記住帳號
-          <%= link_to "忘記密碼?", new_password_path(resource_name), class: "forget" %>
-        </div>
-      <% end -%>
+  <hr color="#59544f">
 
-      <div class="actions form-style submit-button" style="margin-left:80px; margin-bottom: 10px">
-        <%= f.submit "登入", class: "login-submit" %>
-        <%= link_to new_user_registration_path do %>
-          <button class='login-submit' style= "background-color:#c1c0bc; margin-left:40px; color:#59544f;">註冊</button>
-        <% end %>
-      </div>
+  <div align="right">
+
+    <%= link_to(user_facebook_omniauth_authorize_path) do %>
+      <%= image_tag "fb.png", width: '28%' %>
     <% end %>
-
-    <hr color="#59544f">
-
-    <div align="right">
-
-      <%= link_to(user_facebook_omniauth_authorize_path) do %>
-        <%= image_tag "fb.png", width: '120px' %>
-      <% end %>
-    
-      <%= link_to(user_google_oauth2_omniauth_authorize_path) do %>
-        <%= image_tag "google.png", width: '120px' %>
-      <% end %>
-  </div>
+  
+    <%= link_to(user_google_oauth2_omniauth_authorize_path) do %>
+      <%= image_tag "google.png", width: '28%' %>
+    <% end %>
+    </div>
 
 </div>

@@ -175,8 +175,8 @@ footer {
 }
 
 .form-style {
-  width: 400px;
   height: 30px;
+  width: 50%;
   outline: none;
   padding: 0 10px;
   color: #59544f;
@@ -231,6 +231,39 @@ hr {
 /*smaill*/
 
 @media screen and (max-width: 789px){
+  .bg-box {
+    margin: 35px auto;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    height: 600px;
+    width: 90%;
+  }
+
+  .submit-button {
+    margin-left:0px;
+  } 
+
+  .login-phone {
+    margin-left: 30px;
+  }
+
+  .field {
+    width: 100%;
+  }
+
+  .login-submit {
+    width: 35%;
+    height: 40px;
+    background-color: #5f0ac7;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: normal;
+  }
+
   nav.navbar.navbar-default.navbar-expand-lg {
     display: none;
   }
