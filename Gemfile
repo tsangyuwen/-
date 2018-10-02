@@ -32,12 +32,13 @@ gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 #captcha
 gem 'recaptcha', require: "recaptcha/rails"
-gem 'figaro'
 gem 'jquery-rails'
 #manager key
 gem 'figaro'
 #web scraping
 gem 'mechanize'
+# word cloud
+gem 'magic_cloud', '~> 0.0.4'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
