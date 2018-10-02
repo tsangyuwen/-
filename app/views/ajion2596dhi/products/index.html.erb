@@ -1,1 +1,36 @@
-<img id = "wordleImage" src = "./assets/cloud.jpg" alt = "Currently Unavailable..."> </img>
+
+<div class="container">
+  <div class="img-responsive" id="example" style="width: 800px; height: 350px; background-color: black"></div>
+</div>
+
+
+<script type="text/javascript">
+var words = [
+  { text: "無袖", weight: 10 },
+  { text: "長袖", weight: 48 },
+  { text: "連帽上衣", weight: 30 },
+  { text: "雪紡", weight: 6 },
+  { text: "牛仔上衣", weight: 1 },
+  { text: "襯衫", weight: 56 },
+  { text: "長褲", weight: 44 },
+  { text: "短褲", weight: 46 },
+  { text: "寬庫", weight: 1 },
+  { text: "短裙", weight: 24 },
+  { text: "長裙", weight: 41 },
+  { text: "連帽外套", weight: 17 },
+  { text: "牛仔外套", weight: 40 },
+  { text: "西裝外套", weight: 21 },
+  { text: "針織外套", weight: 10 },
+  { text: "羽絨外套", weight: 28 },
+  { text: "吊帶褲", weight: 8 },
+  { text: "吊帶裙", weight: 3 },
+  { text: "洋裝", weight: 45 },
+  { text: "內搭褲,", weight: 5 },
+  { text: " 襪子", weight: 41 },
+  { text: " 帽子", weight: 63 },
+  { text: " 圍巾", weight: 25 }
+];
+
+$("#example").jQCloud(words);
+
+</script>
