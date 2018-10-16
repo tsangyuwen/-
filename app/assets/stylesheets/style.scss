@@ -136,10 +136,8 @@ footer {
 /* before login background */
 .bg-box {
   position: relative;
-  margin: 10px auto;
-  margin-top: 80px;
+  margin: 80px auto;
   width: 650px;
-  height: 480px;
   background-color: #fff;
   padding-left: 50px;
   padding-right: 50px;
@@ -154,7 +152,6 @@ footer {
 /* login */
 .login {
   position: relative;
-  float: left;
   width: 100%;
   height: auto;
   margin-top: 20px;
@@ -237,7 +234,6 @@ hr {
     padding-right: 5%;
     padding-top: 20px;
     padding-bottom: 10px;
-    height: 600px;
     width: 90%;
   }
 

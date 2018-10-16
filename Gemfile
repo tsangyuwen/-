@@ -37,6 +37,8 @@ gem 'jquery-rails'
 gem 'figaro'
 #web scraping
 gem 'mechanize'
+gem 'watir', '~> 6.0'
+gem 'selenium-webdriver'
 # word cloud
 gem 'magic_cloud', '~> 0.0.4'
 gem 'rmagick'

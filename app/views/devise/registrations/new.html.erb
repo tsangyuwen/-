@@ -1,48 +1,48 @@
-<div class="col-md-6 col-sm-6">
-  <h2>Sign up</h2>
+<div class="bg-box">
 
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-    <%= devise_error_messages! %>
+  <div class="login-phone" style="margin-bottom:30px;"><h4>會員註冊</h4></div>
 
-    <div class="field">
-      <%= f.label :name %><br />
-      <%= f.text_field :name, autofocus: true %>
+  <div class="login">
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+    <div class="field" style="margin-bottom:40px;">
+      聯絡人
+      <%= f.text_field :name, autofocus: true, style: "margin-left:40px",  class: "form-style box" %>
     </div>
 
-    <div class="field">
-      <%= f.label :email %><br />
-      <%= f.email_field :email, autocomplete: "email" %>
+    <div class="field" style="margin-bottom:40px;">
+      信箱
+      <%= f.email_field :email, autocomplete: "email", style: "margin-left:40px",  class: "form-style box" %>
     </div>
 
-    <div class="field">
-      <%= f.label :password %>
-      <% if @minimum_password_length %>
-      <em>(<%= @minimum_password_length %> characters minimum)</em>
-      <% end %><br />
-      <%= f.password_field :password, autocomplete: "off" %>
+    <div class="field" style="margin-bottom:40px">
+      密碼
+      <%= f.password_field :password, autocomplete: "off", :class => "form-style", style: "margin-left:40px", class: "form-style" %>
     </div>
 
-    <div class="field">
-      <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "off" %>
+    <div style="text-align: center;">
+      <%= recaptcha_tags %>
     </div>
 
-    <%= recaptcha_tags %>
-    
-    <div class="actions">
-      <%= f.submit "Sign up" %>
+    <div class="actions submit-button" style="margin-bottom: 10px; text-align: center;">
+      <%= f.submit "註冊", class: "login-submit" %>
+      <%= link_to new_user_registration_path do %>
+        <button class='login-submit' style= "background-color:#c1c0bc; margin-left:40px; color:#59544f;">登入</button>
+      <% end %>
     </div>
   <% end %>
 
-  <%= render "devise/shared/links" %>
-</div>
+  <hr color="#59544f">
 
-<div class="col-md-6 col-sm-6">
-  <%= link_to(user_facebook_omniauth_authorize_path) do %>
-    <img width="60px" src="http://www.broadriverhospital.com/images/LOGO/FB_LOGO.png">
-  <% end %>
+  <div align="right">
 
-  <%= link_to(user_google_oauth2_omniauth_authorize_path) do %>
-    <img width="60px" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Google_%22G%22_Logo.svg/512px-Google_%22G%22_Logo.svg.png">
-  <% end %>
+    <%= link_to(user_facebook_omniauth_authorize_path) do %>
+      <%= image_tag "fb.png", width: '25%' %>
+    <% end %>
+  
+    <%= link_to(user_google_oauth2_omniauth_authorize_path) do %>
+      <%= image_tag "google.png", width: '25%' %>
+    <% end %>
+    </div>
+
 </div>
