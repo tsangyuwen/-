@@ -105,8 +105,8 @@
 
           <% else %>
 
-            <li><%= link_to('registrate', new_user_registration_path)%></li>
-            <li><%= link_to('log in', new_user_session_path) %></li>
+            <li><%= link_to('註冊', new_user_registration_path)%></li>
+            <li><%= link_to('登入', new_user_session_path) %></li>
 
           <% end %>
         </ul>
@@ -118,7 +118,6 @@
     <% if current_user %>
 
       <% unless @page_tab == 'cart' || @page_tab == 'member' %>
-
 
         <div id="phone-head" class="clearfix"></div>
 
@@ -140,7 +139,7 @@
             </div>
           </div>
 
-      <!--Nav-->
+          <!--Nav-->
           <% unless @page_tab == 'category'  %>
 
             <div class="phone-nav clearfix">
@@ -196,6 +195,20 @@
           </div>
         <% end %>
       <% end %>
+
+    <% if flash[:notice] %>
+      <div class="alert alert-info alert-dismissible" role="alert" >
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 style="text-align: center"><%= notice %></h4>
+      </div>
+    <% end %>
+
+    <% if flash[:alert] %>
+      <div class="alert alert-danger alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <%= alert %>
+      </div>
+    <% end %>
 
     <%= yield %>
 

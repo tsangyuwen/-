@@ -21,6 +21,7 @@ gem 'uglifier', '>= 1.3.0'
 
 #user authentication 
 gem 'devise'
+gem 'rails-i18n'
 #file uploader
 gem 'carrierwave'
 #fake data

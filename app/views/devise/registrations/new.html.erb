@@ -21,12 +21,13 @@
     </div>
 
     <div class="recpatcha" style="margin-bottom: 20px">
+      <%= flash[:recaptcha_error] %>
       <%= recaptcha_tags %>
     </div>
 
     <div class="actions submit-button" style="margin-bottom: 10px; text-align: center;">
       <%= f.submit "註冊", class: "login-submit" %>
-      <%= link_to new_user_registration_path do %>
+      <%= link_to new_user_session_path do %>
         <button class='login-submit' style= "background-color:#c1c0bc; margin-left:40px; color:#59544f;">登入</button>
       <% end %>
     </div>
