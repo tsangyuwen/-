@@ -205,6 +205,11 @@ hr {
   margin-top: 30px;
 }
 
+/*register*/
+.recpatcha {
+  margin-left: 102px;
+}
+
 @media screen and (min-width: 790px){
   #custom-search-input{
     display: none;
@@ -271,6 +276,10 @@ hr {
   #phone-head{
     padding-top: 107px;
     width: 100%;
+  }
+
+  .recpatcha {
+    margin-left: 0px;
   }
 
 }
