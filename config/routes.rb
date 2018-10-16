@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     get :landing, on: :member
   end
 
-  resources :users, only: :show
+  resource :users, only: :show
 
   resource :cart
 

@@ -1,0 +1,19 @@
+<div class="bg-box">
+
+  <div class="member-set">
+    <%= link_to orders_path, :class => 'member-link' do %>
+      訂單查詢
+    <% end %>
+
+    <%= link_to users_path, {:class => 'member-link underline', :style => 'float: right;'} do %>
+      帳號設定
+    <% end %>
+  </div>
+
+  <div style="text-align: center; margin: 40px 0px;">
+    <button class="member-btn" style="background-color: #59544f">修改資料</button> <br>
+    <button class="member-btn"  style="background-color: #5f0ac7">修改密碼</button> <br>
+    <button class="member-btn"  style="background-color: #c1c0bc">會員登出</button> <br>
+  </div>
+
+</div>

@@ -210,6 +210,37 @@ hr {
   margin-left: 102px;
 }
 
+/*member*/
+.member-link {
+  color: #110b0a;
+  font-size: 18px;
+}
+
+.member-link:hover {
+  color: #110b0a;
+  text-decoration: none;
+}
+
+.underline {
+  border: #5f0ac7 solid;
+  border-width: 0px 0px 2px;
+}
+
+.member-set {
+  margin: 20px 50px;
+}
+
+.member-btn {
+  width: 60%;
+  height: 40px;
+  border: none;
+  outline: none;
+  color: #fff;
+  font-size: 14px;
+  font-weight: normal;
+  margin-top: 40px;
+}
+
 @media screen and (min-width: 790px){
   #custom-search-input{
     display: none;
