@@ -10,6 +10,8 @@ Rails.application.routes.draw do
     get :landing, on: :member
   end
 
+  resources :users, only: :show
+
   resource :cart
 
   post 'spgateway/return'
@@ -25,7 +27,6 @@ Rails.application.routes.draw do
     get :kid, on: :collection
     get :baby, on: :collection
   end
-
 
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
