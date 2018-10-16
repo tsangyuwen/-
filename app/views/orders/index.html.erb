@@ -1,10 +1,42 @@
-<% @orders.each do |order| %>
+<div class="bg-box">
 
-  <% if order.payment_status == "not_paid" %>
-    <% Payment::PAYMENT_METHODS.each do |method| %>
-
-      <%= link_to method, checkout_spgateway_order_path(order, payment_method: method),target: :_blank, method: :post, class: "btn" %>
+  <div class="member-set">
+    <%= link_to orders_path, :class => 'member-link underline' do %>
+      訂單查詢
     <% end %>
 
+    <%= link_to users_path, {:class => 'member-link', :style => 'float: right;'} do %>
+      帳號設定
+    <% end %>
+  </div>
+
+  <table align="center" style="width: 82%; text-align: center">
+    <tbody>
+      <tr style="background-color: #5f0ac7; color: #fff; height: 15px">
+        <td>訂單編號</td>
+        <td>訂單日期</td>
+        <td>訂單狀態</td>
+        <td>付款金額</td>
+      </tr>
+
+      <tr style="height: 40px">
+        <td><span style="color:#fff; background-color: #59544f;">180710007</span></td>
+        <td>180710007</td>
+        <td>180710007</td>
+        <td>180710007</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <% @orders.each do |order| %>
+
+    <% if order.payment_status == "not_paid" %>
+      <% Payment::PAYMENT_METHODS.each do |method| %>
+
+        <%= link_to method, checkout_spgateway_order_path(order, payment_method: method),target: :_blank, method: :post, class: "btn" %>
+      <% end %>
+
+    <% end %>
   <% end %>
-<% end %>
+
+</div>
