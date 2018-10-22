@@ -19,12 +19,24 @@
         <td>付款金額</td>
       </tr>
 
-      <tr style="height: 40px">
-        <td><span style="color:#fff; background-color: #59544f;">180710007</span></td>
-        <td>180710007</td>
-        <td>180710007</td>
-        <td>180710007</td>
-      </tr>
+      <% @orders.each do |order| %>
+
+        <tr style="height: 40px">
+          <td><span style="color:#fff; background-color: #59544f;"><%= order.sn %></span></td>
+          <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
+
+          <% if order.payment_status == "not_paid" %>
+            <td>待付款</td>
+          <% elsif order.shipping_status == "not_shipped" %>
+            <td>出貨中</td>
+          <% else %>
+            <td><%= order.shipping_status %></td>
+          <% end %>
+
+          <td><%= order.amount %></td>
+        </tr>
+
+      <% end %>
     </tbody>
   </table>
 
@@ -33,7 +45,7 @@
     <% if order.payment_status == "not_paid" %>
       <% Payment::PAYMENT_METHODS.each do |method| %>
 
-        <%= link_to method, checkout_spgateway_order_path(order, payment_method: method),target: :_blank, method: :post, class: "btn" %>
+        <% link_to method, checkout_spgateway_order_path(order, payment_method: method),target: :_blank, method: :post, class: "btn" %>
       <% end %>
 
     <% end %>
