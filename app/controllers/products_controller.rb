@@ -37,4 +37,36 @@ class ProductsController < ApplicationController
     @products = Product.all
   end
 
+  def landing
+    browser = Watir::Browser.new :http_client => client
+    browser.goto 'https://trends.google.com.tw/trends/trendingsearches/daily?geo=TW'
+
+    g_text = browser.text.split("\n")
+
+    i = 10
+    g_data = []
+    while i < g_text.length-20
+      if g_text[i][0..4].to_i > 2000
+        i = i + 2
+      elsif g_text[i].to_i == 1
+        i = i + 1
+      else
+        g_data << g_text[i]
+        g_data << g_text[i + 3]
+        i = i + 8
+      end
+    end 
+
+    browser.goto 'https://tw.yahoo.com/'
+
+    y_text = browser.text[0..500].split("\n")
+    y_data = []
+    y_data << y_text[5..12]
+
+    browser.close
+
+    print g_data
+    print y_data
+  end
+
 end
