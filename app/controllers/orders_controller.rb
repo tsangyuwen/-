@@ -3,6 +3,11 @@ class OrdersController < ApplicationController
     @orders = current_user.orders.order(created_at: :desc)
   end
 
+  def show
+    @order = Order.find(params[:id])
+    @items = @order.order_items
+  end
+
   def create
     @order = current_user.orders.new(order_params)
     @order.sn = Time.now.to_i

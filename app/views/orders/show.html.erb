@@ -1,0 +1,83 @@
+<% tab "member" %>
+<div class="bg-box">
+
+  <div class="member-set">
+    <%= link_to orders_path, :class => 'member-link underline' do %>
+      訂單查詢
+    <% end %>
+
+    <%= link_to users_path, {:class => 'member-link', :style => 'float: right;'} do %>
+      帳號設定
+    <% end %>
+  </div>
+
+  <table class="order-item" align="center" style="width: 82%;">
+
+    <tr>
+      <td style="color: #110b0a; padding-top: 10px;">訂單資訊</td>
+    </tr>
+
+    <tr>
+      <td style="width:20%">收件人姓名</td>
+      <td style="width:35%">業大雄</td>
+      <td style="width:10%"></td>
+      <td style="width:17%">發票</td>
+      <td style="width:18%">二聯式發票</td>
+    </tr>
+
+    <tr>
+      <td>手機</td>
+      <td>0912345678</td>
+      <td></td>
+      <td>付款方式</td>
+      <td>ATM轉帳</td>
+    </tr>
+
+    <tr>
+      <td>收件人地址</td>
+      <td>台中市大大區小小路一段88號</td>
+      <td></td>
+      <td>付款金額</td>
+      <td>25000</td>
+    </tr>
+  </table>
+
+  <hr style="width: 85%;">
+
+  <div style="width: 82%; margin: 0px auto;">
+    購買明細資料
+    
+    <% @items.each do |item| %>
+      <div class="item-box">
+        <%= image_tag item.product.main_image, height: "120px", style: "float: left" %><br>
+
+        <table style="height: 100px; padding-left: 10px;">
+          <thead>
+            <tr style="width:100%"><%= item.product.name %></tr>
+          </thead>
+
+          <tr>
+            <td>尺寸</td>
+            <td>F</td>
+            <td>顏色</td>
+            <td>水藍色</td>
+          </tr>
+
+          <tr>
+            <td>數量</td>
+            <td>30</td>
+            <td>單價</td>
+            <td>50</td>
+          </tr>
+
+          <tr>
+            <td style="width:66px;color:#5f0ac7">小計</td>
+            <td style="color:#5f0ac7">1500</td>
+          </tr>
+        </table>
+        
+      </div>
+    <% end %>
+  </div>
+
+</div>

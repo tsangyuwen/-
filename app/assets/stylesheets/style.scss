@@ -241,6 +241,20 @@ hr {
   margin-top: 40px;
 }
 
+/* order */
+.order-item > tbody > tr > td {
+  vertical-align: top;
+  padding-bottom: 20px;
+  color: #59544f;
+}
+
+.item-box {
+  color: #848378;
+  border: solid 1px;
+  padding: 5px 10px;
+  margin-top: 10px;
+}
+
 @media screen and (min-width: 790px){
   #custom-search-input{
     display: none;
@@ -257,6 +271,10 @@ hr {
   #web-head{
     padding-top: 54px;
     width: 100%;
+  }
+
+  .order-table {
+    width: 82%;
   }
 
 }
@@ -311,6 +329,10 @@ hr {
 
   .recpatcha {
     margin-left: 0px;
+  }
+
+  .order-table {
+    width: 95%;
   }
 
 }
