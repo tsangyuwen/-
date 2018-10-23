@@ -1,0 +1,44 @@
+<div class="bg-box">
+
+  <div class="login-phone" style="margin-bottom:30px;"><h4>會員註冊</h4></div>
+
+  <div class="login">
+    <%= form_for(@user, url: update_member_users_path, html: { method: :post }) do |f| %>
+
+    <div class="field" style="margin-bottom:40px;">
+      聯絡人
+      <%= f.text_field :name, autofocus: true, style: "margin-left:40px",  class: "form-style box" %>
+    </div>
+
+    <div class="field" style="margin-bottom:40px;">
+      信箱
+      <%= f.email_field :email, autocomplete: "email", style: "margin-left:40px",  class: "form-style box" %>
+    </div>
+
+    <div class="field" style="margin-bottom:40px">
+      密碼
+      <%= f.password_field :password, autocomplete: "off", :class => "form-style", style: "margin-left:40px", class: "form-style" %>
+    </div>
+
+    <div class="actions submit-button" style="margin-bottom: 10px; text-align: center;">
+      <%= f.submit "註冊", class: "login-submit" %>
+      <%= link_to new_user_session_path do %>
+        <button class='login-submit' style= "background-color:#c1c0bc; margin-left:40px; color:#59544f;">登入</button>
+      <% end %>
+    </div>
+  <% end %>
+
+  <hr color="#59544f">
+
+  <div align="right">
+
+    <%= link_to(user_facebook_omniauth_authorize_path) do %>
+      <%= image_tag "fb.png", width: '25%' %>
+    <% end %>
+  
+    <%= link_to(user_google_oauth2_omniauth_authorize_path) do %>
+      <%= image_tag "google.png", width: '25%' %>
+    <% end %>
+    </div>
+
+</div>
