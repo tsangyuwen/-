@@ -1,44 +1,51 @@
 <div class="bg-box">
 
-  <div class="login-phone" style="margin-bottom:30px;"><h4>會員註冊</h4></div>
+  <div class="member-set">
+    <%= link_to orders_path, :class => 'member-link' do %>
+      訂單查詢
+    <% end %>
 
-  <div class="login">
+    <%= link_to users_path, {:class => 'member-link underline', :style => 'float: right;'} do %>
+      帳號設定
+    <% end %>
+  </div>
+
+  <div class="login" style="text-align: center; margin-top: 40px;">
+    
     <%= form_for(@user, url: update_member_users_path, html: { method: :post }) do |f| %>
 
-    <div class="field" style="margin-bottom:40px;">
-      聯絡人
-      <%= f.text_field :name, autofocus: true, style: "margin-left:40px",  class: "form-style box" %>
-    </div>
+      <div style="text-align: left; padding-left: 20%;">
+        <div class="field" style="margin-bottom:40px;">
+          <span>信箱</span>
+          <span class="form-style box" style="margin-left: 70px;"><%= @user.email %></span>
+        </div>
 
-    <div class="field" style="margin-bottom:40px;">
-      信箱
-      <%= f.email_field :email, autocomplete: "email", style: "margin-left:40px",  class: "form-style box" %>
-    </div>
+        <div class="field" style="margin-bottom:40px;">
+          聯絡人
+          <%= f.text_field :name, autofocus: true, style: "margin-left:55px",  class: "form-style box" %>
+        </div>
 
-    <div class="field" style="margin-bottom:40px">
-      密碼
-      <%= f.password_field :password, autocomplete: "off", :class => "form-style", style: "margin-left:40px", class: "form-style" %>
-    </div>
+        <div class="field" style="margin-bottom:40px;">
+          連絡電話
+          <%= f.text_field :phone, style: "margin-left:40px",  class: "form-style box" %>
+        </div>
 
-    <div class="actions submit-button" style="margin-bottom: 10px; text-align: center;">
-      <%= f.submit "註冊", class: "login-submit" %>
-      <%= link_to new_user_session_path do %>
-        <button class='login-submit' style= "background-color:#c1c0bc; margin-left:40px; color:#59544f;">登入</button>
-      <% end %>
-    </div>
-  <% end %>
+        <div class="field" style="margin-bottom:40px;">
+          聯絡地址
+          <%= f.text_field :address, style: "margin-left:40px",  class: "form-style box" %>
+        </div>
 
-  <hr color="#59544f">
+        <div class="field" style="margin-bottom:40px;">
+          統一編號
+          <%= f.text_field :tax_id, style: "margin-left:40px",  class: "form-style box" %>
+        </div>
+      </div>
 
-  <div align="right">
+      <div class="actions submit-button" style="margin-bottom: 10px; text-align: center;">
+        <%= f.submit "確認修改", style: "width: 50%;background-color: #59544f;margin: 20px 0px",class: "login-submit" %>
+      </div>
 
-    <%= link_to(user_facebook_omniauth_authorize_path) do %>
-      <%= image_tag "fb.png", width: '25%' %>
     <% end %>
-  
-    <%= link_to(user_google_oauth2_omniauth_authorize_path) do %>
-      <%= image_tag "google.png", width: '25%' %>
-    <% end %>
-    </div>
 
+  </div>
 </div>
