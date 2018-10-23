@@ -11,7 +11,7 @@
     <% end %>
   </div>
 
-  <table class="order-item" align="center" style="width: 82%;">
+  <table class="order-item order-table" align="center">
 
     <tr>
       <td style="color: #110b0a; padding-top: 10px;">訂單資訊</td>
@@ -40,39 +40,52 @@
       <td>付款金額</td>
       <td>25000</td>
     </tr>
+
   </table>
 
   <hr style="width: 85%;">
 
-  <div style="width: 82%; margin: 0px auto;">
+  <div class="order-table" style="margin: 0px auto;">
     購買明細資料
     
     <% @items.each do |item| %>
       <div class="item-box">
-        <%= image_tag item.product.main_image, height: "120px", style: "float: left" %><br>
+        <%= image_tag item.product.main_image, class: "item-image", style: "margin-right: 10px;" %>
 
-        <table style="height: 100px; padding-left: 10px;">
-          <thead>
-            <tr style="width:100%"><%= item.product.name %></tr>
-          </thead>
-
+        <table class="item-table" style="font-size: 12px; margin-top: 10px">
           <tr>
-            <td>尺寸</td>
-            <td>F</td>
-            <td>顏色</td>
-            <td>水藍色</td>
+            <td></td>
+            <td style="font-size: 14px;"><%= item.product.name %></td>
           </tr>
 
           <tr>
+            <td style="width:5%"></td>
+            <td style="width:15%">尺寸</td>
+            <td style="width:15%">F</td>
+            <td style="width:30%"></td>
+            <td style="width:15%">顏色</td>
+            <td style="width:15%">水藍色</td>
+            <td style="width:5%"></td>
+          </tr>
+
+          <tr>
+            <td></td>
             <td>數量</td>
             <td>30</td>
+            <td></td>
             <td>單價</td>
             <td>50</td>
+            <td></td>
           </tr>
 
-          <tr>
-            <td style="width:66px;color:#5f0ac7">小計</td>
+          <tr style="border-top: 2px solid;">
+            <td></td>
+            <td style="color:#5f0ac7">小計</td>
             <td style="color:#5f0ac7">1500</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
           </tr>
         </table>
         

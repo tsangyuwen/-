@@ -255,6 +255,11 @@ hr {
   margin-top: 10px;
 }
 
+.item-table > tbody > tr > td {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 @media screen and (min-width: 790px){
   #custom-search-input{
     display: none;
@@ -275,6 +280,11 @@ hr {
 
   .order-table {
     width: 82%;
+  }
+
+  .item-image {
+    float: left;
+    height: 120px;
   }
 
 }
@@ -333,6 +343,11 @@ hr {
 
   .order-table {
     width: 95%;
+  }
+
+  .item-image {
+    margin-left: 25%;
+    width: 50%;
   }
 
 }
