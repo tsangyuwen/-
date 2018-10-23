@@ -19,7 +19,7 @@
 
     <tr>
       <td style="width:20%">收件人姓名</td>
-      <td style="width:35%">業大雄</td>
+      <td style="width:35%"><%= @order.name %></td>
       <td style="width:10%"></td>
       <td style="width:17%">發票</td>
       <td style="width:18%">二聯式發票</td>
@@ -27,7 +27,7 @@
 
     <tr>
       <td>手機</td>
-      <td>0912345678</td>
+      <td><%= @order.phone %></td>
       <td></td>
       <td>付款方式</td>
       <td>ATM轉帳</td>
@@ -35,10 +35,10 @@
 
     <tr>
       <td>收件人地址</td>
-      <td>台中市大大區小小路一段88號</td>
+      <td><%= @order.address %></td>
       <td></td>
       <td>付款金額</td>
-      <td>25000</td>
+      <td><%= @order.amount %></td>
     </tr>
 
   </table>
@@ -64,7 +64,7 @@
             <td style="width:15%">F</td>
             <td style="width:30%"></td>
             <td style="width:15%">顏色</td>
-            <td style="width:15%">水藍色</td>
+            <td style="width:15%"><div class="colorbox" style="background-color: #8DC1E8;"></div></td>
             <td style="width:5%"></td>
           </tr>
 
