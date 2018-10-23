@@ -12,10 +12,8 @@ Rails.application.routes.draw do
 
   resource :users, only: :show do
     get :edit_member, on: :collection
-    get :edit_password, on: :collection
     get :confirm_password, on: :collection
     post :update_member, on: :collection
-    post :update_password, on: :collection
     post :confirm, on: :collection
   end
 
