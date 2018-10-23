@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :confirm_process, only: :edit_member
+  before_action :confirm_process, only: :edit_member
 
   def confirm_password
     @user = current_user
