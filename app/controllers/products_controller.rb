@@ -38,7 +38,7 @@ class ProductsController < ApplicationController
   end
 
   def landing
-    browser = Watir::Browser.new :http_client => client
+    browser = Watir::Browser.new
     browser.goto 'https://trends.google.com.tw/trends/trendingsearches/daily?geo=TW'
 
     g_text = browser.text.split("\n")
