@@ -28,6 +28,7 @@ class UsersController < ApplicationController
       flash[:notice] = "success"
       redirect_to users_path
     else
+      # to-do fix render
       flash.now[:alert] = "failed"
       render :update_member
     end
