@@ -38,8 +38,10 @@ class ProductsController < ApplicationController
   end
 
   def landing
-    browser = Watir::Browser.new
-    browser.goto 'https://trends.google.com.tw/trends/trendingsearches/daily?geo=TW'
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 90
+
+    browser = Watir::Browser.start 'https://trends.google.com.tw/trends/trendingsearches/daily?geo=TW', :chrome, headless: true, :http_client => client
 
     g_text = browser.text.split("\n")
 
