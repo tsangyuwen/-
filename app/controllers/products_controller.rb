@@ -68,7 +68,7 @@ class ProductsController < ApplicationController
     browser.close
 
     gon.g_data = @g_data
-    gon.y_data = @y_data
+    gon.y_data = @y_data.first
   end
 
 end
