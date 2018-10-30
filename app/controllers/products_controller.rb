@@ -59,15 +59,16 @@ class ProductsController < ApplicationController
       end
     end 
 
-    @text = "無袖"
+    browser.goto 'https://tw.yahoo.com/'
 
-    #browser.goto 'https://tw.yahoo.com/'
-
-    #y_text = browser.text[0..500].split("\n")
-    #@y_data = []
-    #@y_data << y_text[5..12]
+    y_text = browser.text[0..500].split("\n")
+    @y_data = []
+    @y_data << y_text[5..12]
 
     browser.close
+
+    gon.g_data = @g_data
+    gon.y_data = @y_data
   end
 
 end

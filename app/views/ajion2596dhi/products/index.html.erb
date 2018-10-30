@@ -2,12 +2,14 @@
   <div class="img-responsive" id="example" style="width: 800px; height: 350px; background-color: black; margin: 0px auto;"></div>
   <br><br><br><br>
 </div>
+<%= @text %>
 
 <script type="text/javascript">
+  alert(gon.text)
 
   var words = [
     <% if @size > 40 %>
-      { text: <%= @text %>, weight: <%= @size %> },
+      { text: gon.text, weight: <%= @size %> },
     <% end %>
     { text: 'abc', weight: 50 },
     { text: "無袖", weight: 20 },
@@ -35,7 +37,9 @@
     { text: " 圍巾", weight: 25 }
   ];
 
-  $("#example").jQCloud(words);
+  $("#example").jQCloud(words, {
+    colors: ["#800026", "#bd0026", "#e31a1c", "#fc4e2a", "#fd8d3c", "#feb24c", "#fed976", "#ffeda0", "#ffffcc"]
+  });
   $("#example").css("font-family", "微軟正黑體");
 
 </script>

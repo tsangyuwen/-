@@ -145,16 +145,6 @@
       <br><br><br><br>
     </div>
 
-    <% 0.step(@g_data.length-1, 2) do |g| %>
-      <% if @g_data[g+1].to_i > 500 %>
-        <%= @g_data[g] %>
-        <%= @g_data[g+1].to_i / 150 + 10 %> <br>
-      <% else %>
-        <%= @g_data[g] %>
-        <%= @g_data[g+1].to_i * 2 +60 %><br>
-      <% end %>
-    <% end %>
-
     <div class="col-xs-12 col-md-12 col-sm-12 offset-xs-1 offset-md-1 offset-sm-1">
       <div class="img-responsive" id="example" style="width: 800px; height: 350px; background-color: black; margin: 0px auto;"></div>
       <br><br><br><br>
@@ -164,35 +154,27 @@
 </div>
 
 <script type="text/javascript">
+  
+  var i = 0
 
-  var words = [
-    <% g = 0 %>
-    { text: <%= @text %>, weight: <%= @g_data[g+1].to_i / 150 + 10 %> },
-    { text: 'abc', weight: 50 },
-    { text: "無袖", weight: 20 },
-    { text: "長袖", weight: 48 },
-    { text: "連帽上衣", weight: 30 },
-    { text: "雪紡", weight: 6 },
-    { text: "牛仔上衣", weight: 1 },
-    { text: "襯衫", weight: 56 },
-    { text: "長褲", weight: 44 },
-    { text: "短褲", weight: 46 },
-    { text: "寬庫", weight: 1 },
-    { text: "短裙", weight: 24 },
-    { text: "長裙", weight: 41 },
-    { text: "連帽外套", weight: 17 },
-    { text: "牛仔外套", weight: 40 },
-    { text: "西裝外套", weight: 21 },
-    { text: "針織外套", weight: 10 },
-    { text: "羽絨外套", weight: 28 },
-    { text: "吊帶褲", weight: 8 },
-    { text: "吊帶裙", weight: 3 },
-    { text: "洋裝", weight: 45 },
-    { text: "內搭褲,", weight: 5 },
-    { text: " 襪子", weight: 41 },
-    { text: " 帽子", weight: 63 },
-    { text: 'abc', weight: 100 }
-  ];
+  var words = [{text: '', weight: 0}]
+
+  
+  <% 0.step(@g_data.length-1, 2) do |g| %>
+    <% if @g_data[g+1].to_i > 500 %>
+      words.push({ text: gon.g_data[i], weight: <%= @g_data[g+1].to_i / 150 + 10 %>})
+      i += 2
+    <% else %>
+      words.push({ text: gon.g_data[i], weight: <%= @g_data[g+1].to_i * 2 + 60 %> })
+      i += 2
+    <% end %>
+  <% end %>
+
+  i = 0
+  while(i < gon.y_data.length){
+    words.push({ text: gon.y_data[i], weight: 40 - i * 3})
+  }
+  
 
   $("#example").jQCloud(words);
   $("#example").css("font-family", "微軟正黑體");
