@@ -10,30 +10,32 @@
       帳號設定
     <% end %>
   </div>
+  
+  <div class="clearfix order-table" style="margin: 0px auto">
+    <div style="margin-bottom: 20px;"
+      <span style="color: #110b0a; padding-top: 10px;">訂單資訊</span><br>
+    </div>
+    
+    <div class="mobile-order" style="margin-bottom: 20px;">
+      <span style="padding-right: 5%;float:left;">收件人姓名</span>
+      <span style="padding-right: 5%;float:left;width: 60px; margin-right: 35%"><%= @order.name %></span>
+    </div>
 
-  <table class="order-item order-table" align="center">
+    <div class="clearfix" style="margin-bottom: 20px;">
+      <span style="padding-right: 5%;float:left;">手機</span>
+      <span style="padding-right: 5%;float:left;width: 80px"><%= @order.phone %></span>
+    </div>
 
-    <tr>
-      <td style="color: #110b0a; padding-top: 10px;">訂單資訊</td>
-    </tr>
+    <div class="mobile-order" style="margin-bottom: 20px;">
+      <span style="padding-right: 5%;float:left;">收件人地址</span>
+      <span style="padding-right: 5%;float:left;width: 150px; margin-right: 15%"><%= @order.address %></span>
+    </div>
 
-    <tr>
-      <td style="width:20%">收件人姓名</td>
-      <td style="width:35%"><%= @order.name %></td>
-      <td style="width:10%"></td>
-      <td style="width:17%">手機</td>
-      <td style="width:18%"><%= @order.phone %></td>
-    </tr>
-
-    <tr>
-      <td>收件人地址</td>
-      <td><%= @order.address %></td>
-      <td></td>
-      <td>付款金額</td>
-      <td><%= number_with_delimiter(@order.amount, :delimiter => ',') %></td>
-    </tr>
-
-  </table>
+    <div class="clearfix" style="margin-bottom: 20px;">
+      <span style="padding-right: 5%;float:left;">付款金額</span>
+      <span style="padding-right: 5%;float:left;width: 50px"><%= number_with_delimiter(@order.amount, :delimiter => ',') %></span>
+    </div>
+  </div>
 
   <hr style="width: 85%; margin-top: 10px">
 
@@ -52,7 +54,7 @@
 
           <tr>
             <td style="width:5%"></td>
-            <td style="width:15%">尺寸</td>
+            <td style="width:20%">尺寸</td>
             <td style="width:15%">F</td>
             <td style="width:30%"></td>
             <td style="width:15%">顏色</td>
