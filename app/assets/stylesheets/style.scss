@@ -266,6 +266,17 @@ hr {
   height: 14px;
 }
 
+/* cart */
+.cart-banner {
+  margin-top: -55px; 
+  margin-left: -19px;
+  margin-right: -19px;
+  background: #5f0ac7;
+  text-align: center; 
+  height: 35px;
+  line-height: 35px;
+}
+
 @media screen and (min-width: 790px){
   #custom-search-input{
     display: none;
@@ -293,6 +304,10 @@ hr {
     height: 120px;
   }
 
+  .only-mobile {
+    display: none;
+  }
+
 }
 
 /*smaill*/
@@ -305,6 +320,10 @@ hr {
     padding-top: 20px;
     padding-bottom: 10px;
     width: 90%;
+  }
+
+  .mobile-none {
+    display: none;
   }
 
   .submit-button {

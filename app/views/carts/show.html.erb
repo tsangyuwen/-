@@ -1,11 +1,37 @@
 <% tab "cart" %>
-<% @items.each do |item| %>
-  <%= image_tag item.product.main_image, width: "60px" %><br>
-  <%= item.product.name %><br>
-  <%= item.product.price %><br>
-  <%= item.quantity %><br>
+<% if @items.empty? %>
+  <div class="bg-box">
+    <div class="only-mobile cart-banner">
+      <span style="color: #ffffff;">購物車</span>
+    </div>
+
+    <div class="mobile-none" style="">
+      <%= image_tag "step-1.png", style: "width: 90%; margin-left: 5%;"%>
+    </div>
+    
+    <div style="height: 300px; display: flex; align-items: center; justify-content: center;">
+      <%= image_tag "cart-null.png", style: "height: 40%;"%>
+    </div>
+
+    <div style="text-align: center; margin-top: -10%; margin-bottom: 40px;">
+      <span>您的購物車沒有商品</span><br>
+      <%= link_to root_path do %>
+        <button class="member-btn" style="background-color: #59544f; margin: 20px 0px; width: 120px;">去購物</button>
+      <% end %>
+    </div>
+    
+  </div>
+
+<% else %>
+  <% @items.each do |item| %>
+    <%= image_tag item.product.main_image, width: "60px" %><br>
+    <%= item.product.name %><br>
+    <%= item.product.price %><br>
+    <%= item.quantity %><br>
+  <% end %>
 <% end %>
 
+<% if false %>
 <%= form_for @order do |f| %>
   <section class="panel">
     <h2>Shpping Information</h2>
@@ -25,4 +51,5 @@
 
   <%= f.submit "CHECKOUT", class: "btn" %>
 
+<% end %>
 <% end %>
