@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
   def basic_set(who)
     @categories = Category.where(who: who)
     @where = Category.set_where(@categories)
-    @products = Product.where(category_id: @categories).order(created_at: :desc)
+    @products = Item.where(category_id: @categories).order(created_at: :desc)
   end
 
 end

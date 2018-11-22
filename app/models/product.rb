@@ -1,10 +1,9 @@
 class Product < ApplicationRecord
-  mount_uploader :main_image, ImageUploader
-  validates :name, presence: true
-  validates :price, presence: true
+  mount_uploader :image, ImageUploader
 
   has_many :cart_items, dependent: :destroy
   has_many :carts, through: :cart_items
 
+  belongs_to :item
   belongs_to :category, optional: true
 end

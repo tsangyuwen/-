@@ -3,7 +3,14 @@
     <%= image_tag product.main_image, width: "150px" %><br>
     <%= product.name %><br>
     $<%= product.price %><br>
-    <%= link_to "Add to Cart", add_to_cart_product_path(product), method: :post, class: "btn btn-info", :remote => true %>
+    <% product.products.each do |i| %>
+      <div class="colorbox" style="background-color: #<%= i.color %>;"></div>
+      <%= i.size %>
+      <%= i.stock %>
+       <%= link_to "Add to Cart", add_to_cart_product_path(product, i), method: :post, class: "btn btn-info", :remote => true %>
+    <% end %>
+
+   
     <br><br>
   </div>
 <% end %>

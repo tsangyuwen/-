@@ -33,7 +33,7 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @products = Product.all
+    @products = ProductItem.all
   end
 
   def landing

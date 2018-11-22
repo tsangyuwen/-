@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181113185727) do
+ActiveRecord::Schema.define(version: 20181122165002) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
@@ -32,6 +32,16 @@ ActiveRecord::Schema.define(version: 20181113185727) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "where"
+  end
+
+  create_table "items", force: :cascade do |t|
+    t.string "name"
+    t.string "main_image"
+    t.string "intro"
+    t.integer "price"
+    t.integer "category_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "order_items", force: :cascade do |t|
@@ -68,22 +78,24 @@ ActiveRecord::Schema.define(version: 20181113185727) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "products", force: :cascade do |t|
-    t.string "name", null: false
-    t.text "intro"
-    t.string "main_image"
-    t.integer "price", null: false
+  create_table "product_items", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name"
+    t.string "main_image"
+    t.string "intro"
+    t.integer "price"
     t.integer "category_id"
   end
 
-  create_table "simple_captcha_data", force: :cascade do |t|
-    t.string "key", limit: 40
-    t.string "value", limit: 6
+  create_table "products", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["key"], name: "idx_key"
+    t.string "size"
+    t.string "color"
+    t.string "image"
+    t.string "stock"
+    t.integer "item_id"
   end
 
   create_table "users", force: :cascade do |t|
