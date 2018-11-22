@@ -16,7 +16,7 @@ class ProductsController < ApplicationController
   end
 
   def adjust_item
-    @product = Product.find(prams[:id])
+    @product = Product.find(params[:id])
     cart_item = current_cart.cart_items.find_by(product_id: @product)
     if params[:type] == "add"
       cart_item.quantity += 1
@@ -27,10 +27,9 @@ class ProductsController < ApplicationController
     if cart_item.quantity == 0
       cart_item.destroy
     else
-      cart_item.destroy
+      cart_item.save
     end
-
-    #redirect_back(fallback_location: root_path)
+    # redirect_back(fallback_location: root_path)
   end
 
   def index
