@@ -5,5 +5,4 @@ class Product < ApplicationRecord
   has_many :carts, through: :cart_items
 
   belongs_to :item
-  belongs_to :category, optional: true
 end

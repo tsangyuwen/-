@@ -6,6 +6,7 @@ class Ajion2596dhi::UsersController < ApplicationController
   end
 
   def update
+    puts user_params
     if @user.update(user_params)
       flash[:notice] = "success"
       redirect_to ajion2596dhi_users_path
@@ -22,6 +23,6 @@ class Ajion2596dhi::UsersController < ApplicationController
   end
 
   def user_params
-    params.require(:user).permit(:name, :email, :role)
+    params.require(:user).permit(:name, :email, :role, :confirmed_at)
   end
 end

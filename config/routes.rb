@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     post :add_to_cart, on: :member
     post :remove_from_cart, on: :member
     post :adjust_item, on: :member
-    get :landing, on: :member
+    get :landing, on: :collection
   end
 
   resource :users, only: :show do
@@ -40,6 +40,10 @@ Rails.application.routes.draw do
   namespace :ajion2596dhi do
     root "products#index"
     resources :users
-    resources :products
+    resources :items
+    resources :products do
+      get :edit_detail, on: :member
+      post :update_detail, on: :member
+    end
   end
 end

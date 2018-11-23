@@ -1,5 +1,7 @@
 <div class="container">
   <div class="row">
+    <%= link_to "Back", ajion2596dhi_users_path %>
+    <br>
     <% if @user.errors.any? %>
       <h4>We have some errors here!</h4>
       <ul>
@@ -25,6 +27,11 @@
       <div class="form-group">
         <%= f.label :email, "Email" %>
         <%= f.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :confirmed_at, "confirmed" %>
+        <%= f.select :confirmed_at, options_for_select([['OK', "2018-10-10"], ['none', nil]], @user.confirmed_at), {prompt: "change confiremd"}, {:class => 'form-control' } %>
       </div>
 
       <div class="form-group">
