@@ -6,7 +6,7 @@
     <%= form_for [:ajion2596dhi, @item] do |f| %>
       <div>
         <%= f.label :category_id, "category" %>
-        <%= f.collection_select :category_id, Category.where(who: "baby"), :id, :name, {prompt: true}, {class: "form-control"} %>
+        <%= f.collection_select :category_id, Category.where(who: "kid"), :id, :name, {prompt: true}, {class: "form-control"} %>
       </div>
 
       <div class="form-group">
