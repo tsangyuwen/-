@@ -1,46 +1,38 @@
 class Ajion2596dhi::ProductsController < ApplicationController
-  before_action :set_product, only: [:show, :edit, :update]
-  
-  def index
-    @items = Item.all
+
+  def create
+    item = Item.find(params[:item_id])
+    @product = Product.new(product_params)
+    @product.item_id = item.id
+    @product.save!
+    redirect_to ajion2596dhi_item_path(item)
+  end
+
+  def edit
+    @product = Product.find(params[:id])
   end
 
   def update
-    if @item.update(item_params)
+    @product = Product.find(params[:id])
+    if @product.update(product_params)
       flash[:notice] = "success"
-      redirect_to ajion2596dhi_root_path
+      redirect_to ajion2596dhi_item_path(@product.item)
     else
       flash.now[:alert] = "failed"
       render :edit
     end
   end
 
-  def edit_detail
+  def destroy
     @product = Product.find(params[:id])
+    @product.destroy
+    redirect_to ajion2596dhi_item_path(@product.item)
+    flash[:alert] = "product was deleted"
   end
 
-  def update_detail
-    @product = Product.find(params[:id])
-    if @item.update(product_params)
-      flash[:notice] = "success"
-      redirect_back(fallback_location: ajion2596dhi_root_path)
-    else
-      flash.now[:alert] = "failed"
-      render :edit
-    end
-  end
-
-  private  
-
-  def set_product
-    @item = Item.find(params[:id])
-  end
-
-  def item_params
-    params.require(:item).permit(:name, :main_image, :intro, :price, :category_id)
-  end
+  private
 
   def product_params
-    params.require(:priduct).permit(:size, :color, :image, :stock)
+    params.require(:product).permit(:size, :color, :image, :stock, :item_id)
   end
 end

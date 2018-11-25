@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  validates_presence_of :color, :size, :stock
+
   mount_uploader :image, ImageUploader
 
   has_many :cart_items, dependent: :destroy

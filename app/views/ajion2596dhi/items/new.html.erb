@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+
+    <%= form_for [:ajion2596dhi, @product] do |f| %>
+      <div class="form-group">
+        <%= f.label :size, "Size" %>
+        <%= f.select :size, options_for_select([['XL', 'XL'], ['L', 'L'], ['M', 'M'], ['S', 'S'], ['F', 'F']], @product.size), {prompt: "select size"}, {:class => 'form-control' } %>
+      </div>
+
+      <% color_list = ['D17978', 'CB7F41', 'D5CF5E', '25422E', '8DC1E8', '22293B', '662E3E', '5D3B24', '000000', 'BBBAC0'] %>
+      <div class="clearfix">
+        <% color_list.each do |c| %>
+          <div style="float:left;">
+            <%= c %> &nbsp; &nbsp;
+            <div class="colorbox" style="float:left; background-color: #<%= c %>;"></div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :color, "Color" %>
+        <%= f.select :color, options_for_select([['D17978','D17978'], ['CB7F41','CB7F41'], ['D5CF5E','D5CF5E'], ['25422E','25422E'], ['8DC1E8','8DC1E8'], ['22293B','22293B'], ['662E3E','662E3E'], ['5D3B24','5D3B24'], ['000000','000000'], ['BBBAC0']], @product.color), {prompt: "select color"}, {:class => 'form-control' } %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :stock, "Stock" %>
+        <%= f.text_field :stock, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary"%>
+      </div>
+    <% end %>
+
+  </div>
+</div>

@@ -1,0 +1,82 @@
+<%= render partial: "ajion2596dhi/shared/head" %>
+
+<div class="container">
+  <div class="row">
+    <%= link_to "Back", ajion2596dhi_root_path %>
+    
+    <br>
+    name: <%= @item.name %><br>
+    sex: <%= @item.category.who %><br>
+    category: <%= @item.category.name %><br>
+    price: <%= @item.price %><br>
+    <%= image_tag @item.main_image, width: "150px" %>
+    
+    <br>
+    <%= form_for [:ajion2596dhi, @item, @product] do |f| %>
+      <div class="form-group">
+        <%= f.label :size, "Size" %>
+        <%= f.select :size, options_for_select([['XL', 'XL'], ['L', 'L'], ['M', 'M'], ['S', 'S'], ['F', 'F']], @product.size), {prompt: "select size"}, {:class => 'form-control' } %>
+      </div>
+
+      <% color_list = ['D17978', 'CB7F41', 'D5CF5E', '25422E', '8DC1E8', '22293B', '662E3E', '5D3B24', '000000', 'BBBAC0'] %>
+      <div class="clearfix">
+        <% color_list.each do |c| %>
+          <div style="float:left;">
+            <%= c %> &nbsp; &nbsp;
+            <div class="colorbox" style="float:left; background-color: #<%= c %>;"></div>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :color, "Color" %>
+        <%= f.select :color, options_for_select([['D17978','D17978'], ['CB7F41','CB7F41'], ['D5CF5E','D5CF5E'], ['25422E','25422E'], ['8DC1E8','8DC1E8'], ['22293B','22293B'], ['662E3E','662E3E'], ['5D3B24','5D3B24'], ['000000','000000'], ['BBBAC0']], @product.color), {prompt: "select color"}, {:class => 'form-control' } %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :stock, "Stock" %>
+        <%= f.text_field :stock, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary"%>
+        <%= f.button "Cancel", type: :reset, class: "btn btn-default" %>
+      </div>
+    <% end %>
+
+    <br>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>image</th>
+          <th>color</th>
+          <th>size</th>
+          <th>stock</th>
+          <th>#</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @item.products.order("id DESC").each do |item| %>
+          <tr>
+            <th scope="row"><%= item.id %></th>
+            <td><%= image_tag item.image, width: "30px" %></td>
+            <td>
+              <div class="colorbox" style="float: left; background-color: #<%= item.color %>;"></div>
+            </td>
+            <td><%= item.size %>
+            <td><%= item.stock %>
+            <td>
+              <%= link_to "edit", edit_ajion2596dhi_item_product_path(item) %>
+              <%= link_to 'Delete', ajion2596dhi_item_product_path(item), method: :delete, data:{confirm: "Are you sure?"} %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <
+
+
+  </div>
+</div>

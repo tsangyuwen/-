@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row">
+    <%= link_to "Back", ajion2596dhi_root_path %>
+    <br>
+
+    <%= form_for [:ajion2596dhi, @item] do |f| %>
+      <div>
+        <%= f.label :category_id, "category" %>
+        <%= f.collection_select :category_id, Category.where(who: @item.category.who), :id, :name, {prompt: true}, {class: "form-control"} %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :name, "name" %>
+        <%= f.text_field :name, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :main_image, "main_image" %>
+        <%= image_tag @item.main_image, width: '300px' if @item.main_image? %>
+        <%= f.file_field :main_image %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :intro, "Intro" %>
+        <%= f.text_field :intro, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :price, "pice" %>
+        <%= f.text_field :price, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary"%>
+      </div>
+    <% end %>
+
+  </div>
+</div>

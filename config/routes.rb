@@ -38,12 +38,16 @@ Rails.application.routes.draw do
   end
 
   namespace :ajion2596dhi do
-    root "products#index"
+    root "items#index"
     resources :users
-    resources :items
-    resources :products do
+    resources :items do
       get :edit_detail, on: :member
-      post :update_detail, on: :member
+      get :new_man, on: :collection
+      get :new_woman, on: :collection
+      get :new_kid, on: :collection
+      get :new_baby, on: :collection
+
+      resources :products
     end
   end
 end
