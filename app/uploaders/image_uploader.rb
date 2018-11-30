@@ -19,7 +19,7 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   # ActionController::Base.helpers.asset_path("fallback/" + [version_name, "default.png"].compact.join('_'))
   #
   #   "/images/fallback/" + [version_name, "default.png"].compact.join('_')
-    "https://image.freepik.com/free-vector/white-and-black-tees_23-2147493611.jpg"
+    "https://farm5.staticflickr.com/4898/44303599520_a0d1cc5094_k.jpg"
   end
 
   # Process files as they are uploaded:
