@@ -19,7 +19,7 @@ class CategoriesController < ApplicationController
   def show
     @category = Category.find(params[:id])
     basic_set(@category.who)
-    @products = Product.where(category_id: @category).order(created_at: :desc)
+    @products = Item.where(category_id: @category).order(created_at: :desc)
   end
 
   private
