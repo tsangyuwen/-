@@ -6,12 +6,12 @@
   </div>
 
   <div class="mobile-none" style="">
-    <%= image_tag "step-1.png", style: "width: 90%; margin-left: 5%;"%>
+    <%= image_tag "step-1.png", style: "width: 90%; margin-left: 5%; margin-bottom: 15px"%>
   </div>
   
   <% if @items.empty? %>
 
-    <div style="height: 300px; display: flex; align-items: center; justify-content: center;">
+    <div style="height: 280px; display: flex; align-items: center; justify-content: center;">
       <%= image_tag "cart-null.png", style: "height: 40%;"%>
     </div>
 
@@ -33,16 +33,31 @@
           </button>
         <% end %>
 
-        <%= image_tag item.product.item.main_image, width: "70px", style: "margin-left: 15px; margin-bottom: 15px;" %>
-        <div style="margin-left: 110px; margin-top: -80px; margin-bottom: -80px;">
-          <%= item.product.item.name %>
-          <%= item.product.item.price %>
+        <%= image_tag item.product.item.main_image, width: "70px", style: "margin: 15px 15px;" %>
 
-          <div class="colorbox" style="background-color: #<%= item.product.color %>;"></div>
-          <%= item.product.size %>
+        <div style="margin-left: 110px; margin-top: -110px; margin-bottom: -80px;">
+          <div>
+              <%= item.product.item.name %><br><br>
+              尺寸&nbsp;&nbsp;<%= item.product.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顏色&nbsp;
+              <div class="colorbox" style="position: relative; top: -16px; left: 108px; background-color: #<%= item.product.color %>;"></div>
+              單價&nbsp;&nbsp;$<%= item.product.item.price %>
+          </div>
+
+          <div>
+            <input type='button' value='-' style="font-size:15px; color: #848378;" id='minus' class='qtyminus'/>
+            <input type='text' value=<%= item.quantity %> style='color:#59544f;' id='number' class='qty' />
+            <input type='button' value='+' style="color: #848378;" id='plus' class='qtyplus'/>
+          </div>
+          
+          <div style="margin-top: -50px; margin-left: 280px">
+              <p>$&nbsp;<%= item.product.item.price * item.quantity %></p>
+          </div>
+
+          
+          
           <%= item.product.stock %>
 
-          <%= item.quantity %>
+          
 
           <td class="cart-item-adjust">
             <%= link_to '+', adjust_item_product_path(item.product, type: "add"), method: :post, remote: true %>
