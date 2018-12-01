@@ -1,5 +1,39 @@
 <% tab "cart" %>
 
+<script>
+  var max = $(.qtyminus).attr('id')
+  var min = 1
+  $(function() {
+    $('.qtyplus').click(function(e) {
+      var currentVal = parseInt($("#number").val());
+      if (currentVal < max) {
+        $("#number").val(currentVal + 1);
+      } else {
+        $("#number").val(max);
+      }
+  });
+  
+  $(".qtyminus").click(function(e) {
+    var currentVal = parseInt($("#number").val());
+    if (currentVal > min) {
+      $("#number").val(currentVal - 1);
+    } else {
+      $("#number").val(min);
+    }
+  });
+
+  $( "#number" ).blur(function(e){
+    var currentVal = parseInt($("#number").val());
+    if (currentVal < min || isNaN(currentVal)) {
+      $("#number").val(min);
+    } else if(currentVal > max) {
+      $("#number").val(max);
+    }
+  });
+});
+
+</script>
+
 <div class="bg-box">
   <div class="only-mobile cart-banner">
     <span style="color: #ffffff;">購物車</span>
@@ -33,37 +67,36 @@
           </button>
         <% end %>
 
-        <%= image_tag item.product.item.main_image, width: "70px", style: "margin: 15px 15px;" %>
+        <%= image_tag item.product.item.main_image, width: "80px", style: "margin: 8px 15px;" %>
 
         <div style="margin-left: 110px; margin-top: -110px; margin-bottom: -80px;">
           <div>
               <%= item.product.item.name %><br><br>
-              尺寸&nbsp;&nbsp;<%= item.product.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顏色&nbsp;
-              <div class="colorbox" style="position: relative; top: -16px; left: 108px; background-color: #<%= item.product.color %>;"></div>
+              <div style="margin-top: 6px; margin-bottom: 6px">
+                尺寸&nbsp;&nbsp;<%= item.product.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顏色&nbsp;
+                <div class="colorbox" style="position: relative; top: -16px; left: 108px; background-color: #<%= item.product.color %>;"></div>
+              </div>
               單價&nbsp;&nbsp;$<%= item.product.item.price %>
           </div>
 
           <div>
-            <input type='button' value='-' style="font-size:15px; color: #848378;" id='minus' class='qtyminus'/>
+
+            <%= link_to adjust_item_product_path(item.product, type: "substract"), method: :post, remote: true do %>
+              <input id=<%= item.product.stock %> type='button' value='-' style="font-size:15px; color: #848378;" id='minus' class='qtyminus'/>
+            <% end %>
+
             <input type='text' value=<%= item.quantity %> style='color:#59544f;' id='number' class='qty' />
-            <input type='button' value='+' style="color: #848378;" id='plus' class='qtyplus'/>
+
+            <%= link_to  adjust_item_product_path(item.product, type: "add"), method: :post, remote: true  do %>
+              <input type='button' value='+' style="color: #848378;" id='plus' class='qtyplus'/>
+            <% end %>
+
           </div>
           
-          <div style="margin-top: -50px; margin-left: 280px">
-              <p>$&nbsp;<%= item.product.item.price * item.quantity %></p>
+          <div style="margin-top: -75px; margin-left: 300px">
+            <p>$&nbsp;<%= item.product.item.price * item.quantity %></p>
           </div>
 
-          
-          
-          <%= item.product.stock %>
-
-          
-
-          <td class="cart-item-adjust">
-            <%= link_to '+', adjust_item_product_path(item.product, type: "add"), method: :post, remote: true %>
-            <span class="cart-<%= item.product.id %>-qty" ><%= item.quantity %></span>
-            <%= link_to '-', adjust_item_product_path(item.product, type: "substract"), method: :post, remote: true %>
-          </td>
         </div>
 
       </div>

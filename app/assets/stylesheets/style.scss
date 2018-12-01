@@ -261,6 +261,7 @@ hr {
 }
 
 .colorbox {
+  border: 0.1px solid rgb(85, 85, 85);
   width: 14px;
   height: 14px;
 }
@@ -268,8 +269,8 @@ hr {
 /* cart */
 .cart-banner {
   margin-top: -55px; 
-  margin-left: -19px;
-  margin-right: -19px;
+  margin-left: -6.3%;
+  margin-right: -6.3%;
   background: #5f0ac7;
   text-align: center; 
   height: 35px;
@@ -278,8 +279,8 @@ hr {
 
 .qtyminus { 
   position: relative;
-  top: -72px;
-  left: 304px;
+  top: -55px;
+  left: 170px;
   width: 20px;
   height: 20px;
   line-height: 12px;
@@ -289,8 +290,8 @@ hr {
 
 .qty {
   position: relative;
-  top: -72px;
-  left: 300px;
+  top: -55px;
+  left: 167px;
   width: 35px;
   height: 20px;
   text-align: center;
@@ -302,13 +303,18 @@ hr {
 
 .qtyplus {
   position: relative;
-  top: -72px;
-  left: 296px;
+  top: -55px;
+  left: 163px;
   width: 20px;
   height: 20px;
   line-height: 12px;
   border: 1px solid #c1c0bc;
   background: #ffffff;
+}
+
+.close {
+  opacity: 0.6;
+  font-weight: normal;
 }
 
 @media screen and (min-width: 790px){
