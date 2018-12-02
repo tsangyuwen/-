@@ -10,37 +10,37 @@
   </div>
   
   <div style="margin: 10px 30px;">
-    <div style="margin-left: 40px; margin-right: 40px">
+    <div style="margin-left: 30px; margin-right: 30px">
       <%= form_for @order do |f| %>
 
         <div class="field" style="margin-bottom: 20px;">
           信箱
-          <span style="margin-left: 40px"><%= @user.email%></span>  
+          <span style="margin-left: 30px"><%= @user.email%></span>  
         </div>
 
         <div class="field" style="margin-bottom: 20px;">
           <span style="color: red; margin-left: -8px">*</span>
           聯絡人
-          <%= f.text_field :name, style: "margin-left:24px", class: "form-style"%>
+          <%= f.text_field :name, style: "margin-left:14px; width: 35%", class: "form-style"%>
         </div>
 
-        <div class="field" style="margin-bottom: 20px; float: left">
+        <div class="field" style="margin-bottom: 20px; float: left; margin-right: 20px">
           市話
-          <%= f.text_field :telephone, style: "margin-left:40px; width: 25px", class: "form-style" %>&nbsp;-&nbsp;
+          <%= f.text_field :telephone, style: "margin-left:30px; width: 25px", class: "form-style" %>&nbsp;-&nbsp;
           <%= f.text_field :telephone, style: "width: 50px", class: "form-style" %>&nbsp;-&nbsp;
-          <%= f.text_field :telephone, style: "width: 30px; margin-right: 10px", class: "form-style" %>
+          <%= f.text_field :telephone, style: "width: 30px;", class: "form-style" %>
         </div>
 
-        <div class="field" style="margin-bottom: 20px; margin-left: 10px">
+        <div class="field" style="margin-bottom: 20px;">
           <span style="color: red; margin-left: -8px">*</span>
           手機
-          <%= f.text_field :phone, style: "margin-left:40px; width: 30%", class: "form-style" %>
+          <%= f.text_field :phone, style: "margin-left:30px; width: 34%", class: "form-style" %>
         </div>
 
         <div class="field" style="margin-bottom: 20px;">
           <span style="color: red; margin-left: -8px">*</span>
           地址
-          <div id="twzipcode"></div>
+          <div id="twzipcode", class: "form-style" style="margin-left: -10px;float: right"></div>
           <script type="text/javascript">
             $('#twzipcode').twzipcode({
                 'css': ['county', 'district', 'zipcode']
@@ -48,17 +48,19 @@
             var target = $('#twzipcode').get();
             var result = $(target).twzipcode('data');
           </script>
-          <%= f.text_field :address, style: "margin-left:40px", class: "form-style" %>
+          <%= f.text_field :address, placeholder: "請輸入地址",style: "width: 100%;margin-left:30px; margin-left: -5px", class: "form-style" %>
         </div>
 
         <div class="field" style="margin-bottom: 20px;">
           統一編號
-          <%= f.text_field :tax_id, style: "margin-left:40px", class: "form-style" %>
+          <%= f.text_field :tax_id, style: "margin-left:30px, width: 35%", class: "form-style" %>
         </div>
       </div>
 
+      <hr style="margin-top: 40px;">
+
       <div class="clearfix">
-        <div style="position: relative; margin-top: 20px; margin-right: -30px; float: right;">
+        <div style="position: relative; margin-top: 10px; float: right;">
 
           <span>共&nbsp;<%= @items.pluck(:quantity).inject(:+) %>&nbsp;件商品</span> &nbsp;&nbsp;&nbsp;&nbsp;
           <span>商品金額&nbsp;&nbsp;&nbsp;&nbsp;$ <%= @order.amount %></span>  
@@ -66,7 +68,7 @@
         </div>
       </div>
 
-      <div class="clearfix" style="margin-top: 60px;margin-left: -30px; margin-right: -30px; margin-bottom: 10px">
+      <div class="clearfix" style="margin-top: 60px;margin-left: -30px; margin-bottom: 10px">
 
         <%= link_to cart_path do %>
           <button class="cart-button" style="float: left">←&nbsp;上一步</button>

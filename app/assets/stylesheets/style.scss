@@ -186,7 +186,27 @@ footer {
   border-top: none;
 }
 
-.form-style:focus {
+.zipcode {
+  height: 30px;
+  width: 35%;
+  outline: none;
+  padding: 0 10px;
+  color: #59544f;
+  font-size: 13px;
+  -webkit-transition: all 0.1s linear;
+  -moz-transition: all 0.1s linear;
+  transition: all 0.1s linear;
+  border-right: none;
+  border-left: none;
+  border-top: none;
+  margin-left: 20px;
+}
+
+.district {
+  margin-left: 20px;
+}
+
+.form-style:focus, .zipcode:focus {
   border-color: #358efb;
 }
 
