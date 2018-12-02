@@ -50,6 +50,7 @@ gem 'gon'
 gem 'kaminari'
 
 gem 'ransack'
+gem 'tw_zipcode'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'

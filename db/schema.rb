@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181201170528) do
+ActiveRecord::Schema.define(version: 20181202145432) do
 
   create_table "cart_items", force: :cascade do |t|
     t.integer "cart_id", null: false
@@ -67,6 +67,7 @@ ActiveRecord::Schema.define(version: 20181201170528) do
     t.datetime "updated_at", null: false
     t.string "telephone"
     t.string "payment_select"
+    t.string "tax_id"
   end
 
   create_table "payments", force: :cascade do |t|

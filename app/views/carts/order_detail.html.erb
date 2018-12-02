@@ -9,32 +9,76 @@
     <%= image_tag "step-2.png", style: "width: 90%; margin-left: 5%; margin-bottom: 30px"%>
   </div>
   
-  <div>
-    <%= form_for @order do |f| %>
-      <div class="form-group">
-        信箱
-        <%= @user.email%>
+  <div style="margin: 10px 30px;">
+    <div style="margin-left: 40px; margin-right: 40px">
+      <%= form_for @order do |f| %>
+
+        <div class="field" style="margin-bottom: 20px;">
+          信箱
+          <span style="margin-left: 40px"><%= @user.email%></span>  
+        </div>
+
+        <div class="field" style="margin-bottom: 20px;">
+          <span style="color: red; margin-left: -8px">*</span>
+          聯絡人
+          <%= f.text_field :name, style: "margin-left:24px", class: "form-style"%>
+        </div>
+
+        <div class="field" style="margin-bottom: 20px; float: left">
+          市話
+          <%= f.text_field :telephone, style: "margin-left:40px; width: 25px", class: "form-style" %>&nbsp;-&nbsp;
+          <%= f.text_field :telephone, style: "width: 50px", class: "form-style" %>&nbsp;-&nbsp;
+          <%= f.text_field :telephone, style: "width: 30px; margin-right: 10px", class: "form-style" %>
+        </div>
+
+        <div class="field" style="margin-bottom: 20px; margin-left: 10px">
+          <span style="color: red; margin-left: -8px">*</span>
+          手機
+          <%= f.text_field :phone, style: "margin-left:40px; width: 30%", class: "form-style" %>
+        </div>
+
+        <div class="field" style="margin-bottom: 20px;">
+          <span style="color: red; margin-left: -8px">*</span>
+          地址
+          <div id="twzipcode"></div>
+          <script type="text/javascript">
+            $('#twzipcode').twzipcode({
+                'css': ['county', 'district', 'zipcode']
+            });
+            var target = $('#twzipcode').get();
+            var result = $(target).twzipcode('data');
+          </script>
+          <%= f.text_field :address, style: "margin-left:40px", class: "form-style" %>
+        </div>
+
+        <div class="field" style="margin-bottom: 20px;">
+          統一編號
+          <%= f.text_field :tax_id, style: "margin-left:40px", class: "form-style" %>
+        </div>
       </div>
 
-      <div class="form-group">
-        聯絡人
-        <%= f.text_field :name %>
+      <div class="clearfix">
+        <div style="position: relative; margin-top: 20px; margin-right: -30px; float: right;">
+
+          <span>共&nbsp;<%= @items.pluck(:quantity).inject(:+) %>&nbsp;件商品</span> &nbsp;&nbsp;&nbsp;&nbsp;
+          <span>商品金額&nbsp;&nbsp;&nbsp;&nbsp;$ <%= @order.amount %></span>  
+
+        </div>
       </div>
 
-      <div class="form-group">
-        <%= f.label :phone %>
-        <%= f.text_field :phone %>
-      </div>
+      <div class="clearfix" style="margin-top: 60px;margin-left: -30px; margin-right: -30px; margin-bottom: 10px">
 
-      <div class="form-group">
-        <%= f.label :address %>
-        <%= f.text_field :address %>
+        <%= link_to cart_path do %>
+          <button class="cart-button" style="float: left">←&nbsp;上一步</button>
+        <% end %>
+        
+        <div style="float: right">
+          <%= f.submit "結帳", class: "order-submit"%>
+        </div>
+        
       </div>
-
-      <%= f.submit "CHECKOUT", class: "btn" %>
+      
     <% end %>
-  </div>
-
-  <%= @order.amount %>
+  </div> 
   
 </div>

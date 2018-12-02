@@ -331,6 +331,18 @@ a:hover {
   outline: none;
 }
 
+.order-submit {
+  border-style: solid; 
+  border-color: #9b3af6; 
+  color: #ffffff;
+  width:100px; 
+  height: 30px;
+  background-color: #9b3af6;
+  border-width: 1.2px;
+  text-transform: none;
+  outline: none;
+}
+
 @media screen and (min-width: 790px){
   #custom-search-input{
     display: none;
