@@ -1,43 +1,5 @@
 <% tab "cart" %>
 
-<script>
-  var min = 1
-
-  $(function() {
-    $('.qtyplus').click(function(e) {
-      var max = event.target.parentNode.parentNode.id;
-      alert(max)
-      var currentVal = parseInt($("#number").val());
-      if (currentVal < max) {
-        $("#number").val(currentVal + 1);
-      } else {
-        $("#number").val(max);
-      }
-    });
-  
-    $(".qtyminus").click(function(e) {
-      var max = event.target.parentNode.parentNode.id;
-      var currentVal = parseInt($("#number").val());
-      if (currentVal > min) {
-        $("#number").val(currentVal - 1);
-      } else {
-        $("#number").val(min);
-      }
-    });
-
-    $( "#number" ).blur(function(e){
-      var max = event.target.parentNode.parentNode.id;
-      var currentVal = parseInt($("#number").val());
-      if (currentVal < min || isNaN(currentVal)) {
-        $("#number").val(min);
-      } else if(currentVal > max) {
-        $("#number").val(max);
-      }
-    });
-
-  });
-</script>
-
 <div class="bg-box">
   <div class="only-mobile cart-banner">
     <span style="color: #ffffff;">購物車</span>
@@ -86,20 +48,12 @@
           </div>
 
           <div id=<%= item.product.stock %> >
-
-            <%= link_to adjust_item_product_path(item.product, type: "substract"), method: :post, remote: true do %>
-              <input type='button' value='-' style="font-size:15px; color: #848378;" id='minus' class='qtyminus'/>
-            <% end %>
-
-            <input type='text' value=<%= item.quantity %> style='color:#59544f;' id='number' class='qty' />
-
-            <%= link_to  adjust_item_product_path(item.product, type: "add"), method: :post, remote: true  do %>
-              <input type='button' value='+' style="color: #848378;" id='plus' class='qtyplus'/>
-            <% end %>
+            
+            <span class="qty" style="color:#59544f">數量: <%= item.quantity %> </span>
 
           </div>
           
-          <div style="margin-top: -75px; margin-left: 300px">
+          <div style="margin-top: -155px; margin-left: 280px">
             <p>$&nbsp;<%= item.product.item.price * item.quantity %></p>
           </div>
 
