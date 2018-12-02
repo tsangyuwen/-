@@ -38,8 +38,8 @@ class ProductsController < ApplicationController
   end
 
   def landing
-    gon.title = Scrape.pluck(:title)
-    gon.size = Scrape.pluck(:size)
+    gon.title = Scrape.last(22).pluck(:title)
+    gon.size = Scrape.last(22).pluck(:size)
   end
 
   def search
