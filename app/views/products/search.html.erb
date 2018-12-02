@@ -1,1 +1,39 @@
-<%= @products %>
+<div class="bg-box">
+  <div>
+
+    <%= link_to request.referer.present? ? request.referer : default_pat do %>
+      <button class="cart-button" style="margin-left: 420px">回到上一頁</button>
+    <% end %>
+
+  </div>
+  
+  <% @products.each do |item| %>
+    <%= link_to product_path(item) do %>
+      <div style="margin: 10px 30px; border: 0.1px solid; border-color: #c1c0bc; line-height: 18px; height: 122px;color: black">
+
+        <%= image_tag item.main_image, width: "80px", style: "margin: 8px 15px;" %>
+
+        <div style="margin-left: 110px; margin-top: -110px; margin-bottom: -80px;">
+          <div>
+              <%= item.name %><br><br>
+
+              單價&nbsp;&nbsp;$<%= item.price %><br><br>
+
+              <%= item.intro %>
+          </div>
+
+        </div>
+
+      </div>
+    <% end %>
+  <% end %>
+
+  <div style="margin-top: 60px;">
+
+    <%= link_to request.referer.present? ? request.referer : default_pat do %>
+      <button class="cart-button" style="margin-left: 420px">回到上一頁</button>
+    <% end %>
+
+  </div>
+
+</div>

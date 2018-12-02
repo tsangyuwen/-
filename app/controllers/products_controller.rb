@@ -43,16 +43,17 @@ class ProductsController < ApplicationController
   end
 
   def search
+    puts @query_string
     if @query_string.present?
-     @products = Item.where("name like ?", "%#{@query_string}%")
+     @products = Item.ransack(name_cont_any: [@query_string]).result
     end
-    puts @products
+    puts @query_string
   end
 
   protected
 
   def validate_search_key
-    @query_string = params[:q].gsub(/\\|\/|\/|\?/, "") if params[:q].present?
+    @query_string = params[:search].gsub(/\\|\'|\/|\?/, "") if params[:search].present?
   end
 
 end
