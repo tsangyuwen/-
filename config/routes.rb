@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   root "products#landing"
   resources :products, only: [:index, :show] do
+    get :search, on: :collection
     post :add_to_cart, on: :member
     post :remove_from_cart, on: :member
     post :adjust_item, on: :member
@@ -17,7 +18,9 @@ Rails.application.routes.draw do
     post :confirm, on: :collection
   end
 
-  resource :cart
+  resource :cart do
+    get :order_detail, on: :collection
+  end
 
   post 'spgateway/return'
   post 'spgateway/notify'

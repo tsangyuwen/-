@@ -1,4 +1,5 @@
 class ProductsController < ApplicationController
+  before_action :validate_search_key, only: :search
 
   def add_to_cart
     @product = Product.find(params[:id])
@@ -37,37 +38,21 @@ class ProductsController < ApplicationController
   end
 
   def landing
-    client = Selenium::WebDriver::Remote::Http::Default.new
-    client.read_timeout = 120 # seconds
+    gon.title = Scrape.pluck(:title)
+    gon.size = Scrape.pluck(:size)
+  end
 
-    browser = Watir::Browser.start 'https://trends.google.com.tw/trends/trendingsearches/daily?geo=TW', :chrome, headless: true, http_client: client
+  def search
+    if @query_string.present?
+     @products = Item.where("name like ?", "%#{@query_string}%")
+    end
+    puts @products
+  end
 
-    g_text = browser.text.split("\n")
+  protected
 
-    i = 10
-    @g_data = []
-    while i < g_text.length-20
-      if g_text[i][0..4].to_i > 2000
-        i = i + 2
-      elsif g_text[i].to_i == 1
-        i = i + 1
-      else
-        @g_data << g_text[i]
-        @g_data << g_text[i + 3]
-        i = i + 8
-      end
-    end 
-
-    browser.goto 'https://tw.yahoo.com/'
-
-    y_text = browser.text[0..500].split("\n")
-    @y_data = []
-    @y_data << y_text[5..12]
-
-    browser.close
-
-    gon.g_data = @g_data
-    gon.y_data = @y_data.first
+  def validate_search_key
+    @query_string = params[:q].gsub(/\\|\/|\/|\?/, "") if params[:q].present?
   end
 
 end

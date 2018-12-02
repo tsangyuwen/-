@@ -51,4 +51,49 @@ namespace :dev do
     puts "have created fake item"
     puts "now you have #{Item.count} items"
   end
+
+  task fake_top_title: :environment do
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 120 # seconds
+
+    browser = Watir::Browser.start 'https://trends.google.com.tw/trends/trendingsearches/daily?geo=TW', :chrome, headless: true, http_client: client
+
+    g_text = browser.text.split("\n")
+
+    i = 10
+    while i < g_text.length-20
+      if g_text[i][0..4].to_i > 2000
+        i = i + 2
+      elsif g_text[i].to_i == 1
+        i = i + 1
+      else
+        scrape = Scrape.new
+        scrape.title = g_text[i]
+        scrape.which = "top"
+        if g_text[i + 3].to_i > 500
+          scrape.size = g_text[i + 3].to_i / 150 + 10
+        else
+          scrape.size = g_text[i + 3].to_i * 2 + 60
+        end
+        scrape.save!
+        i = i + 8
+      end
+    end 
+
+    browser.goto 'https://tw.yahoo.com/'
+
+    y_text = browser.text[0..500].split("\n")
+    
+    i = 0
+    y_text[5..12].each do |y|
+      Scrape.create!(title: y,
+        size: 40 - i * 3,
+        which: "top"
+        )
+      i += 1
+    end
+
+    browser.close
+  end
+
 end

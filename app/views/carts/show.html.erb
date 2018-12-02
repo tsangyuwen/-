@@ -1,37 +1,41 @@
 <% tab "cart" %>
 
 <script>
-  var max = $(.qtyminus).attr('id')
   var min = 1
+
   $(function() {
     $('.qtyplus').click(function(e) {
+      var max = event.target.parentNode.parentNode.id;
+      alert(max)
       var currentVal = parseInt($("#number").val());
       if (currentVal < max) {
         $("#number").val(currentVal + 1);
       } else {
         $("#number").val(max);
       }
-  });
+    });
   
-  $(".qtyminus").click(function(e) {
-    var currentVal = parseInt($("#number").val());
-    if (currentVal > min) {
-      $("#number").val(currentVal - 1);
-    } else {
-      $("#number").val(min);
-    }
-  });
+    $(".qtyminus").click(function(e) {
+      var max = event.target.parentNode.parentNode.id;
+      var currentVal = parseInt($("#number").val());
+      if (currentVal > min) {
+        $("#number").val(currentVal - 1);
+      } else {
+        $("#number").val(min);
+      }
+    });
 
-  $( "#number" ).blur(function(e){
-    var currentVal = parseInt($("#number").val());
-    if (currentVal < min || isNaN(currentVal)) {
-      $("#number").val(min);
-    } else if(currentVal > max) {
-      $("#number").val(max);
-    }
-  });
-});
+    $( "#number" ).blur(function(e){
+      var max = event.target.parentNode.parentNode.id;
+      var currentVal = parseInt($("#number").val());
+      if (currentVal < min || isNaN(currentVal)) {
+        $("#number").val(min);
+      } else if(currentVal > max) {
+        $("#number").val(max);
+      }
+    });
 
+  });
 </script>
 
 <div class="bg-box">
@@ -57,7 +61,7 @@
     </div>
 
   <% else %>
-
+    <% total = 0 %>
     <% @items.each do |item| %>
       <div style="margin: 10px 30px; border: 0.1px solid; border-color: #c1c0bc; line-height: 18px; height: 122px;">
 
@@ -72,17 +76,19 @@
         <div style="margin-left: 110px; margin-top: -110px; margin-bottom: -80px;">
           <div>
               <%= item.product.item.name %><br><br>
+
               <div style="margin-top: 6px; margin-bottom: 6px">
                 尺寸&nbsp;&nbsp;<%= item.product.size %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;顏色&nbsp;
                 <div class="colorbox" style="position: relative; top: -16px; left: 108px; background-color: #<%= item.product.color %>;"></div>
               </div>
+
               單價&nbsp;&nbsp;$<%= item.product.item.price %>
           </div>
 
-          <div>
+          <div id=<%= item.product.stock %> >
 
             <%= link_to adjust_item_product_path(item.product, type: "substract"), method: :post, remote: true do %>
-              <input id=<%= item.product.stock %> type='button' value='-' style="font-size:15px; color: #848378;" id='minus' class='qtyminus'/>
+              <input type='button' value='-' style="font-size:15px; color: #848378;" id='minus' class='qtyminus'/>
             <% end %>
 
             <input type='text' value=<%= item.quantity %> style='color:#59544f;' id='number' class='qty' />
@@ -100,30 +106,30 @@
         </div>
 
       </div>
+      <% total = total + item.product.item.price * item.quantity %>
     <% end %>
+    
+    <div class="clearfix" style="margin-top: 20px">
+      <div style="position: absolute; margin-top: 5px; left: 47%;">
+
+        <span>共&nbsp;<%= @items.pluck(:quantity).inject(:+) %>&nbsp;件商品</span> &nbsp;&nbsp;&nbsp;&nbsp;
+        <span>商品金額&nbsp;&nbsp;&nbsp;&nbsp;$ <%= total %></span>  
+
+      </div>
+    </div>
+  
+    <div style="margin-top: 60px;">
+
+      <%= link_to root_path do %>
+        <button class="cart-button" style="">←&nbsp;繼續購物</button>
+      <% end %>
+
+      <%= link_to order_detail_cart_path do %>
+        <button class="cart-button" style="margin-left: 280px; background-color: #9b3af6; color: #ffffff">結帳</button>
+      <% end %>
+
+    </div>
 
   <% end %>
 </div>
   
-<% if false %>
-<%= form_for @order do |f| %>
-  <section class="panel">
-    <h2>Shpping Information</h2>
-    <div class="form-group">
-      <%= f.label :name %>
-      <%= f.text_field :name %>
-    </div>
-    <div class="form-group">
-      <%= f.label :phone %>
-      <%= f.text_field :phone %>
-    </div>
-    <div class="form-group">
-      <%= f.label :address %>
-      <%= f.text_field :address %>
-    </div>
-  </section>
-
-  <%= f.submit "CHECKOUT", class: "btn" %>
-<% end %>
-
-<% end %>

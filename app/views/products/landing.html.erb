@@ -159,25 +159,32 @@
 
   var words = [{text: '', weight: 0}]
 
-  
-  <% 0.step(@g_data.length-1, 2) do |g| %>
-    <% if @g_data[g+1].to_i > 500 %>
-      words.push({ text: gon.g_data[i], weight: <%= @g_data[g+1].to_i / 150 + 10 %>})
-      i += 2
-    <% else %>
-      words.push({ text: gon.g_data[i], weight: <%= @g_data[g+1].to_i * 2 + 60 %> })
-      i += 2
-    <% end %>
-  <% end %>
-
-  i = 0
-  while(i < gon.y_data.length-1){
-    words.push({ text: gon.y_data[i], weight: 40 - i * 3})
+  while(i < gon.title.length-1){
+    if(gon.size[i] > 50){
+      words.push({ text: gon.title[i], weight: gon.size[i] - i * 3})
+    }else{
+      words.push({ text: gon.title[i], weight: gon.size[i]})
+    }
     i += 1
   }
   
-
   $("#example").jQCloud(words);
   $("#example").css("font-family", "微軟正黑體");
 
 </script>
+
+<style type="text/css">
+
+.w4 {
+  color: yellow !important;
+}
+
+.w10 {
+  color: red !important;
+}
+
+.w9 {
+  color: orange !important;
+}
+
+</style>

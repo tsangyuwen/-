@@ -1,0 +1,38 @@
+<% tab "cart" %>
+
+<div class="bg-box">
+  <div class="only-mobile cart-banner">
+    <span style="color: #ffffff;">付款方式</span>
+  </div>
+
+  <div class="mobile-none" style="">
+    <%= image_tag "step-2.png", style: "width: 90%; margin-left: 5%; margin-bottom: 30px"%>
+  </div>
+  
+  <div>
+    <%= form_for @order do |f| %>
+      <div class="form-group">
+        信箱
+        <%= @user.email%>
+      </div>
+
+      <div class="form-group">
+        聯絡人
+        <%= f.text_field :name %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :phone %>
+        <%= f.text_field :phone %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address %>
+        <%= f.text_field :address %>
+      </div>
+
+      <%= f.submit "CHECKOUT", class: "btn" %>
+    <% end %>
+  </div>
+  
+</div>
