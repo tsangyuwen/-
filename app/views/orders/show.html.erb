@@ -39,7 +39,7 @@
 
     <div class="clearfix" style="margin-bottom: 20px;">
       <span style="padding-right: 5%;float:left;">發票</span>
-      <% if @order.tax_id.empty? %>
+      <% if @order.tax_id.empty? || @order.tax_id.nil? %>
         <span style="padding-right: 5%;float:left;width: 150px; margin-right: 15%">二聯式發票</span>
       <% else %>
         <span style="padding-right: 5%;float:left;width: 90px"><%= @order.tax_id %></span>
