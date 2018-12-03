@@ -19,7 +19,7 @@ class Order < ApplicationRecord
   def add_order_items(cart)
     cart.cart_items.each do |item|
       self.order_items.build(
-        product_id: item.product.item.id,
+        product_id: item.product.id,
         quantity: item.quantity,
         price: item.product.item.price
       )
