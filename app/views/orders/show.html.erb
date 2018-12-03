@@ -27,6 +27,26 @@
     </div>
 
     <div class="mobile-order" style="margin-bottom: 20px;">
+      <span style="padding-right: 6%;float:left;">訂單狀態</span>
+      <% if @order.payment_status == "not_paid" %>
+        <span style="padding-right: 5%;float:left;width: 150px"><%= link_to "去付款", checkout_spgateway_order_path(@order),target: :_blank, method: :post, class: "btn" %></span>
+      <% elsif order.shipping_status == "not_shipped" %>
+        <span style="padding-right: 5%;float:left;width: 150px">出貨中</span>
+      <% else %>
+        <span style="padding-right: 5%;float:left;width: 150px; margin-right: 15%"><%= @order.shipping_status %></span>
+      <% end %>
+    </div>
+
+    <div class="clearfix" style="margin-bottom: 20px;">
+      <span style="padding-right: 5%;float:left;">發票</span>
+      <% if @order.tax_id.empty? %>
+        <span style="padding-right: 5%;float:left;width: 150px; margin-right: 15%">二聯式發票</span>
+      <% else %>
+        <span style="padding-right: 5%;float:left;width: 90px"><%= @order.tax_id %></span>
+      <% end %>
+    </div>
+
+    <div class="mobile-order" style="margin-bottom: 20px;">
       <span style="padding-right: 5%;float:left;">收件人地址</span>
       <span style="padding-right: 5%;float:left;width: 150px; margin-right: 15%"><%= @order.address %></span>
     </div>

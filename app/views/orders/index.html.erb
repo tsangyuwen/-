@@ -27,7 +27,7 @@
           <td><%= order.created_at.strftime("%Y/%m/%d") %></td>
 
           <% if order.payment_status == "not_paid" %>
-            <td>待付款</td>
+            <td><%= link_to "去付款", checkout_spgateway_order_path(order),target: :_blank, method: :post, class: "btn" %></td>
           <% elsif order.shipping_status == "not_shipped" %>
             <td>出貨中</td>
           <% else %>
