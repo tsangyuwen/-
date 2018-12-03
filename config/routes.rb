@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     post :remove_from_cart, on: :member
     post :adjust_item, on: :member
     get :landing, on: :collection
+    get :welcome, on: :collection
   end
 
   resource :users, only: :show do

@@ -1,0 +1,33 @@
+<style>
+  body, html {
+    height: 100%;
+    margin: 0;
+  }
+  .bg {
+    /* Full height */
+    height: 100%; 
+    width: 100%;
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  svg {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<body>
+    <div class="bg">
+        <%= render partial: "shared/firstimage" %>
+    </div>
+    <div style="background-color: white">
+        <br><br>
+    </div>
+    <br>
+    <div style="background-color: white">
+        <%= render partial: "shared/welcomeimage" %>
+    </div>
+</body>

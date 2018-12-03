@@ -1,5 +1,10 @@
 class ProductsController < ApplicationController
   before_action :validate_search_key, only: :search
+  before_action :authenticate_user!, except: :welcome
+
+  def welcome
+
+  end
 
   def add_to_cart
     @product = Product.find(params[:id])
