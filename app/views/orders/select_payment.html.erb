@@ -1,0 +1,69 @@
+<% tab "cart" %>
+
+<script type="text/javascript">
+  $(function(){
+    $(".radio input:radio").click(function () {
+      event.preventDefault();
+      $.ajax({
+        url: '/orders/create_order',
+        method: 'GET',
+        dataType: "text",
+        data:{
+          select: $('input:radio:checked[name="payment"]').val()
+        }
+      });
+    });
+  })
+  
+</script>
+
+<div class="bg-box">
+  <div class="only-mobile cart-banner">
+    <span style="color: #ffffff;">付款方式</span>
+  </div>
+
+  <div class="mobile-none" style="">
+    <%= image_tag "step-3.png", style: "width: 90%; margin-left: 5%; margin-bottom: 30px"%>
+  </div>
+  
+  <div style="margin: 10px 30px;">
+    <div class="clearfix" style="margin: -10px -30px">
+      <label class="radio">  
+        <input type="radio" name="payment" value="ATM">&nbsp;&nbsp;&nbsp;ATM 轉帳<br>
+      </label>
+
+      <label class="card_radio radio">  
+        <input type="radio" name="payment" value="creditcard">&nbsp;&nbsp;&nbsp;信用卡付款<br>
+      </label>
+      
+      <label class="webatm_radio radio">  
+        <input type="radio" name="payment" value="Web_ATM">&nbsp;&nbsp;&nbsp;網路ATM轉帳<br>
+      </label>
+    </div>
+
+    <hr style="margin-top: 40px;">
+
+    <div class="clearfix">
+      <div style="position: relative; margin-top: 10px; float: right;">
+
+        <span>共&nbsp;<%= @items.pluck(:quantity).inject(:+) %>&nbsp;件商品</span> &nbsp;&nbsp;&nbsp;&nbsp;
+        <span>商品金額&nbsp;&nbsp;&nbsp;&nbsp;$ <%= @total %></span>  
+
+      </div>
+    </div>
+
+    <div class="clearfix" style="margin-top: 60px;margin-left: -30px; margin-bottom: 10px">
+
+      <%= link_to order_detail_cart_path do %>
+        <button class="cart-button" style="float: left">←&nbsp;上一步</button>
+      <% end %>
+
+      <%= link_to order_path(@order.id) do %>
+        <button id="create" class="order-submit" style="float:right;">成立訂單</button>
+      <% end %>
+      
+    </div>
+
+  </div> 
+  
+</div>

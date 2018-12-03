@@ -19,14 +19,10 @@ class Order < ApplicationRecord
   def add_order_items(cart)
     cart.cart_items.each do |item|
       self.order_items.build(
-        product_id: item.product.id,
+        product_id: item.product.item.id,
         quantity: item.quantity,
-        price: item.product.price
+        price: item.product.item.price
       )
     end
-  end
-
-  def subtotal
-    order_items.map{ |x| x.item_total }.sum
   end
 end

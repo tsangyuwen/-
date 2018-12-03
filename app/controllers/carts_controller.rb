@@ -9,11 +9,10 @@ class CartsController < ApplicationController
     @user = current_user
     @order = Order.new
     @items = current_cart.cart_items
-    total = 0
+    @total = 0
     @items.each do |i|
-      total = total + i.quantity * i.product.item.price
+      @total = @total + i.quantity * i.product.item.price
     end
-    @order.amount = total
   end
 
 end

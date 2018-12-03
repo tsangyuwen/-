@@ -27,6 +27,8 @@ Rails.application.routes.draw do
 
   resources :orders do 
     post :checkout_spgateway, on: :member
+    get :select_payment, on: :collection
+    get :create_order, on: :collection
   end
 
   resources :categories, only: :show do

@@ -10,7 +10,7 @@
   </div>
   
   <div style="margin: 10px 30px;">
-    <div style="margin-left: 30px; margin-right: 30px">
+    <div style="margin-left: 20px; margin-right: 20px">
       <%= form_for @order do |f| %>
 
         <div class="field" style="margin-bottom: 20px;">
@@ -24,17 +24,17 @@
           <%= f.text_field :name, style: "margin-left:14px; width: 35%", class: "form-style"%>
         </div>
 
-        <div class="field" style="margin-bottom: 20px; float: left; margin-right: 20px">
+        <div class="field" style="margin-bottom: 20px; float: left; margin-right: 15px">
           市話
-          <%= f.text_field :telephone, style: "margin-left:30px; width: 25px", class: "form-style" %>&nbsp;-&nbsp;
-          <%= f.text_field :telephone, style: "width: 50px", class: "form-style" %>&nbsp;-&nbsp;
-          <%= f.text_field :telephone, style: "width: 30px;", class: "form-style" %>
+          <%= f.text_field :telephone, style: "margin-left:25px; width: 35px", class: "form-style" %>-
+          <%= f.text_field :telephone_2, style: "width: 70px", class: "form-style" %>-
+          <%= f.text_field :telephone_3, style: "width: 50px;", class: "form-style" %>
         </div>
 
         <div class="field" style="margin-bottom: 20px;">
           <span style="color: red; margin-left: -8px">*</span>
           手機
-          <%= f.text_field :phone, style: "margin-left:30px; width: 34%", class: "form-style" %>
+          <%= f.text_field :phone, style: "margin-left:25px; width: 34%; margin-right: -20px", class: "form-style" %>
         </div>
 
         <div class="field" style="margin-bottom: 20px;">
@@ -53,7 +53,7 @@
 
         <div class="field" style="margin-bottom: 20px;">
           統一編號
-          <%= f.text_field :tax_id, style: "margin-left:30px, width: 35%", class: "form-style" %>
+          <%= f.text_field :tax_id, style: "margin-left:1px; width: 35%", class: "form-style" %>
         </div>
       </div>
 
@@ -63,7 +63,7 @@
         <div style="position: relative; margin-top: 10px; float: right;">
 
           <span>共&nbsp;<%= @items.pluck(:quantity).inject(:+) %>&nbsp;件商品</span> &nbsp;&nbsp;&nbsp;&nbsp;
-          <span>商品金額&nbsp;&nbsp;&nbsp;&nbsp;$ <%= @order.amount %></span>  
+          <span>商品金額&nbsp;&nbsp;&nbsp;&nbsp;$ <%= @total %></span>  
 
         </div>
       </div>
@@ -75,7 +75,7 @@
         <% end %>
         
         <div style="float: right">
-          <%= f.submit "結帳", class: "order-submit"%>
+          <%= f.submit "確認送出", class: "order-submit"%>
         </div>
         
       </div>

@@ -9,19 +9,44 @@ class OrdersController < ApplicationController
   end
 
   def create
+    @user = current_user
+    @items = current_cart.cart_items
+    total = 0
+    @items.each do |i|
+      total = total + i.quantity * i.product.item.price
+    end
+
     @order = current_user.orders.new(order_params)
+    @order.address = params[:zipcode] + params[:county] + params[:district] + order_params[:address]
+    @order.amount = total
     @order.sn = Time.now.to_i
     @order.add_order_items(current_cart)
-    @order.amount = current_cart.subtotal
 
     if @order.save
-      current_cart.destroy
-      session.delete(:new_order_data)
-      #UserMailer.notify_order_create(@order).devliver_now!
-      redirect_to orders_path, notice: "new order created"
+      redirect_to select_payment_orders_path
     else
-      @items = current_cart.cart_items
-      render "carts/show"
+      flash.now[:alert] = "資料尚未填寫完成，請檢查"
+      render :template => 'carts/order_detail'
+    end
+  end
+
+  def select_payment
+    @order = current_user.orders.last
+    @items = current_cart.cart_items
+    @total = 0
+    @items.each do |i|
+      @total = @total + i.quantity * i.product.item.price
+    end
+  end
+
+  def create_order
+    @order = current_user.orders.last
+    puts params[:select]
+    @order.payment_select = params[:select]
+    if @order.save
+      current_cart.destroy
+    else
+      flash.now[:alert] = "請選擇付款方式"
     end
   end
 
@@ -46,7 +71,7 @@ class OrdersController < ApplicationController
    private
 
   def order_params
-    params.require(:order).permit(:name, :phone, :address, :payment_method)
+    params.require(:order).permit(:address, :name, :phone, :telephone, :telephone_2, :telephone_3, :tax_id)
   end
 
 end
