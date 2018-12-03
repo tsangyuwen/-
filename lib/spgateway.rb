@@ -22,7 +22,10 @@ class Spgateway
       ReturnURL: return_url,
       NotifyURL: self.notify_url,
       Email: @payment.order.user.email,
-      LoginType: 0
+      LoginType: 0,
+      CREDIT: 0,
+      WEBATM: 0,
+      VACC: 0
     }
 
     trade_info = self.encrypt(spgateway_data)

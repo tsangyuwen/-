@@ -11,18 +11,19 @@ class OrdersController < ApplicationController
   def create
     @user = current_user
     @items = current_cart.cart_items
-    total = 0
+    @total = 0
     @items.each do |i|
-      total = total + i.quantity * i.product.item.price
+      @total = @total + i.quantity * i.product.item.price
     end
 
     @order = current_user.orders.new(order_params)
     @order.address = params[:zipcode] + params[:county] + params[:district] + order_params[:address]
-    @order.amount = total
+    @order.amount = @total
     @order.sn = Time.now.to_i
     @order.add_order_items(current_cart)
 
     if @order.save
+      current_cart.destroy
       redirect_to select_payment_orders_path
     else
       flash.now[:alert] = "資料尚未填寫完成，請檢查"
@@ -41,7 +42,6 @@ class OrdersController < ApplicationController
 
   def create_order
     @order = current_user.orders.last
-    puts params[:select]
     @order.payment_select = params[:select]
     if @order.save
       current_cart.destroy
