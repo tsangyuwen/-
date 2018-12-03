@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
 
     if @order.save
       current_cart.destroy
-      redirect_to select_payment_orders_path
+      redirect_to order_path(@order)
     else
       flash.now[:alert] = "資料尚未填寫完成，請檢查"
       render :template => 'carts/order_detail'
