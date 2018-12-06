@@ -2,6 +2,12 @@ Rails.application.routes.draw do
   devise_for :users, controllers: {sessions: "users/sessions", confirmations: "users/confirmations",omniauth_callbacks: "users/omniauth_callbacks", registrations: "users/registrations"}
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
+  devise_scope :user do 
+    unauthenticated do
+      root "products#welcome", as: :unauthenticated_root
+    end
+  end
+
   root "products#landing"
   resources :products, only: [:index, :show] do
     get :search, on: :collection
