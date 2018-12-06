@@ -9,6 +9,28 @@
     height: 100%;
     margin-top: -5px;
   }
+
+  .welcome-button {
+    text-align: center;
+    
+  }
+
+  .button {
+    margin-top: 5%;
+    margin-bottom: 8%;
+    color: white;
+    background-color: #5f0ac7;
+    font-size: 24px;
+    font-weight: bold;
+    width: 200px;
+    height: 55px;
+    outline: none;
+    text-transform: none;
+    border-radius: 30px;
+    border: none;
+    letter-spacing: 5px;
+  }
+
 </style>
 
 <body>
@@ -16,9 +38,14 @@
         <%= render partial: "shared/firstimage" %>
     </div>
     <div style="background-color: white; margin-top: -5px">
-        <br><br>
+        <br>
     </div>
-    <div style="background-color: white">
+    <div>
         <%= render partial: "shared/welcomeimage" %>
+    </div>
+    <div class="welcome-button">
+        <%= link_to new_user_registration_path do %>
+            <button class="button">立即註冊</button>
+        <% end %>
     </div>
 </body>
