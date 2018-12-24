@@ -2,7 +2,7 @@ class Ajion2596dhi::OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update]
   
   def index
-    @orders = Order.all
+    @orders = Order.all.order("id DESC")
   end
 
   def update
