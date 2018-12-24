@@ -6,7 +6,6 @@ class Ajion2596dhi::UsersController < ApplicationController
   end
 
   def update
-    puts user_params
     if @user.update(user_params)
       flash[:notice] = "success"
       redirect_to ajion2596dhi_users_path
@@ -14,6 +13,13 @@ class Ajion2596dhi::UsersController < ApplicationController
       flash.now[:alert] = "failed"
       render :edit
     end
+  end
+
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    redirect_to ajion2596dhi_user_path
+    flash[:alert] = "user was deleted"
   end
 
   private 
