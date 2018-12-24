@@ -68,8 +68,8 @@
             <td><%= item.size %>
             <td><%= item.stock %>
             <td>
-              <%= link_to "edit", edit_ajion2596dhi_item_product_path(item) %>
-              <%= link_to 'Delete', ajion2596dhi_item_product_path(item), method: :delete, data:{confirm: "Are you sure?"} %>
+              <%= link_to "edit", edit_ajion2596dhi_item_product_path(item.item, item) %>
+              <%= link_to 'Delete', ajion2596dhi_item_product_path(item.item, item), method: :delete, data:{confirm: "Are you sure?"} %>
             </td>
           </tr>
         <% end %>

@@ -5,22 +5,7 @@ class Ajion2596dhi::ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.item_id = item.id
     @product.save!
-    redirect_to ajion2596dhi_item_path(item)
-  end
-
-  def edit
-    @product = Product.find(params[:id])
-  end
-
-  def update
-    @product = Product.find(params[:id])
-    if @product.update(product_params)
-      flash[:notice] = "success"
-      redirect_to ajion2596dhi_item_path(@product.item)
-    else
-      flash.now[:alert] = "failed"
-      render :edit
-    end
+    redirect_to ajion2596dhi_item_path(item) 
   end
 
   def destroy
