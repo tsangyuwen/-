@@ -18,7 +18,7 @@ class Ajion2596dhi::UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to ajion2596dhi_user_path
+    redirect_to ajion2596dhi_users_path
     flash[:alert] = "user was deleted"
   end
 
