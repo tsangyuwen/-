@@ -24,7 +24,6 @@ Devise.setup do |config|
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
   # config.mailer = 'Devise::Mailer'
-  config.reconfirmable = true
   config.mailer_sender = 'eggplant@eggplant-sale.online'
 
   # Configure the class responsible to send e-mails.
@@ -148,7 +147,7 @@ Devise.setup do |config|
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  config.reconfirmable = false
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
