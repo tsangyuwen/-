@@ -52,6 +52,7 @@ Rails.application.routes.draw do
   namespace :ajion2596dhi do
     root "items#index"
     resources :users
+    resources :orders
     resources :items do
       get :edit_detail, on: :member
       get :new_man, on: :collection

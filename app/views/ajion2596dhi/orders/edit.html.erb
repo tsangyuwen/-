@@ -1,0 +1,62 @@
+<div class="container">
+  <div class="row">
+    <%= link_to "Back", ajion2596dhi_orders_path %>
+    <br>
+    <% if @order.errors.any? %>
+      <h4>We have some errors here!</h4>
+      <ul>
+        <% @uorder.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+        <% end %>
+      </ul>
+      <hr>
+    <% end %>
+
+
+    <%= form_for [:ajion2596dhi, @order] do |f| %>
+      <div class="form-group">
+        <%= f.label :shipping_status, "Shipping status" %>
+        enter not_paid | paid
+        <%= f.text_field :shipping_status, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :shipping_status, "Shipping status" %>
+        enter not_shipped | shipping code
+        <%= f.text_field :shipping_status, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :amount, "Amount" %>
+        <%= f.text_field :amount, class: "form-control" %>
+      </div>
+      
+      <div class="form-group">
+        <%= f.label :phone, "Phone" %>
+        <%= f.text_field :phone, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :address, "Address" %>
+        <%= f.text_field :address, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :tax_id, "Tax id" %>
+        <%= f.text_field :tax_id, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :telephone, "Telephone" %><br>
+        <%= f.text_field :telephone, style: "width: 18%", class: "form-style" %>-
+        <%= f.text_field :telephone_2, style: "width: 45%", class: "form-style" %>-
+        <%= f.text_field :telephone_3, style: "width: 25%;", class: "form-style" %>
+      </div>
+
+      <div class="form-group">
+        <%= f.submit class: "btn btn-primary"%>
+      </div>
+    <% end %>
+
+  </div>
+</div>
