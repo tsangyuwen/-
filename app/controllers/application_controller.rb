@@ -24,7 +24,6 @@ class ApplicationController < ActionController::Base
     end
 
     Cart.find_by(user_id: current_user)
-
   end
 
 end

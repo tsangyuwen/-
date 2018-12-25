@@ -49,7 +49,7 @@
 
           <div id=<%= item.product.stock %> >
             
-            <span class="qty" style="color:#59544f">數量: <%= item.quantity %> </span>
+            <span class="qty" style="color:#59544f">數量: <%= item.quantity %> </span> 
 
           </div>
           
@@ -91,6 +91,7 @@
   
   $(".close").click(function(){
     $(this).closest('div').hide();
+    window.location.reload(false);
   })
-
+  
 </script>
