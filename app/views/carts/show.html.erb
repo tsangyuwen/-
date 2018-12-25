@@ -101,33 +101,38 @@
   var min = 1
 
   $('.qtyplus').click(function(e) {
-    var currentVal = parseInt($(this).prev('input').val());
+    var currentVal = parseInt($(this).parent().prev('input').val());
     var max = parseInt($(this).closest('div').attr('id'));
     if (currentVal < max) {
-      $(this).prev('input').val(currentVal + 1);
-      $(this).closest('span').find('.item-total-price').text(parseInt($(this).closest('span').find('.item-price').text() * currentVal));
+      $(this).parent().prev('input').val(currentVal + 1);
+      $(this).parent().parent().next().children('.item-total-price').text(parseInt($(this).parent().parent().prev().children('.item-price').text())*(currentVal+1));
     } else {
-      $(this).prec('input').val(max);
+      $(this).parent().prev('input').val(max);
     }
   });
   
   $(".qtyminus").click(function(e) {
-    var currentVal = parseInt($(this).next('input').val());
+    var currentVal = parseInt($(this).parent().next('input').val());
     var max = parseInt($(this).closest('div').attr('id'));
     if (currentVal > min) {
-      $(this).next('input').val(currentVal - 1);
+      $(this).parent().next('input').val(currentVal - 1);
+      $(this).parent().parent().next().children('.item-total-price').text(parseInt($(this).parent().parent().prev().children('.item-price').text())*(currentVal-1));
     } else {
-      $(this).next('input').val(min);
+      $(this).parent().next('input').val(min);
     }
   });
 
   $("#number").blur(function(e){
-    var currentVal = parseInt($(this).closest('input').val());
+    var currentVal = parseInt($(this).parent().closest('input').val());
     var max = parseInt($(this).closest('div').attr('id'));
     if (currentVal < min || isNaN(currentVal)) {
-      $(this).closest('input').val(min);
+      $(this).val(min);
+      $(this).parent().next().children('.item-total-price').text(parseInt($(this).parent().prev().children('.item-price').text())*min);
     } else if(currentVal > max) {
-      $(this).closest('input').val(max);
+      $(this).val(max);
+      $(this).parent().next().children('.item-total-price').text(parseInt($(this).parent().prev().children('.item-price').text())*max);
+    } else {
+      $(this).parent().next().children('.item-total-price').text(parseInt($(this).parent().prev().children('.item-price').text())*currentVal);
     }
   });
   
