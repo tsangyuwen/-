@@ -35,7 +35,7 @@
 
         <%= image_tag item.product.item.main_image, width: "80px", style: "margin: 8px 15px;" %>
 
-        <div class="cart-item" style="margin-left: 110px; margin-top: -110px; margin-bottom: -80px;">
+        <div class="cart-item" id=<%= item.product.id %> style="margin-left: 110px; margin-top: -110px; margin-bottom: -80px;">
           <div>
               <%= item.product.item.name %><br><br>
 
@@ -112,7 +112,7 @@
   });
   
   $(".qtyminus").click(function(e) {
-    var currentVal = parseInt($(this).parent().next('input').val());
+    var currentVal = parseInt($(this).next('input').val());
     var max = parseInt($(this).closest('div').attr('id'));
     if (currentVal > min) {
       $(this).parent().next('input').val(currentVal - 1);
@@ -123,7 +123,7 @@
   });
 
   $("#number").blur(function(e){
-    var currentVal = parseInt($(this).parent().closest('input').val());
+    var currentVal = parseInt($(this).closest('input').val());
     var max = parseInt($(this).closest('div').attr('id'));
     if (currentVal < min || isNaN(currentVal)) {
       $(this).val(min);
@@ -134,10 +134,18 @@
     } else {
       $(this).parent().next().children('.item-total-price').text(parseInt($(this).parent().prev().children('.item-price').text())*currentVal);
     }
+    $.ajax({
+      url: '/products/' + $(this).parent().parent().attr('id') + '/adjust_item',
+      method: 'POST',
+      dataType: "text",
+      data:{
+        number: parseInt($(this).closest('input').val())
+      }
+    });
   });
   
   $(".close").click(function(){
-    if($('.cart-item:visible').length == 0){
+    if($('.cart-item:visible').length - 1 == 0){
       window.location.reload(false); 
     }
     $(this).closest('div').hide();

@@ -29,6 +29,8 @@ class ProductsController < ApplicationController
       end
     elsif params[:type] == "substract"
       cart_item.quantity -= 1
+    elsif !params[:number].nil?
+      cart_item.quantity = params[:number]
     end
 
     if cart_item.quantity == 0
