@@ -78,8 +78,8 @@
 
         <span>共&nbsp;</span>
         <span class="total-quantity"><%= @items.pluck(:quantity).inject(:+) %></span>
-        <span>&nbsp;件商品 &nbsp;&nbsp;&nbsp;&nbsp;商品金額&nbsp;&nbsp;&nbsp;&nbsp;</span>
-        <span class="total-price">$ <%= total %></span>  
+        <span>&nbsp;件商品 &nbsp;&nbsp;&nbsp;&nbsp;商品金額&nbsp;&nbsp;&nbsp;&nbsp;$ </span>
+        <span class="total-price"><%= total %></span>  
 
       </div>
     </div>
@@ -101,6 +101,8 @@
 
 <script type="text/javascript">
   var min = 1
+  var total_price = 0
+  var total_quantity = 0
 
   $('.qtyplus').click(function(e) {
     var currentVal = parseInt($(this).parent().prev('input').val());
@@ -111,6 +113,18 @@
     } else {
       $(this).parent().prev('input').val(max);
     }
+
+    total_price = 0
+    total_quantity = 0
+    $(".item-total-price:visible").each(function() {
+      total_price += parseInt($(this).text());
+    });
+    $(".qty:visible").each(function() {
+        total_quantity += parseInt($(this).val());
+    });
+
+    $('.total-price').text(total_price);
+    $('.total-quantity').text(total_quantity);
   });
   
   $(".qtyminus").click(function(e) {
@@ -122,9 +136,21 @@
     } else {
       $(this).parent().next('input').val(min);
     }
+
+    total_price = 0
+    total_quantity = 0
+    $(".item-total-price:visible").each(function() {
+      total_price += parseInt($(this).text());
+    });
+    $(".qty:visible").each(function() {
+        total_quantity += parseInt($(this).val());
+    });
+
+    $('.total-price').text(total_price);
+    $('.total-quantity').text(total_quantity);
   });
 
-  $("#number").blur(function(e){
+  $(".qty").blur(function(e){
     var currentVal = parseInt($(this).closest('input').val());
     var max = parseInt($(this).closest('div').attr('id'));
     if (currentVal < min || isNaN(currentVal)) {
@@ -136,6 +162,19 @@
     } else {
       $(this).parent().next().children('.item-total-price').text(parseInt($(this).parent().prev().children('.item-price').text())*currentVal);
     }
+
+    total_price = 0
+    total_quantity = 0
+    $(".item-total-price:visible").each(function() {
+      total_price += parseInt($(this).text());
+    });
+    $(".qty:visible").each(function() {
+        total_quantity += parseInt($(this).val());
+    });
+
+    $('.total-price').text(total_price);
+    $('.total-quantity').text(total_quantity);
+
     $.ajax({
       url: '/products/' + $(this).parent().parent().attr('id') + '/adjust_item',
       method: 'POST',
@@ -151,6 +190,18 @@
       window.location.reload(false); 
     }
     $(this).closest('div').hide();
+
+    total_price = 0
+    total_quantity = 0
+    $(".item-total-price:visible").each(function() {
+      total_price += parseInt($(this).text());
+    });
+    $(".qty:visible").each(function() {
+        total_quantity += parseInt($(this).val());
+    });
+
+    $('.total-price').text(total_price);
+    $('.total-quantity').text(total_quantity);
   })
   
 </script>
