@@ -35,7 +35,7 @@
 
         <%= image_tag item.product.item.main_image, width: "80px", style: "margin: 8px 15px;" %>
 
-        <div style="margin-left: 110px; margin-top: -110px; margin-bottom: -80px;">
+        <div class="cart-item" style="margin-left: 110px; margin-top: -110px; margin-bottom: -80px;">
           <div>
               <%= item.product.item.name %><br><br>
 
@@ -90,8 +90,10 @@
 <script type="text/javascript">
   
   $(".close").click(function(){
+    if($('.cart-item:visible').length == 0){
+      window.location.reload(false); 
+    }
     $(this).closest('div').hide();
-    window.location.reload(false);
   })
   
 </script>
