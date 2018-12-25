@@ -24,7 +24,9 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     cart_item = current_cart.cart_items.find_by(product_id: @product)
     if params[:type] == "add"
-      cart_item.quantity += 1
+      if cart_item.quantity < @product.stock.to_i
+        cart_item.quantity += 1
+      end
     elsif params[:type] == "substract"
       cart_item.quantity -= 1
     end

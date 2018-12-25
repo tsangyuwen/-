@@ -44,17 +44,27 @@
                 <div class="colorbox" style="position: relative; top: -16px; left: 108px; background-color: #<%= item.product.color %>;"></div>
               </div>
 
-              單價&nbsp;&nbsp;$<%= item.product.item.price %>
+              <span>單價&nbsp;&nbsp;$</span>
+              <span class="item-price"><%= item.product.item.price %></span>  
           </div>
 
           <div id=<%= item.product.stock %> >
             
-            <span class="qty" style="color:#59544f">數量: <%= item.quantity %> </span> 
+            <%= link_to adjust_item_product_path(item.product, type: "substract"), method: :post, remote: true do %>
+              <input type='button' value='-' style="font-size:15px; color: #848378;" id='minus' class='qtyminus'/>
+            <% end %>
+
+            <input type='text' value=<%= item.quantity %> style='color:#59544f;' id='number' class='qty' />
+
+            <%= link_to  adjust_item_product_path(item.product, type: "add"), method: :post, remote: true  do %>
+              <input type='button' value='+' style="color: #848378;" id='plus' class='qtyplus'/>
+            <% end %>
 
           </div>
           
-          <div style="margin-top: -155px; margin-left: 280px">
-            <p>$&nbsp;<%= item.product.item.price * item.quantity %></p>
+          <div style="margin-top: -75px; margin-left: 280px">
+            <span>$&nbsp;</span>
+            <span class="item-total-price"><%= item.product.item.price * item.quantity %></span>
           </div>
 
         </div>
@@ -88,6 +98,38 @@
 </div>
 
 <script type="text/javascript">
+  var min = 1
+
+  $('.qtyplus').click(function(e) {
+    var currentVal = parseInt($(this).prev('input').val());
+    var max = parseInt($(this).closest('div').attr('id'));
+    if (currentVal < max) {
+      $(this).prev('input').val(currentVal + 1);
+      $(this).closest('span').find('.item-total-price').text(parseInt($(this).closest('span').find('.item-price').text() * currentVal));
+    } else {
+      $(this).prec('input').val(max);
+    }
+  });
+  
+  $(".qtyminus").click(function(e) {
+    var currentVal = parseInt($(this).next('input').val());
+    var max = parseInt($(this).closest('div').attr('id'));
+    if (currentVal > min) {
+      $(this).next('input').val(currentVal - 1);
+    } else {
+      $(this).next('input').val(min);
+    }
+  });
+
+  $("#number").blur(function(e){
+    var currentVal = parseInt($(this).closest('input').val());
+    var max = parseInt($(this).closest('div').attr('id'));
+    if (currentVal < min || isNaN(currentVal)) {
+      $(this).closest('input').val(min);
+    } else if(currentVal > max) {
+      $(this).closest('input').val(max);
+    }
+  });
   
   $(".close").click(function(){
     if($('.cart-item:visible').length == 0){
