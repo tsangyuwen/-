@@ -50,10 +50,10 @@
         加入購物車
       </div>
       
-      <div style="padding-left: 2px">
+      <div style="padding-left: 2px; margint-top: 5px">
         <%= link_to product_path(product), class: 'link' do %>
           <%= product.name %><br>
-          <br style="line-height: 5px">
+          <hr style="border-color: white; margin: 3px 0px;">
           $<%= product.price %><br>
         <% end %>
       </div>
@@ -68,19 +68,21 @@
       <% end %>
 
      
-      <br><br>
+      <br>
     </div>
   <% end %>
 </div>
 
 <script type="text/javascript">
-  $(".add-cart").click(function(){
+  $(".add-cart").click(function(e){
     $(this).prevAll().show();
   });
 
-  $(document).on('click', function() {
-    $(".add-cart").hide();
-  })
+  $(document).on('click', function(e) {
+    if ($('.add-cart-show:visible').closest('.add-cart-show').length) {
+      $('.add-cart-show').hide();
+    }
+  });
 </script>
 
 <style type="text/css">
