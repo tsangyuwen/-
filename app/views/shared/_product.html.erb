@@ -74,13 +74,21 @@
 </div>
 
 <script type="text/javascript">
-  $(".add-cart").click(function(e){
+  /*$(".add-cart").click(function(e){
     $(this).prevAll().show();
-  });
+  });*/
 
   $(document).on('click', function(e) {
-    if ($('.add-cart-show:visible').closest('.add-cart-show').length) {
-      $('.add-cart-show').hide();
+    if($('.add-cart-show:visible').closest('.add-cart-show').length) {
+      if(!$(e.target).closest('.add-cart-show').length){
+        $('.add-cart-show').hide();
+        if($(e.target).closest('.add-cart').length){
+          $('.add-cart-show').hide();
+          $(e.target).prevAll().show();
+        }
+      }
+    }else if($(e.target).closest('.add-cart').length){
+      $(e.target).prevAll().show();
     }
   });
 </script>
@@ -99,7 +107,7 @@
 
   .add-cart-show {
     right: -50px;
-    bottom: 170px;
+    bottom: 140px;
     position: absolute;
     width: 335px;
     height: 180px;
