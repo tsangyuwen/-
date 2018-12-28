@@ -1,20 +1,70 @@
-<div class="col-sm-10 col-sx-12">
+<div class="col-sm-10 col-sx-12" style="padding-top: 20px">
   <% @products.each do |product| %>
-    <div class="col-sm-3 col-xs-6">
+    <div class="col-sm-3 col-xs-6" style="padding-left: 7px; padding-right: 7px">
+
+      <div class="add-cart-show">
+        <div>
+        <p style="margin-top: 18px; margin-left: 15px;">顏色</p>
+          <a href="#" class="colorbox" style="background-color: #D17978;"></a>
+          <a href="#" class="colorbox" style="background-color: #8DC1E8;"></a>
+          <a href="#" class="colorbox" style="background-color: #CB7F41;"></a>
+          <a href="#" class="colorbox" style="background-color: #D5CF5E;"></a>
+          <a href="#" class="colorbox" style="background-color: #25422E;"></a><br>
+          <a href="#" class="colorbox" style="background-color: #22293B;"></a>
+          <a href="#" class="colorbox" style="background-color: #662E3E;"></a>
+          <a href="#" class="colorbox" style="background-color: #5D3B24;"></a>
+          <a href="#" class="colorbox" style="background-color: #000000;"></a>
+          <a href="#" class="colorbox" style="background-color: #BBBAC0;"></a>
+        </div> 
+
+        <div>
+          <p class="mobile_size" style="margin-top: -69px; margin-left: 187px;">尺寸</p>
+          <a href="#" class="sizebox">XS</a>
+          <a href="#" class="sizebox">S</a>
+          <a href="#" class="sizebox">M</a>
+          <a href="#" class="sizebox">L</a>
+          <a href="#" class="sizebox">XL</a>
+        </div>
+
+        <div>
+          <p style="margin-top: 85px; margin-left: 15px;">數量</p>
+          <div class="plusandminus">
+            <input type='button' value='-' style="font-size:15px; color: #848378;" id='minus' class='qtyminus'/>
+            <input type='text' value='1' style='color:#59544f;' id='number' class='qty' />
+            <input type='button' value='+' style="color: #848378;" id='plus' class='qtyplus'/>
+          </div>
+        </div>
+
+        <div>
+          <p style="margin-top: -72px; margin-left: 187px;font-size: 14px;">庫存量：300</p>
+          <div id="addbut" class="addbutton"><p>加入購物車</p></div>
+        </div>
+
+        <div class="trangle"></div>
+      </div>
+
       <%= link_to product_path(product) do %>
-        <%= image_tag product.main_image, width: "140px" %>
+        <%= image_tag product.main_image, width: "100%" %>
       <% end %>
       <div class="add-cart">
         加入購物車
       </div>
-      <br>
-      <%= product.name %><br>
-      $<%= product.price %><br>
+      
+      <div style="padding-left: 2px">
+        <%= link_to product_path(product), class: 'link' do %>
+          <%= product.name %><br>
+          <br style="line-height: 5px">
+          $<%= product.price %><br>
+        <% end %>
+      </div>
+
+      <% if false %>
       <% product.products.each do |i| %>
         <div class="colorbox" style="background-color: #<%= i.color %>;"></div>
         <%= i.size %>
         <%= i.stock %>
          <%= link_to "Add to Cart", add_to_cart_product_path(i), method: :post, class: "btn btn-info", :remote => true %>
+      <% end %>
       <% end %>
 
      
@@ -26,12 +76,28 @@
 <style type="text/css">
   .add-cart {
     margin-bottom: 10px;
-    width: 140px;
+    width: 100%;
     background-color: #c893fa;
     font-size: 14px;
     color: #ffffff;
     line-height: 40px;
     text-align: center;
     cursor: pointer;
+  }
+
+  .add-cart-show {
+    margin-left: -50px;
+    margin-top: 40%;
+    position: absolute;
+    width: 335px;
+    height: 210px;
+    background-color: #ffffff;
+    font-size: 16px;
+    color: #59544f;
+    border: 0.1px solid;
+    border-color: #c1c0bc;
+    opacity: 0.9;
+    z-index: 1;
+    display: none;
   }
 </style>

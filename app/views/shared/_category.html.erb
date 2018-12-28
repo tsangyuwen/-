@@ -3,7 +3,7 @@
   <% @where.each do |where| %>
     <%= where %><br>
     <% @categories.where(where: where).each do |c| %>
-      &nbsp;<%= link_to c.name, category_path(c), class:'link', style: 'color: #848378;' %>
+      <%= link_to c.name, category_path(c), class:'link', style: 'color: #848378;' %>
       <br>
     <% end %>
     <br><br>
