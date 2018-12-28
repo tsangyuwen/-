@@ -4,25 +4,20 @@
 
       <div class="add-cart-show">
         <div>
-        <p style="margin-top: 18px; margin-left: 15px;">顏色</p>
-          <a href="#" class="colorbox" style="background-color: #8DC1E8;"></a>
-          <a href="#" class="colorbox" style="background-color: #CB7F41;"></a>
-          <a href="#" class="colorbox" style="background-color: #D5CF5E;"></a>
-          <a href="#" class="colorbox" style="background-color: #25422E;"></a><br>
-          <a href="#" class="colorbox" style="background-color: #22293B;"></a>
-          <a href="#" class="colorbox" style="background-color: #662E3E;"></a>
-          <a href="#" class="colorbox" style="background-color: #5D3B24;"></a>
-          <a href="#" class="colorbox" style="background-color: #000000;"></a>
-          <a href="#" class="colorbox" style="background-color: #BBBAC0;"></a>
+          <p style="margin-top: 18px; margin-left: 15px;">顏色</p>
+          <div style="margin-left: 10px; margin-top: 5px; width: 160px">
+            <% @firstColor = product.products.pluck(:color).first %>
+            <% product.products.pluck(:color).uniq.each do |color| %>
+              <div id=<%= color %> class="colorbox" style="background-color: #<%= color %>; float: left; margin-left: 5px;"></div>
+            <% end %>
+          </div>
         </div> 
 
-        <div>
-          <p class="mobile_size" style="margin-top: -69px; margin-left: 187px;">尺寸</p>
-          <a href="#" class="sizebox">XS</a>
-          <a href="#" class="sizebox">S</a>
-          <a href="#" class="sizebox">M</a>
-          <a href="#" class="sizebox">L</a>
-          <a href="#" class="sizebox">XL</a>
+        <div style="width: 160px; float: left">
+          <p style="margin-top: 18px;">尺寸</p>
+          <% product.products.where(color: @firstColor).pluck(:size).uniq.each do |color| %>
+            <div class="sizebox"><%= color %></div>
+          <% end %>
         </div>
 
         <div>
@@ -74,9 +69,6 @@
 </div>
 
 <script type="text/javascript">
-  /*$(".add-cart").click(function(e){
-    $(this).prevAll().show();
-  });*/
 
   $(document).on('click', function(e) {
     if($('.add-cart-show:visible').closest('.add-cart-show').length) {
@@ -143,5 +135,17 @@
     left: 49%;
     margin-left: -21px;
     opacity: 0.9;
+  }
+
+  .colorbox {
+    border: 0px solid rgb(85, 85, 85);
+    height: 25px;
+    width: 25px;
+    padding: 2px;
+  }
+
+  #<%= @firstColor %> {
+    border: 1px solid white;
+    outline: 2px solid #ccc;
   }
 </style>
