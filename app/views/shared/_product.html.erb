@@ -1,16 +1,37 @@
-<% @products.each do |product| %>
-  <div class="col-sm-4">
-    <%= image_tag product.main_image, width: "150px" %><br>
-    <%= product.name %><br>
-    $<%= product.price %><br>
-    <% product.products.each do |i| %>
-      <div class="colorbox" style="background-color: #<%= i.color %>;"></div>
-      <%= i.size %>
-      <%= i.stock %>
-       <%= link_to "Add to Cart", add_to_cart_product_path(i), method: :post, class: "btn btn-info", :remote => true %>
-    <% end %>
+<div class="col-sm-10 col-sx-12">
+  <% @products.each do |product| %>
+    <div class="col-sm-3 col-xs-6">
+      <%= link_to product_path(product) do %>
+        <%= image_tag product.main_image, width: "140px" %>
+      <% end %>
+      <div class="add-cart">
+        加入購物車
+      </div>
+      <br>
+      <%= product.name %><br>
+      $<%= product.price %><br>
+      <% product.products.each do |i| %>
+        <div class="colorbox" style="background-color: #<%= i.color %>;"></div>
+        <%= i.size %>
+        <%= i.stock %>
+         <%= link_to "Add to Cart", add_to_cart_product_path(i), method: :post, class: "btn btn-info", :remote => true %>
+      <% end %>
 
-   
-    <br><br>
-  </div>
-<% end %>
+     
+      <br><br>
+    </div>
+  <% end %>
+</div>
+
+<style type="text/css">
+  .add-cart {
+    margin-bottom: 10px;
+    width: 140px;
+    background-color: #c893fa;
+    font-size: 14px;
+    color: #ffffff;
+    line-height: 40px;
+    text-align: center;
+    cursor: pointer;
+  }
+</style>

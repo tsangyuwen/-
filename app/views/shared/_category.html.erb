@@ -1,9 +1,18 @@
-<% @where.each do |where| %>
-  <%= where %><br>
-  <% @categories.where(where: where).each do |c| %>
-    &nbsp;&nbsp;
-    <%= link_to c.name, category_path(c) %>
-    <br>
+<div class="col-sm-2">
+  <br>
+  <% @where.each do |where| %>
+    <%= where %><br>
+    <% @categories.where(where: where).each do |c| %>
+      &nbsp;<%= link_to c.name, category_path(c), class:'link', style: 'color: #848378;' %>
+      <br>
+    <% end %>
+    <br><br>
   <% end %>
-  <br><br>
-<% end %>
+</div>
+
+<style type="text/css">
+  body {
+    background-color: white;
+    background-image: none;
+  }
+</style>
