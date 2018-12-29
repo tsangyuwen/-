@@ -7,10 +7,10 @@
         <div class="clearfix">
           <div class="color-list" style= "float:left">
             <p style="margin-top: 18px; margin-left: 15px;">顏色</p>
-            <div style="margin-left: 10px; margin-top: 5px; width: 160px">
+            <div style="margin-left: 10px; width: 160px">
               <% @firstColor = product.products.pluck(:color).first %>
               <% product.products.pluck(:color).uniq.each do |color| %>
-                <div id=<%= color %> class="colorbox" style="background-color: #<%= color %>; float: left; margin-left: 5px;"></div>
+                <div id=<%= color %> class="colorbox" style="background-color: #<%= color %>; margin-top: 5px; float: left; margin-left: 5px;"></div>
               <% end %>
             </div>
           </div> 
@@ -38,7 +38,7 @@
           </div> 
 
           <div style="width: 150px; margin-left: 10px; float: left">
-            <p style="margin-top: 18px;">庫存量：</p>
+            <p style="margin-top: 18px;">庫存量：<%= product.products.first.stock %></p>
             <div class="add-cart-btn"><p>加入購物車</p></div>
           </div>
         </div>
@@ -62,16 +62,6 @@
         <% end %>
       </div>
 
-      <% if false %>
-      <% product.products.each do |i| %>
-        <div class="colorbox" style="background-color: #<%= i.color %>;"></div>
-        <%= i.size %>
-        <%= i.stock %>
-         <%= link_to "Add to Cart", add_to_cart_product_path(i), method: :post, class: "btn btn-info", :remote => true %>
-      <% end %>
-      <% end %>
-
-     
       <br>
     </div>
   <% end %>
@@ -117,7 +107,7 @@
     color: #59544f;
     border: 0.1px solid;
     border-color: #c1c0bc;
-    opacity: 0.9;
+    opacity: 0.95;
     z-index: 1;
     display: none;
   }
@@ -151,6 +141,7 @@
     height: 25px;
     width: 25px;
     padding: 2px;
+    cursor: pointer;
   }
 
   .colorbox:first-of-type, .sizebox:first-of-type {
@@ -166,5 +157,29 @@
     text-align: center;
     line-height: 25px;
     border: 1px solid white;
+    cursor: pointer;
+  }
+
+  .qty {
+    top: 2px;
+    left: 5px;
+    width: 80px;
+  }
+
+  .qtyminus, .qtyplus {
+    top: 2px;
+    left: 5px;
+  }
+
+  .add-cart-btn {
+    margin-top: 5px;
+    background-color: #9b3af6;
+    color: white;
+    text-align: center;
+    width: 120px;
+    height: 25px;
+    line-height: 25px;
+    font-size: 14px;
+    cursor: pointer;
   }
 </style>
