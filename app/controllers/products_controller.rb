@@ -7,8 +7,9 @@ class ProductsController < ApplicationController
   end
 
   def add_to_cart
-    @product = Product.find(params[:id])
-    current_cart.add_cart_item(@product)
+    @item = Item.find(params[:id])
+    @product = @item.products.where(color: params[:color], size: params[:size]).first
+    current_cart.add_cart_item(@product, params[:quantity])
 
     #redirect_back(fallback_location: root_path)
   end
@@ -41,6 +42,11 @@ class ProductsController < ApplicationController
     # redirect_back(fallback_location: root_path)
   end
 
+  def search_size
+    @product = Product.find(params[:id])
+    @size = @product.products.where(color: params[:color]).pluck(:size).uniq
+  end
+
   def index
     @products = ProductItem.all
   end
@@ -51,11 +57,9 @@ class ProductsController < ApplicationController
   end
 
   def search
-    puts @query_string
     if @query_string.present?
      @products = Item.ransack(name_cont_any: [@query_string]).result
     end
-    puts @query_string
   end
 
   protected
