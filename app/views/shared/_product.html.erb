@@ -37,8 +37,9 @@
             </div>
           </div> 
 
-          <div style="width: 150px; margin-left: 10px; float: left">
-            <p style="margin-top: 18px;">庫存量：<%= product.products.first.stock %></p>
+          <div style="width: 150px; margin-left: 10px; float: left; margin-top: 18px;">
+            <span>庫存量：</span>
+            <sapn class="stock"><%= product.products.first.stock %></sapn>
             <div class="add-cart-btn"><p>加入購物車</p></div>
           </div>
         </div>
@@ -68,18 +69,71 @@
 </div>
 
 <script type="text/javascript">
+  var color = "none";
+  var size = "none";
+  var min = 1;
 
   $(document).on('click', function(e) {
-    if($('.add-cart-show:visible').closest('.add-cart-show').length) {
+    if($(e.target).closest('.add-cart').length){
+      $(e.target).prevAll().show();
+      color = $(this).prevAll().find(".colorbox:first-of-type").attr("id");
+      size = $(this).prevAll().find(".sizebox:first-of-type").text();
+    }else if($('.add-cart-show:visible').closest('.add-cart-show').length){
       if(!$(e.target).closest('.add-cart-show').length){
         $('.add-cart-show').hide();
-        if($(e.target).closest('.add-cart').length){
-          $('.add-cart-show').hide();
-          $(e.target).prevAll().show();
-        }
       }
-    }else if($(e.target).closest('.add-cart').length){
-      $(e.target).prevAll().show();
+    }
+  });
+
+  $(".add-cart-btn").click(function(){
+    $.ajax({
+      url: '/products/' + $(this).parent().parent().attr('id') + '/adjust_item',
+      method: 'POST',
+      dataType: "text",
+      data:{
+        number: parseInt($(this).closest('input').val())
+      }
+    });
+  })
+
+  $(".colorbox").click(function(){
+    $(this).parent().find(".colorbox").css("outline", "none");
+    $(this).css("outline", "1px solid black");
+    color = $(this).attr('id');
+  })
+
+  $(".sizebox").click(function(){
+    $(this).parent().find(".sizebox").css("outline", "none");
+    $(this).css("outline", "1px solid black");
+    size = $(this).text();
+  })
+
+  $('.qtyplus').click(function(e) {
+    var currentVal = parseInt($(this).parent().prev('input').val());
+    var max = parseInt($(this).parent().parent().next().children(".stock").text());
+    if (currentVal < max) {
+      $(this).parent().prev('input').val(currentVal + 1);
+    } else {
+      $(this).parent().prev('input').val(max);
+    }
+  });
+  
+  $(".qtyminus").click(function(e) {
+    var currentVal = parseInt($(this).parent().next('input').val());
+    if (currentVal > min) {
+      $(this).parent().next('input').val(currentVal - 1);
+    } else {
+      $(this).parent().next('input').val(min);
+    }
+  });
+
+  $(".qty").blur(function(e){
+    var currentVal = parseInt($(this).closest('input').val());
+    var max = parseInt($(this).parent().parent().next().children(".stock").text());
+    if (currentVal < min || isNaN(currentVal)) {
+      $(this).val(min);
+    } else if(currentVal > max) {
+      $(this).val(max);
     }
   });
 </script>
