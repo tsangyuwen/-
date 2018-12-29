@@ -15,7 +15,7 @@
             </div>
           </div> 
 
-          <div style="width: 150px; margin-left: 10px; float: left">
+          <div class="size-list" style="width: 150px; margin-left: 10px; float: left">
             <p style="margin-top: 18px;">尺寸</p>
             <div style="margin-top: 5px;">
               <% product.products.where(color: @firstColor).pluck(:size).uniq.each do |color| %>
@@ -26,7 +26,7 @@
         </div>
 
         <div class="clearfix">
-          <div class="color-list" style= "float:left">
+          <div style= "float:left">
             <p style="margin-top: 18px; margin-left: 15px;">數量</p>
             <div style="margin-left: 10px; margin-top: 5px; width: 160px">
               <input type='button' value='-' style="font-size:15px; color: #848378;" id='minus' class='qtyminus'/>
@@ -75,6 +75,7 @@
 
   $(document).on('click', function(e) {
     if($(e.target).closest('.add-cart').length){
+      $('.add-cart-show').hide();
       $(e.target).prevAll().show();
       color = $(this).prevAll().find(".colorbox:first-of-type").attr("id");
       size = $(this).prevAll().find(".sizebox:first-of-type").text();
@@ -109,21 +110,21 @@
   })
 
   $('.qtyplus').click(function(e) {
-    var currentVal = parseInt($(this).parent().prev('input').val());
+    var currentVal = parseInt($(this).prev('input').val());
     var max = parseInt($(this).parent().parent().next().children(".stock").text());
     if (currentVal < max) {
-      $(this).parent().prev('input').val(currentVal + 1);
+      $(this).prev('input').val(currentVal + 1);
     } else {
-      $(this).parent().prev('input').val(max);
+      $(this).prev('input').val(max);
     }
   });
   
   $(".qtyminus").click(function(e) {
-    var currentVal = parseInt($(this).parent().next('input').val());
+    var currentVal = parseInt($(this).next('input').val());
     if (currentVal > min) {
-      $(this).parent().next('input').val(currentVal - 1);
+      $(this).next('input').val(currentVal - 1);
     } else {
-      $(this).parent().next('input').val(min);
+      $(this).next('input').val(min);
     }
   });
 
